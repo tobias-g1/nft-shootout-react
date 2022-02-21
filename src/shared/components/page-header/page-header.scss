@@ -1,0 +1,11 @@
+.page-header {
+    padding: 20px 100px;
+    background: #0072BE;
+    width: -moz-fit-content;
+    width: fit-content;
+    -webkit-clip-path: polygon(0 0, 100% 0%, 85% 100%, 0% 100%);
+    clip-path: polygon(0 0, 100% 0%, 85% 100%, 0% 100%);
+    * {
+        margin: 0;
+    }
+}
