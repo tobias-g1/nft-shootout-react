@@ -1,5 +1,3 @@
-@import './assets/css/antd.css';
-
 .header {
   max-width: 650px;
   text-align: center;
@@ -13,16 +11,11 @@
 }
 
 main {
-  margin: 0 175px;
+  margin: 0 50px;
 }
 
 header {
-  padding: 40px 175px !important;
-  background: #101010 !important;
-}
-
-.ant-layout-footer {
-  background: #000000 !important;
+  padding: 50px !important;
 }
 
 @media only screen and (max-width: 1400px) {

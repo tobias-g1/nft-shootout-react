@@ -6,15 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const socialLinks = [
     {
         icon: faTwitter,
-        link: 'https://twitter.com/mbl_hq'
+        link: ''
     },
     {
         icon: faDiscord,
-        link: 'https://discord.gg/5dcjQc8DG2'
+        link: ''
     },
     {
         icon: faInstagram,
-        link: 'https://instagram.com/monsterbattleleague'
+        link: ''
     }
 ]
 
