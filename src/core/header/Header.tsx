@@ -11,11 +11,11 @@ function HeaderComponent() {
     <Header>
       <div className="left-content">
       <img className="logo" src={logo} alt="Logo"></img>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-          <Menu.Item key="1">Play</Menu.Item>
-          <Menu.Item key="2">Store</Menu.Item>
-          <Menu.Item key="3">My Players</Menu.Item>
-          <Menu.Item key="4">Marketplace</Menu.Item>
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["4"]}>
+          <Link to="play"><Menu.Item key="1">Play</Menu.Item></Link>
+          <Link to="store"><Menu.Item key="2">Store</Menu.Item></Link>
+          <Link to="my-players"><Menu.Item key="3">My Players</Menu.Item></Link>
+          <Link to="marketplace"><Menu.Item key="4">Marketplace</Menu.Item></Link>
         </Menu>
       </div>
       <div className="right-content">
