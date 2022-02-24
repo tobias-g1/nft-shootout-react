@@ -1,6 +1,5 @@
-import React from 'react';
 import './social-links.scss'
-import { faHive, faTwitter, faDiscord, faMedium, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faTwitter, faDiscord, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const socialLinks = [
