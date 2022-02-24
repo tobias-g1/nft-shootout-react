@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import "./App.scss";
 import HeaderComponent from "./core/header/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -13,6 +13,7 @@ import PlayPageComponent from "./pages/play/play";
 import CookiesPageComponent from "./pages/cookies/cookies";
 import TermsPageComponent from "./pages/terms/terms";
 import PrivacyPageComponent from "./pages/privacy/privacy";
+import { Navigate } from 'react-router-dom';
 
 const App: FC = () => (
   <div className="App">
@@ -21,6 +22,7 @@ const App: FC = () => (
         <HeaderComponent></HeaderComponent>
         <ScrollToTop />
         <Routes>
+          <Route path='/' element={ <Navigate to="/marketplace" /> } />
           <Route path='/play' element={<PlayPageComponent />} />
           <Route path="/store" element={<StorePageComponent />} />
           <Route path='/marketplace' element={<MarketplacePageComponent />} />
@@ -30,8 +32,8 @@ const App: FC = () => (
           <Route path="/privacy" element={<PrivacyPageComponent />} />
           <Route path='*' element={<NotFoundPageComponent />} />
         </Routes>
+        <FooterComponent />
       </Router>
-      <FooterComponent />
     </Layout>
   </div>
 );
