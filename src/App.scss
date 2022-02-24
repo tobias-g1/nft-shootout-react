@@ -1,0 +1,36 @@
+.header {
+  max-width: 650px;
+  text-align: center;
+  margin-bottom: 25px;
+  margin: auto;
+  span {
+    font-weight: bold;
+    color: #63707B;
+    font-size: 20px;
+  }
+}
+
+main {
+  margin: 0 50px;
+}
+
+header {
+  padding: 50px !important;
+}
+
+@media only screen and (max-width: 1400px) {
+  main {
+    margin: 0 25px !important;
+  }
+
+  header {
+    padding: 40px 25px !important;
+  }
+}
+
+button, a {
+  cursor: pointer !important;
+  &:hover {
+    cursor: pointer !important;
+  }
+}

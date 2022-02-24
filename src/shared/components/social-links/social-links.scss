@@ -1,0 +1,15 @@
+.social-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    a {
+        cursor: pointer;
+        color: white;
+        display: flex;
+        svg {
+            font-size: 22.5px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+    }
+}

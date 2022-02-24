@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from "react";
+import "./App.scss";
+import HeaderComponent from "./core/header/Header";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NotFoundPageComponent from "./pages/not-found/not-found";
+import MyPlayersPageComponent from "./pages/my-players/my-players";
+import Layout from "antd/lib/layout/layout";
+import ScrollToTop from "./shared/utilities/scroll";
+import FooterComponent from "./core/footer/footer";
+import MarketplacePageComponent from "./pages/marketplace/marketplace";
+import StorePageComponent from "./pages/store/store";
+import PlayPageComponent from "./pages/play/play";
+import CookiesPageComponent from "./pages/cookies/cookies";
+import TermsPageComponent from "./pages/terms/terms";
+import PrivacyPageComponent from "./pages/privacy/privacy";
+import { Navigate } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: FC = () => (
+  <div className="App">
+    <Layout>
+      <Router>
+        <HeaderComponent></HeaderComponent>
+        <ScrollToTop />
+        <Routes>
+          <Route path='/' element={ <Navigate to="/marketplace" /> } />
+          <Route path='/play' element={<PlayPageComponent />} />
+          <Route path="/store" element={<StorePageComponent />} />
+          <Route path='/marketplace' element={<MarketplacePageComponent />} />
+          <Route path="/my-players" element={<MyPlayersPageComponent />} />
+          <Route path="/cookies" element={<CookiesPageComponent />} />
+          <Route path="/terms" element={<TermsPageComponent />} />
+          <Route path="/privacy" element={<PrivacyPageComponent />} />
+          <Route path='*' element={<NotFoundPageComponent />} />
+        </Routes>
+        <FooterComponent />
+      </Router>
+    </Layout>
+  </div>
+);
 
 export default App;

@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ConfigProvider } from 'antd';
+
+ConfigProvider.config({
+  theme: {
+    primaryColor: '#8CC641'
+  },
+});
 
 ReactDOM.render(
   <React.StrictMode>

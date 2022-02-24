@@ -1,13 +1,107 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/css/antd.css';
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Rubik:wght@400;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #0F0F0F;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body #root {
+  overflow-x: hidden;
+}
+
+* {
+    font-family: 'Rubik', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin: 0;
+  text-transform: capitalize;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 18px;
+  margin: 0;
+  line-height: 25px;
+  margin-bottom: 15px;
+}
+
+.ant-modal-title {
+font-weight: 600;
+margin: 0;
+margin-top: 5px;
+text-transform: capitalize;
+font-size: 23px;
+line-height: normal;
+letter-spacing: 2.5px;
+}
+
+h5 {
+  font-size: 15px;
+}
+
+h6 {
+  font-size: 10.72px;
+}
+
+p {
+  font-size: 17px;
+  margin: 0;
+  line-height: 24.5px;
+  margin-bottom: 15px;
+  color: #63707B;
+}
+
+button {
+  font-weight: 600;
+}
+
+.ant-btn {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.ant-btn-lg {
+  padding: 5.4px 15px !important;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.ant-affix {
+  top: 0 !important;
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+
+.page-wrapper {
+  min-height: calc(100vh - 299px);
+  background-size: cover;
+  background-position: bottom;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  50% { transform: scale(0.85); }
+  to { transform: scale(1); }
+}
+
+.pulse {
+  animation-name: pulse;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 }
