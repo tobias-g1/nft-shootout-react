@@ -3,6 +3,7 @@ import { Layout } from "antd";
 import './Header.scss';
 import logo from '../../assets/img/logo.png'
 import { Link } from 'react-router-dom';
+import AuthComponent from "../../shared/components/auth/auth";
 
 const { Header } = Layout;
 
@@ -19,9 +20,7 @@ function HeaderComponent() {
         </ul>
       </div>
       <div className="right-content">
-        <Button size="large" className="pulse" type="primary">
-          Connect
-        </Button>
+        <AuthComponent />
       </div>
     </Header>
   );

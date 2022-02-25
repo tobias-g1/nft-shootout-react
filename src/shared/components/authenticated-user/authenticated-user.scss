@@ -1,0 +1,63 @@
+.authenticated-user {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    .balance-chip {
+        background: #000527;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        line-height: initial;
+        padding: 12.5px;
+        margin-right: 15px;
+        img {
+            height: 25px;
+            border-radius: 100%;
+            margin-right: 10px;
+        }
+        span {
+            font-weight: bold;
+            color: white;
+        }
+    }
+}
+.auth-modal-wrapper {
+    .address-details {
+        display: flex;
+        flex-direction: column;
+        .label {
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+        .address {
+            background: #000527;
+            color: #ffffff;
+            padding: 15px;
+            font-size: 15px;
+        }
+    }
+    .balance-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 15px;
+        .balance-label {
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .balance-amount {
+            font-weight: bold;
+            color: #ffffff;
+        }
+    }
+    a {
+        margin-left: auto;
+        display: table;
+        margin-bottom: 15px;
+    }
+    .disconnect-button {
+        width: 100%;
+    }
+}
