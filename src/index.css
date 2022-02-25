@@ -64,16 +64,11 @@ p {
 }
 
 button {
-  font-weight: 600;
+  text-transform: uppercase;
 }
 
-.ant-btn {
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-.ant-btn-lg {
-  padding: 5.4px 15px !important;
+.mb-5 {
+  margin-bottom: 5px;
 }
 
 .mb-15 {
