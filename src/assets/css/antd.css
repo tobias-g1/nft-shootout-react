@@ -2169,7 +2169,7 @@ html {
   line-height: 1.5715;
   position: relative;
   display: inline-block;
-  font-weight: 400;
+  font-weight: 600;
   white-space: nowrap;
   text-align: center;
   background-image: none;
@@ -2183,9 +2183,9 @@ html {
   padding: 4px 15px;
   font-size: 14px;
   border-radius: 2px;
-  color: #63707B;
-  border-color: #d9d9d9;
-  background: #fff;
+  color: #ffffff;
+  border-color: #63707B;
+  background: transparent;
 }
 .ant-btn > .anticon {
   line-height: 1;
@@ -2236,7 +2236,7 @@ html {
 .ant-btn:focus {
   color: #29ffa6;
   border-color: #29ffa6;
-  background: #fff;
+  background: transparent;
 }
 .ant-btn:hover > a:only-child,
 .ant-btn:focus > a:only-child {
@@ -2255,7 +2255,7 @@ html {
 .ant-btn:active {
   color: #00d98d;
   border-color: #00d98d;
-  background: #fff;
+  background: transparent;
 }
 .ant-btn:active > a:only-child {
   color: currentcolor;
@@ -2301,7 +2301,7 @@ html {
 .ant-btn:focus,
 .ant-btn:active {
   text-decoration: none;
-  background: #fff;
+  background: transparent;
 }
 .ant-btn > span {
   display: inline-block;
@@ -2395,13 +2395,13 @@ html {
   border-left-color: #29ffa6;
 }
 .ant-btn-group .ant-btn-primary:not(:first-child):not(:last-child):disabled {
-  border-color: #d9d9d9;
+  border-color: #63707B;
 }
 .ant-btn-group .ant-btn-primary:first-child:not(:last-child) {
   border-right-color: #29ffa6;
 }
 .ant-btn-group .ant-btn-primary:first-child:not(:last-child)[disabled] {
-  border-right-color: #d9d9d9;
+  border-right-color: #63707B;
 }
 .ant-btn-group .ant-btn-primary:last-child:not(:first-child),
 .ant-btn-group .ant-btn-primary + .ant-btn-primary {
@@ -2409,7 +2409,7 @@ html {
 }
 .ant-btn-group .ant-btn-primary:last-child:not(:first-child)[disabled],
 .ant-btn-group .ant-btn-primary + .ant-btn-primary[disabled] {
-  border-left-color: #d9d9d9;
+  border-left-color: #63707B;
 }
 .ant-btn-ghost {
   color: #63707B;
@@ -2494,9 +2494,9 @@ html {
   content: '';
 }
 .ant-btn-dashed {
-  color: #63707B;
-  border-color: #d9d9d9;
-  background: #fff;
+  color: #ffffff;
+  border-color: #63707B;
+  background: transparent;
   border-style: dashed;
 }
 .ant-btn-dashed > a:only-child {
@@ -2515,7 +2515,7 @@ html {
 .ant-btn-dashed:focus {
   color: #29ffa6;
   border-color: #29ffa6;
-  background: #fff;
+  background: transparent;
 }
 .ant-btn-dashed:hover > a:only-child,
 .ant-btn-dashed:focus > a:only-child {
@@ -2534,7 +2534,7 @@ html {
 .ant-btn-dashed:active {
   color: #00d98d;
   border-color: #00d98d;
-  background: #fff;
+  background: transparent;
 }
 .ant-btn-dashed:active > a:only-child {
   color: currentcolor;
@@ -2904,7 +2904,7 @@ html {
 .ant-btn-dangerous {
   color: #ff4d4f;
   border-color: #ff4d4f;
-  background: #fff;
+  background: transparent;
 }
 .ant-btn-dangerous > a:only-child {
   color: currentcolor;
@@ -2922,7 +2922,7 @@ html {
 .ant-btn-dangerous:focus {
   color: #ff7875;
   border-color: #ff7875;
-  background: #fff;
+  background: transparent;
 }
 .ant-btn-dangerous:hover > a:only-child,
 .ant-btn-dangerous:focus > a:only-child {
@@ -2941,7 +2941,7 @@ html {
 .ant-btn-dangerous:active {
   color: #d9363e;
   border-color: #d9363e;
-  background: #fff;
+  background: transparent;
 }
 .ant-btn-dangerous:active > a:only-child {
   color: currentcolor;
@@ -3668,7 +3668,7 @@ a.ant-btn-icon-only > .anticon {
 .ant-btn.ant-btn-background-ghost[disabled] {
   color: rgba(0, 0, 0, 0.25);
   background: transparent;
-  border-color: #d9d9d9;
+  border-color: #63707B;
 }
 .ant-btn-background-ghost.ant-btn-primary {
   color: #00FE9C;
@@ -4022,11 +4022,11 @@ a.ant-btn-sm {
 .ant-btn-group-rtl.ant-btn-group .ant-btn-primary:last-child:not(:first-child),
 .ant-btn-group-rtl.ant-btn-group .ant-btn-primary + .ant-btn-primary {
   border-right-color: #29ffa6;
-  border-left-color: #d9d9d9;
+  border-left-color: #63707B;
 }
 .ant-btn-group-rtl.ant-btn-group .ant-btn-primary:last-child:not(:first-child)[disabled],
 .ant-btn-group-rtl.ant-btn-group .ant-btn-primary + .ant-btn-primary[disabled] {
-  border-right-color: #d9d9d9;
+  border-right-color: #63707B;
   border-left-color: #29ffa6;
 }
 .ant-btn-rtl.ant-btn > .ant-btn-loading-icon .anticon {
@@ -6963,7 +6963,7 @@ _:-ms-fullscreen .ant-picker-range-wrapper .ant-picker-year-panel .ant-picker-ce
 .ant-drawer-close {
   display: inline-block;
   margin-right: 12px;
-  color: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
   font-weight: 700;
   font-size: 16px;
   font-style: normal;
@@ -17059,7 +17059,7 @@ textarea.ant-mentions {
 }
 .ant-modal-content {
   position: relative;
-  background-color: #fff;
+  background-color: #080E39;
   background-clip: padding-box;
   border: 0;
   border-radius: 2px;
@@ -17072,7 +17072,7 @@ textarea.ant-mentions {
   right: 0;
   z-index: 10;
   padding: 0;
-  color: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
   font-weight: 700;
   line-height: 1;
   text-decoration: none;
@@ -17101,8 +17101,8 @@ textarea.ant-mentions {
 .ant-modal-header {
   padding: 16px 24px;
   color: #63707B;
-  background: #fff;
-  border-bottom: 1px solid #f0f0f0;
+  background: #080E39;
+  border-bottom: 1px solid #080E39;
   border-radius: 2px 2px 0 0;
 }
 .ant-modal-body {
@@ -17114,7 +17114,7 @@ textarea.ant-mentions {
 .ant-modal-footer {
   padding: 10px 16px;
   text-align: right;
-  background: transparent;
+  background: #080E39;
   border-top: 1px solid #f0f0f0;
   border-radius: 0 0 2px 2px;
 }
@@ -18728,7 +18728,7 @@ textarea.ant-pagination-options-quick-jumper input {
   display: block;
   width: 16px;
   height: 16px;
-  background-color: #fff;
+  background-color: transparent;
   border-color: #d9d9d9;
   border-style: solid;
   border-width: 1px;
@@ -18799,10 +18799,10 @@ span.ant-radio + * {
   height: 32px;
   margin: 0;
   padding: 0 15px;
-  color: #63707B;
+  color: #ffffff;
   font-size: 14px;
   line-height: 30px;
-  background: #fff;
+  background: transparent;
   border: 1px solid #d9d9d9;
   border-top-width: 1.02px;
   border-left-width: 0;
@@ -18810,7 +18810,7 @@ span.ant-radio + * {
   transition: color 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 .ant-radio-button-wrapper a {
-  color: #63707B;
+  color: #ffffff;
 }
 .ant-radio-button-wrapper > .ant-radio-button {
   position: absolute;
@@ -18871,7 +18871,7 @@ span.ant-radio + * {
 .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
   z-index: 1;
   color: #00FE9C;
-  background: #fff;
+  background: transparent;
   border-color: #00FE9C;
 }
 .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before {
