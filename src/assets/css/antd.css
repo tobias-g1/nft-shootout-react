@@ -2184,7 +2184,7 @@ html {
   font-size: 14px;
   border-radius: 2px;
   color: #ffffff;
-  border-color: #F2F2F2;
+  border-color: #63707B;
   background: transparent;
 }
 .ant-btn > .anticon {
@@ -2395,13 +2395,13 @@ html {
   border-left-color: #29ffa6;
 }
 .ant-btn-group .ant-btn-primary:not(:first-child):not(:last-child):disabled {
-  border-color: #F2F2F2;
+  border-color: #63707B;
 }
 .ant-btn-group .ant-btn-primary:first-child:not(:last-child) {
   border-right-color: #29ffa6;
 }
 .ant-btn-group .ant-btn-primary:first-child:not(:last-child)[disabled] {
-  border-right-color: #F2F2F2;
+  border-right-color: #63707B;
 }
 .ant-btn-group .ant-btn-primary:last-child:not(:first-child),
 .ant-btn-group .ant-btn-primary + .ant-btn-primary {
@@ -2409,7 +2409,7 @@ html {
 }
 .ant-btn-group .ant-btn-primary:last-child:not(:first-child)[disabled],
 .ant-btn-group .ant-btn-primary + .ant-btn-primary[disabled] {
-  border-left-color: #F2F2F2;
+  border-left-color: #63707B;
 }
 .ant-btn-ghost {
   color: #63707B;
@@ -2495,7 +2495,7 @@ html {
 }
 .ant-btn-dashed {
   color: #ffffff;
-  border-color: #F2F2F2;
+  border-color: #63707B;
   background: transparent;
   border-style: dashed;
 }
@@ -3668,7 +3668,7 @@ a.ant-btn-icon-only > .anticon {
 .ant-btn.ant-btn-background-ghost[disabled] {
   color: rgba(0, 0, 0, 0.25);
   background: transparent;
-  border-color: #F2F2F2;
+  border-color: #63707B;
 }
 .ant-btn-background-ghost.ant-btn-primary {
   color: #00FE9C;
@@ -4022,11 +4022,11 @@ a.ant-btn-sm {
 .ant-btn-group-rtl.ant-btn-group .ant-btn-primary:last-child:not(:first-child),
 .ant-btn-group-rtl.ant-btn-group .ant-btn-primary + .ant-btn-primary {
   border-right-color: #29ffa6;
-  border-left-color: #F2F2F2;
+  border-left-color: #63707B;
 }
 .ant-btn-group-rtl.ant-btn-group .ant-btn-primary:last-child:not(:first-child)[disabled],
 .ant-btn-group-rtl.ant-btn-group .ant-btn-primary + .ant-btn-primary[disabled] {
-  border-right-color: #F2F2F2;
+  border-right-color: #63707B;
   border-left-color: #29ffa6;
 }
 .ant-btn-rtl.ant-btn > .ant-btn-loading-icon .anticon {
