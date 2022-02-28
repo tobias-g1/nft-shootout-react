@@ -11,7 +11,7 @@ ConfigProvider.config({
   },
 });
 
-ReactDOM.render(
+ReactDOM.hydrate(
   <React.StrictMode>
     <App />
   </React.StrictMode>,

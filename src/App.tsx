@@ -16,34 +16,40 @@ import PrivacyPageComponent from "./pages/privacy/privacy";
 import { Navigate } from "react-router-dom";
 import { Web3ReactProvider } from "@web3-react/core";
 import Web3 from "web3";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 function getLibrary(provider: any) {
   return new Web3(provider);
 }
 
 const App: FC = () => (
-  <Web3ReactProvider getLibrary={getLibrary}>
-    <div className="App">
-      <Layout>
-        <Router>
-          <HeaderComponent></HeaderComponent>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Navigate to="/marketplace" />} />
-            <Route path="/play" element={<PlayPageComponent />} />
-            <Route path="/store" element={<StorePageComponent />} />
-            <Route path="/marketplace" element={<MarketplacePageComponent />} />
-            <Route path="/my-players" element={<MyPlayersPageComponent />} />
-            <Route path="/cookies" element={<CookiesPageComponent />} />
-            <Route path="/terms" element={<TermsPageComponent />} />
-            <Route path="/privacy" element={<PrivacyPageComponent />} />
-            <Route path="*" element={<NotFoundPageComponent />} />
-          </Routes>
-          <FooterComponent />
-        </Router>
-      </Layout>
-    </div>
-  </Web3ReactProvider>
+  <HelmetProvider>
+    <Web3ReactProvider getLibrary={getLibrary}>
+      <div className="App">
+        <Layout>
+          <Router>
+            <HeaderComponent></HeaderComponent>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<Navigate to="/marketplace" />} />
+              <Route path="/play" element={<PlayPageComponent />} />
+              <Route path="/store" element={<StorePageComponent />} />
+              <Route
+                path="/marketplace"
+                element={<MarketplacePageComponent />}
+              />
+              <Route path="/my-players" element={<MyPlayersPageComponent />} />
+              <Route path="/cookies" element={<CookiesPageComponent />} />
+              <Route path="/terms" element={<TermsPageComponent />} />
+              <Route path="/privacy" element={<PrivacyPageComponent />} />
+              <Route path="*" element={<NotFoundPageComponent />} />
+            </Routes>
+            <FooterComponent />
+          </Router>
+        </Layout>
+      </div>
+    </Web3ReactProvider>
+  </HelmetProvider>
 );
 
 export default App;
