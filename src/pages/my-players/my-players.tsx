@@ -5,9 +5,16 @@ import { InfoMessage } from "../../shared/models/components/info-message.model";
 import { Row, Col } from "antd";
 import "./my-players.scss";
 import PlayerCardComponent from "../../shared/components/player-card/player-card";
+import DocumentMeta from 'react-document-meta';
 
 function MyPlayersPageComponent(props: any) {
     const title: string = "My Players";
+    const meta: any = {
+        title,
+        description: 'TBA',
+        meta: {}
+      };
+
     const infoMessage: InfoMessage = {
         header: "Searching for a new player?",
         description:
@@ -24,8 +31,11 @@ function MyPlayersPageComponent(props: any) {
         </Col>
     })
 
+
+
     return (
         <div className="my-players page-wrapper" style={{ backgroundImage: "url(/assets/img/background.png)" }}>
+            <DocumentMeta {...meta} />
             <PageHeaderComponent header={title} />
             <Content>
                 <Row gutter={25}>
