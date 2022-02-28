@@ -10,7 +10,7 @@ function MyPlayersPageComponent(props: any) {
     const infoMessage: InfoMessage = {
         header: 'Searching for a new player?',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere.',
-        link: 'marketplace',
+        link: '/marketplace',
         buttonText: 'Visit our Marketplace'
     }
 
