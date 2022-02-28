@@ -1,0 +1,10 @@
+.info-message {
+    background: #121740;
+    display: flex;
+    padding: 25px;
+    justify-content: space-between;
+    align-items: center;
+    .left {
+        margin-right: 25px;
+    }
+}
