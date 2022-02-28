@@ -18,6 +18,10 @@ header {
   padding: 50px !important;
 }
 
+.menu-icon {
+  color: white;
+}
+
 @media only screen and (max-width: 1400px) {
   main {
     margin: 0 25px !important;
@@ -33,4 +37,9 @@ button, a {
   &:hover {
     cursor: pointer !important;
   }
+}
+
+.ant-dropdown * {
+  color: white;
+  font-weight: 400;
 }

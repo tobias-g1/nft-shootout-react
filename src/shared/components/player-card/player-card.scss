@@ -1,0 +1,15 @@
+.player-card {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+    .header {
+        display: flex;
+        justify-content: space-between;
+        background: #080E39;
+        width: 100%;
+        padding: 25px;
+    }
+    .card-image {
+        width: 100%;
+    }
+}

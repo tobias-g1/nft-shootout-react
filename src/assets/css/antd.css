@@ -5062,7 +5062,7 @@ a.ant-btn-sm {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  padding: 5px 12px;
+  padding: 10px 12px;
   overflow: hidden;
   line-height: 22px;
   white-space: nowrap;
@@ -7163,7 +7163,7 @@ _:-ms-fullscreen .ant-picker-range-wrapper .ant-picker-year-panel .ant-picker-ce
   padding: 4px 0;
   text-align: left;
   list-style-type: none;
-  background-color: #fff;
+  background-color: #0E2157;
   background-clip: padding-box;
   border-radius: 2px;
   outline: none;
@@ -7221,10 +7221,10 @@ _:-ms-fullscreen .ant-picker-range-wrapper .ant-picker-year-panel .ant-picker-ce
 .ant-dropdown-menu-submenu-title {
   clear: both;
   margin: 0;
-  padding: 5px 12px;
+  padding: 10px 12px;
   color: #63707B;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 22px;
   white-space: nowrap;
   cursor: pointer;
@@ -19653,10 +19653,10 @@ span.ant-radio + * {
   position: relative;
   display: block;
   min-height: 32px;
-  padding: 5px 12px;
+  padding: 10px 12px;
   color: #63707B;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 22px;
   color: rgba(0, 0, 0, 0.25);
 }
@@ -19664,10 +19664,10 @@ span.ant-radio + * {
   position: relative;
   display: block;
   min-height: 32px;
-  padding: 5px 12px;
+  padding: 10px 12px;
   color: #63707B;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 22px;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -22527,7 +22527,7 @@ tr.ant-table-expanded-row .ant-descriptions-view table {
   overflow-y: auto;
   text-align: left;
   list-style-type: none;
-  background-color: #fff;
+  background-color: #0E2157;
   background-clip: padding-box;
   border-radius: 2px;
   outline: none;
@@ -22538,11 +22538,11 @@ tr.ant-table-expanded-row .ant-descriptions-view table {
   align-items: center;
   min-width: 120px;
   margin: 0;
-  padding: 5px 12px;
+  padding: 10px 12px;
   overflow: hidden;
   color: #63707B;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 22px;
   white-space: nowrap;
   text-overflow: ellipsis;
