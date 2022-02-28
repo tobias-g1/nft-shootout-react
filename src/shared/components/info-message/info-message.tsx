@@ -13,7 +13,7 @@ function InfoMessageComponent(props: InfoMessage) {
             </div>
             <Link to={props.link}>
                 <Button type='primary' size='large'>{props.buttonText}</Button>
-                </Link>
+            </Link>
         </div>
     );
 }
