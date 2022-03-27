@@ -4,6 +4,7 @@ export const players = [
   {
     name: "ABC",
     tokenId: "123",
-    image: logo
+    image: logo,
+    forSale: false
   }
 ];
