@@ -1,5 +1,4 @@
 import "./info-message.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { InfoMessage } from "../../models/components/info-message.model";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
