@@ -2,7 +2,7 @@ import PageHeaderComponent from '../../shared/components/page-header/page-header
 import './play.scss'
 import DocumentMeta from 'react-document-meta';
 import ContentStatusMessageComponent from '../../shared/components/content-status-message/content-status-message';
-import { InfoMessage } from '../../shared/models/components/info-message.model';
+import { InfoMessage } from '../../shared/models/info-message.model';
 
 function PlayPageComponent(props: any) {
 

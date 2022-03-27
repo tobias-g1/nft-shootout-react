@@ -1,11 +1,12 @@
 import { Content } from "antd/lib/layout/layout";
 import InfoMessageComponent from "../../shared/components/info-message/info-message";
 import PageHeaderComponent from "../../shared/components/page-header/page-header";
-import { InfoMessage } from "../../shared/models/components/info-message.model";
 import { Row, Col } from "antd";
 import "./my-players.scss";
 import PlayerCardComponent from "../../shared/components/player-card/player-card";
 import DocumentMeta from 'react-document-meta';
+import { InfoMessage } from "../../shared/models/info-message.model";
+import { players } from "../../dummy-data.js";
 
 function MyPlayersPageComponent(props: any) {
     const title: string = "My Players";
@@ -23,11 +24,11 @@ function MyPlayersPageComponent(props: any) {
         buttonText: "Visit our Marketplace",
     };
 
-    const placeholder = [1, 2, 3, 4]
+    const player = [1, 2, 3, 4]
 
-    const cards = placeholder.map(function (item, i) {
+    const cards = players.map(function (player, i) {
         return <Col xs={24} sm={24} md={6} lg={6} xl={6}>
-            <PlayerCardComponent></PlayerCardComponent>
+            <PlayerCardComponent player={player}></PlayerCardComponent>
         </Col>
     })
 

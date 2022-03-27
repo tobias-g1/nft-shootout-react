@@ -4,8 +4,15 @@ import { MoreOutlined } from "@ant-design/icons";
 import placeholder from "../../../assets/img/placeholder-card.png";
 import { useRef, useState } from "react";
 import ListingForSaleModal from "../listing-modal/listing-modal";
+import { Player } from "../../models/player.model";
 
-function PlayerCardComponent(props: any) {
+type Props = {
+  player: Player;
+};
+
+function PlayerCardComponent(props: Props) {
+
+  const { player } = props;
 
   const fref: any = useRef()
   const handleClick = (e: any) => {
@@ -29,7 +36,7 @@ function PlayerCardComponent(props: any) {
     <>
       <div className="player-card">
         <div className="header">
-          <h3>Card Title</h3>
+          <h3>{props.player.name}</h3>
           <Dropdown overlay={menu} trigger={["click"]}>
             <MoreOutlined className="menu-icon" />
           </Dropdown>
