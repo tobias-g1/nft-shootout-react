@@ -1,0 +1,11 @@
+.content-status-message{
+    background: #121740;
+    display: flex;
+    padding: 25px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    .left {
+        margin-right: 25px;
+    }
+}
