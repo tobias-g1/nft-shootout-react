@@ -13,7 +13,7 @@ function StorePageComponent(props: any) {
 
     return (
         <div className="my-players page-wrapper" style={{ backgroundImage: "url(/assets/img/background.png)" }}>
-               <DocumentMeta {...meta} />
+            <DocumentMeta {...meta} />
             <PageHeaderComponent header={title} />
         </div>
     );
