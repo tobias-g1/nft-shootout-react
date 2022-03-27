@@ -1,4 +1,3 @@
-import { Button} from "antd";
 import { Layout } from "antd";
 import './Header.scss';
 import logo from '../../assets/img/logo.png'
