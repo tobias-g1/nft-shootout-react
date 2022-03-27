@@ -12,8 +12,6 @@ type Props = {
 
 function PlayerCardComponent(props: Props) {
 
-  const { player } = props;
-
   const fref: any = useRef()
   const handleClick = (e: any) => {
     fref.current.toggleModal()
@@ -36,12 +34,12 @@ function PlayerCardComponent(props: Props) {
     <>
       <div className="player-card">
         <div className="header">
-          <h3>{props.player.name}</h3>
+          <h3>{props.player.tokenId}</h3>
           <Dropdown overlay={menu} trigger={["click"]}>
             <MoreOutlined className="menu-icon" />
           </Dropdown>
         </div>
-        <img className="card-image" src={placeholder} alt="Card Placeholder" />
+        <img className="card-image" src={props.player.image} alt="Card Placeholder" />
       </div>
       <ListingForSaleModal ref={fref} ></ListingForSaleModal>
     </>

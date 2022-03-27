@@ -1,10 +1,10 @@
 export class Player {
-    name: string;
+    forSale: boolean;
     image: string;
     tokenId: string;
 
     constructor() {
-        this.name = '';
+        this.forSale = false;
         this.image = '';
         this.tokenId = '';
     }

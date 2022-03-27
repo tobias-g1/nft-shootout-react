@@ -6,7 +6,8 @@ import "./my-players.scss";
 import PlayerCardComponent from "../../shared/components/player-card/player-card";
 import DocumentMeta from 'react-document-meta';
 import { InfoMessage } from "../../shared/models/info-message.model";
-import { players } from "../../dummy-data.js";
+import { players } from  "../../dummy-data.js";
+import { Player } from "../../shared/models/player.model";
 
 function MyPlayersPageComponent(props: any) {
     const title: string = "My Players";
@@ -24,9 +25,7 @@ function MyPlayersPageComponent(props: any) {
         buttonText: "Visit our Marketplace",
     };
 
-    const player = [1, 2, 3, 4]
-
-    const cards = players.map(function (player, i) {
+    const cards = players.map(function (player: Player) {
         return <Col xs={24} sm={24} md={6} lg={6} xl={6}>
             <PlayerCardComponent player={player}></PlayerCardComponent>
         </Col>
