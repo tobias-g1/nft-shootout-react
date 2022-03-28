@@ -26,7 +26,7 @@ function MyPlayersPageComponent(props: any) {
     };
 
     const cards = players.map(function (player: Player) {
-        return <Col xs={24} sm={24} md={6} lg={6} xl={6}>
+        return <Col xs={24} sm={24} md={6} lg={4} xl={4}>
             <PlayerCardComponent player={player}></PlayerCardComponent>
         </Col>
     })
