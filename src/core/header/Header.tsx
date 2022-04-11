@@ -26,7 +26,6 @@ function HeaderComponent() {
     setMenuVisible(false);
   }, [location]);
 
-  
 
   return (
     <>

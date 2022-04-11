@@ -36,7 +36,7 @@ function AuthComponent(props: any) {
   
     return (
       <div>
-        {active ? <AuthenticatedUserComponent /> :  <Button type='primary' size='large' onClick={connect}>Connect with MetaMask</Button>}
+        {active ? <AuthenticatedUserComponent /> :  <Button type='primary' size='large' onClick={connect}>Connect</Button>}
       </div>
     )
 }
