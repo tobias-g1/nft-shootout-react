@@ -3,7 +3,7 @@ import './Header.scss';
 import logo from '../../assets/img/logo.png'
 import { Link } from 'react-router-dom';
 import AuthComponent from "../../shared/components/auth/auth";
-import { faTimes, faBars, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from "react";
 import SocialLinksComponent from "../../shared/components/social-links/social-links";

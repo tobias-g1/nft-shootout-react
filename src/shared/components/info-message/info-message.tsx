@@ -1,7 +1,7 @@
 import "./info-message.scss";
-import { InfoMessage } from "../../models/info-message.model";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
+import { InfoMessage } from "../../models/info-message.model";
 
 function InfoMessageComponent(props: InfoMessage) {
     return (

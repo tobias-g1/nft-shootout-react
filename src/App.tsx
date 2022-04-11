@@ -16,7 +16,7 @@ import PrivacyPageComponent from "./pages/privacy/privacy";
 import { Navigate } from "react-router-dom";
 import { Web3ReactProvider } from "@web3-react/core";
 import Web3 from "web3";
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import { HelmetProvider } from "react-helmet-async";
 import ForSalePlayersPageComponent from "./pages/my-players/child-pages/for-sale/for-sale";
 import UnlistedPlayersPageComponent from "./pages/my-players/child-pages/unlisted/unlisted";
 import AllPlayersPageComponent from "./pages/my-players/child-pages/all/all";

@@ -1,8 +1,7 @@
 import "./player-card.scss";
 import { Menu, Dropdown } from "antd";
 import { MoreOutlined } from "@ant-design/icons";
-import placeholder from "../../../assets/img/placeholder-card.png";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import ListingForSaleModal from "../listing-modal/listing-modal";
 import { Player } from "../../models/player.model";
 
