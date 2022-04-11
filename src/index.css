@@ -95,6 +95,8 @@ button {
   min-height: calc(100vh - 299px);
   background-size: cover;
   background-position: bottom;
+  background-blend-mode: color;
+  background-color: #080f3985;
 }
 
 @keyframes pulse {
