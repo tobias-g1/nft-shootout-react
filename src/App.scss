@@ -5,7 +5,7 @@
   margin: auto;
   span {
     font-weight: bold;
-    color: #63707B;
+    color: #8092a3;
     font-size: 20px;
   }
 }
@@ -52,4 +52,50 @@ button, a {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   font-size: 20px;
+}
+
+.tab-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: end;
+  margin-bottom: 25px;
+  .selector {
+    display: flex;
+    .option {
+      cursor: pointer;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 15px;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+  a {
+    color: #FFFFFF;
+    margin-left: 15px;
+  }
+  .selected {
+    background-color: #0072BE;
+    border-radius: 5px;
+  }
+}
+
+.text-block {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin-bottom: 15px;
+  }
+  p, ul {
+    font-size: 15px;
+  }
 }

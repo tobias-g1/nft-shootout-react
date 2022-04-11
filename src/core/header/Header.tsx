@@ -14,6 +14,7 @@ function HeaderComponent() {
         <ul>
           <Link to="play"><li>Play</li></Link>
           <Link to="store"><li>Store</li></Link>
+          <Link to="open"><li>Open</li></Link>
           <Link to="my-players"><li>My Players</li></Link>
           <Link to="marketplace"><li>Marketplace</li></Link>
         </ul>

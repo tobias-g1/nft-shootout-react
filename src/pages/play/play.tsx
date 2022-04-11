@@ -6,7 +6,8 @@ import { InfoMessage } from '../../shared/models/info-message.model';
 
 function PlayPageComponent(props: any) {
 
-    const title: string = 'Play'
+    const title: string = 'Play';
+    const description: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse';
     const meta: any = {
         title,
         description: 'TBA',
@@ -25,7 +26,7 @@ function PlayPageComponent(props: any) {
     return (
         <div className="my-players page-wrapper" style={{ backgroundImage: "url(/assets/img/background.png)" }}>
             <DocumentMeta {...meta} />
-            <PageHeaderComponent header={title} />
+            <PageHeaderComponent header={title} description={description}/>
             <ContentStatusMessageComponent header={infoMessage.header}
                     description={infoMessage.description}
                     link={infoMessage.link}

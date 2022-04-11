@@ -11,19 +11,15 @@ type Props = {
 };
 
 function PlayerCardComponent(props: Props) {
-
-  const fref: any = useRef()
+  const fref: any = useRef();
   const handleClick = (e: any) => {
-    fref.current.toggleModal()
-  }
+    fref.current.toggleModal();
+  };
 
   const menu = (
     <Menu>
       <Menu.Item key="0">
-        <a
-          href="#"
-          onClick={handleClick}
-        >
+        <a href="#" onClick={handleClick}>
           List for Sale
         </a>
       </Menu.Item>
@@ -39,9 +35,13 @@ function PlayerCardComponent(props: Props) {
             <MoreOutlined className="menu-icon" />
           </Dropdown>
         </div>
-        <img className="card-image" src={props.player.image} alt="Card Placeholder" />
+        <img
+          className="card-image"
+          src={props.player.image}
+          alt="Card Placeholder"
+        />
       </div>
-      <ListingForSaleModal ref={fref} ></ListingForSaleModal>
+      <ListingForSaleModal ref={fref}></ListingForSaleModal>
     </>
   );
 }

@@ -13,7 +13,7 @@ function NotFoundPageComponent(props: any) {
       };
 
     return (
-        <div className="not-found">
+        <div className="not-found page-wrapper" style={{ backgroundImage: "url(/assets/img/background.png)"}}>
             <DocumentMeta {...meta} />
             <Content>
                 <div className="not-found-header">
@@ -21,7 +21,7 @@ function NotFoundPageComponent(props: any) {
                     <p>Sorry, we couldn't find the page you're looking for.</p>
                 </div>
                 <div className="content">
-                <Link to="/not-found"><Button type="primary" size="large">Back Home</Button></Link>
+                <Link to="/"><Button type="primary" size="large">Back Home</Button></Link>
                 </div>
             </Content>
         </div>
