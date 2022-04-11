@@ -1,19 +1,27 @@
 import './social-links.scss'
-import { faTwitter, faDiscord, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faTwitter, faDiscord, faFacebook, faTelegram, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const socialLinks = [
     {
         icon: faTwitter,
-        link: ''
+        link: 'https://twitter.com/NFTshootout'
     },
     {
         icon: faDiscord,
-        link: ''
+        link: 'https://discord.com/invite/YQa5HCX3gB'
     },
     {
-        icon: faInstagram,
-        link: ''
+        icon: faTelegram,
+        link: 'https://t.me/NFTShootout'
+    },
+    {
+        icon: faFacebook,
+        link: 'https://www.facebook.com/nftshootout/'
+    },
+    {
+        icon: faYoutube,
+        link: 'https://youtube.com/channel/UCtCbdo5Q-acSubq_IPSMxlQ'
     }
 ]
 
