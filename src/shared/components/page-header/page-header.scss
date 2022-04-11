@@ -15,3 +15,19 @@
         }
     }
 }
+
+@media screen and (max-width: 1100px) {
+    .page-header-wrapper {
+      flex-direction: column;
+      text-align: center;
+      .page-header {
+          width: 100%;
+          text-align: center;
+          clip-path: initial;
+          -webkit-clip-path: initial;
+      }
+      p {
+          margin: 15px;
+      }
+    }
+  }
