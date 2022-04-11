@@ -26,6 +26,7 @@ import YouthScoutsForSalePageComponent from "./pages/marketplace/child-pages/you
 import PlayersForStorePageComponent from "./pages/store/child-pages/players/players";
 import StadiumsForStorePageComponent from "./pages/store/child-pages/stadiums/stadiums";
 import YouthScoutsForStorePageComponent from "./pages/store/child-pages/youth-scouts/youth-scouts";
+import OpenPageComponent from "./pages/open/open";
 
 function getLibrary(provider: any) {
   return new Web3(provider);
@@ -42,6 +43,7 @@ const App: FC = () => (
             <Routes>
               <Route path="/" element={<Navigate to="/marketplace" />} />
               <Route path="/play" element={<PlayPageComponent />} />
+              <Route path="/open" element={<OpenPageComponent />} />
               <Route path="/store" element={<StorePageComponent />}>
                 <Route path="players" element={<PlayersForStorePageComponent />} />
                 <Route path="stadiums" element={<StadiumsForStorePageComponent/>} />
