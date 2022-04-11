@@ -5,7 +5,7 @@
     justify-content: center;
     padding: 50px;
     flex: 1;
-    background: #0F0F0F;
+
     main {
         display: flex;
         flex-direction: column;
@@ -14,5 +14,6 @@
 }
 
 .not-found-header {
+    text-align: center;
     margin-top: 15px;
 }

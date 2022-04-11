@@ -4,21 +4,22 @@ import { MoreOutlined } from "@ant-design/icons";
 import placeholder from "../../../assets/img/placeholder-card.png";
 import { useRef, useState } from "react";
 import ListingForSaleModal from "../listing-modal/listing-modal";
+import { Player } from "../../models/player.model";
 
-function PlayerCardComponent(props: any) {
+type Props = {
+  player: Player;
+};
 
-  const fref: any = useRef()
+function PlayerCardComponent(props: Props) {
+  const fref: any = useRef();
   const handleClick = (e: any) => {
-    fref.current.toggleModal()
-  }
+    fref.current.toggleModal();
+  };
 
   const menu = (
     <Menu>
       <Menu.Item key="0">
-        <a
-          href="#"
-          onClick={handleClick}
-        >
+        <a href="#" onClick={handleClick}>
           List for Sale
         </a>
       </Menu.Item>
@@ -29,14 +30,18 @@ function PlayerCardComponent(props: any) {
     <>
       <div className="player-card">
         <div className="header">
-          <h3>Card Title</h3>
+          <h3>{props.player.tokenId}</h3>
           <Dropdown overlay={menu} trigger={["click"]}>
             <MoreOutlined className="menu-icon" />
           </Dropdown>
         </div>
-        <img className="card-image" src={placeholder} alt="Card Placeholder" />
+        <img
+          className="card-image"
+          src={props.player.image}
+          alt="Card Placeholder"
+        />
       </div>
-      <ListingForSaleModal ref={fref} ></ListingForSaleModal>
+      <ListingForSaleModal ref={fref}></ListingForSaleModal>
     </>
   );
 }
