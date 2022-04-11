@@ -18,6 +18,7 @@ Header {
           list-style: none;
           margin: 0;
           padding: 0;
+          width: max-content;
         }
         li {
             color: white;
@@ -42,5 +43,24 @@ Header {
         align-items: center;
         justify-content: end;
         width: 100%;
+        .menu {
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            display: none;
+            margin-left: 15px;
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .wide {
+        display: none !important;
+    }
+    .narrow {
+        display: inline-flex !important;
     }
 }
