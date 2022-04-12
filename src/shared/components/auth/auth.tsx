@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { injected } from '../wallet/connectors';
 import './auth.scss'
 import { useWeb3React } from "@web3-react/core"
@@ -6,39 +6,43 @@ import { useEffect } from 'react';
 import AuthenticatedUserComponent from '../authenticated-user/authenticated-user';
 
 function AuthComponent(props: any) {
-    
-    const { active, library, connector, activate} = useWeb3React()
 
-    console.log(useWeb3React())
+  const { active, library, connector, activate, error } = useWeb3React()
 
-    async function connect() {
-      try {
-        await activate(injected)
-        localStorage.setItem('isWalletConnected', 'true')
-      } catch (ex) {
-        console.log(ex)
+  const connectionError = (error: any) => {
+    console.log(error)
+    message.error(error.toString());
+  };
+
+  async function connect() {
+    await activate(injected).then(res => {
+      if (error) {
+        connectionError(error)
+        return;
       }
-    }
-  
-    useEffect(() => {
-      const connectWalletOnPageLoad = async () => {
-        if (localStorage?.getItem('isWalletConnected') === 'true') {
-          try {
-            await activate(injected)
-            localStorage.setItem('isWalletConnected', 'true')
-          } catch (ex) {
-            console.log(ex)
-          }
+      localStorage.setItem('isWalletConnected', 'true')
+    })
+  }
+
+  useEffect(() => {
+    const connectWalletOnPageLoad = async () => {
+      if (localStorage?.getItem('isWalletConnected') === 'true') {
+        try {
+          await activate(injected)
+          localStorage.setItem('isWalletConnected', 'true')
+        } catch (ex) {
+          console.log(4)
         }
       }
-      connectWalletOnPageLoad()
-    }, [])
-  
-    return (
-      <div>
-        {active ? <AuthenticatedUserComponent /> :  <Button type='primary' size='large' onClick={connect}>Connect</Button>}
-      </div>
-    )
+    }
+    connectWalletOnPageLoad()
+  }, [])
+
+  return (
+    <div>
+      {active ? <AuthenticatedUserComponent /> : <Button type='primary' size='large' onClick={connect}>Connect</Button>}
+    </div>
+  )
 }
 
 export default AuthComponent;
