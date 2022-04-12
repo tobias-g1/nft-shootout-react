@@ -18,7 +18,7 @@ function FooterComponent() {
            </div>
            <div className="middle">
                <ul>
-                   <li>All Rights Reserved</li>
+                   <li className='rights-label'>All Rights Reserved</li>
                    <li><Link to="privacy">Privacy Policy</Link></li>
                    <li><Link to="terms">Terms & Conditions</Link></li>
                    <li><Link to="cookies">Cookies</Link></li>
