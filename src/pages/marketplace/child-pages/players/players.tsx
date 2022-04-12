@@ -6,9 +6,9 @@ function PlayersForSalePageComponent(props: any) {
   const infoMessage: InfoMessage = {
     header: "No Players for Sale",
     description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis.",
-    link: "/marketplace",
-    buttonText: "Visit our Marketplace",
+        "There aren't any players for sale at the moment, checkout our store to purchase player packs to expand your team.",
+    link: "/store",
+    buttonText: "Visit our Store",
 };
 
   return (
