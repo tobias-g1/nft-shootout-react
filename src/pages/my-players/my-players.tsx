@@ -29,7 +29,7 @@ function MyPlayersPageComponent(props: any) {
           <div className="selector">
             <NavLink to="all" className={(navData) => (navData.isActive ? 'selected' : '')}>
               <div className="option" >
-                <span>All Players</span>
+                <span>All</span>
               </div>
             </NavLink>
             <NavLink to="unlisted" className={(navData) => (navData.isActive ? 'selected' : '')}>
