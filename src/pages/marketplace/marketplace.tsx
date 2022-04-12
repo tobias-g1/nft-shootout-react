@@ -36,7 +36,7 @@ function MarketplacePageComponent(props: any) {
                         </NavLink>
                         <NavLink to="youth-scouts" className={(navData) => (navData.isActive ? 'selected' : '')}>
                             <div className="option">
-                                <span>Unlisted</span>
+                                <span>Youth Scouts</span>
                             </div>
                         </NavLink>
                     </div>
