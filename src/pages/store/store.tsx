@@ -2,7 +2,7 @@ import PageHeaderComponent from "../../shared/components/page-header/page-header
 import "./store.scss";
 import DocumentMeta from "react-document-meta";
 import { Content } from "antd/lib/layout/layout";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 function StorePageComponent(props: any) {
     const title: string = "Store";

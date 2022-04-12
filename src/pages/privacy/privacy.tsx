@@ -18,8 +18,8 @@ function PrivacyPageComponent(props: any) {
             <PageHeaderComponent header={title} />
             <Content>
                 <div className="text-block">
-                    <p>Your privacy is important to us. It is Quello's policy to respect your privacy regarding any information we may
-                        collect from you across our website, <a href="https://quello.io">https://quello.io</a>, and other sites we own
+                    <p>Your privacy is important to us. It is NFTShootout's policy to respect your privacy regarding any information we may
+                        collect from you across our website, <a href="https://nftshootout.com">https://nftshootout.com</a>, and other sites we own
                         and
                         operate.</p>
                     <p>We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and
@@ -43,7 +43,7 @@ function PrivacyPageComponent(props: any) {
                         information. If you have any questions about how we handle user data and personal information, feel free to
                         contact
                         us.</p>
-                    <p>This policy is effective as of 23 April 2020.</p>
+                    <p>This policy is effective as of 12th April 2022.</p>
                 </div>
             </Content>
         </div>

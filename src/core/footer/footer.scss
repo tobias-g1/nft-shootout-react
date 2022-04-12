@@ -6,6 +6,7 @@ Footer {
             flex-direction: row;
             justify-content: space-between;
             margin-bottom: 25px;
+            align-items: center;
             img {
                 height: 50px;
             }
@@ -27,7 +28,23 @@ Footer {
             }
         }
         p {
-            font-size: 14px;
+            font-size: 13px;
         }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    Footer {
+        .wrapper {
+            text-align: center;
+            .top {
+                margin-bottom: 10px;
+            }
+        }
+    }
+    .rights-label {
+        display: block;
+        margin: auto;
+        margin-bottom: 10px;
     }
 }

@@ -16,7 +16,7 @@ import PrivacyPageComponent from "./pages/privacy/privacy";
 import { Navigate } from "react-router-dom";
 import { Web3ReactProvider } from "@web3-react/core";
 import Web3 from "web3";
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import { HelmetProvider } from "react-helmet-async";
 import ForSalePlayersPageComponent from "./pages/my-players/child-pages/for-sale/for-sale";
 import UnlistedPlayersPageComponent from "./pages/my-players/child-pages/unlisted/unlisted";
 import AllPlayersPageComponent from "./pages/my-players/child-pages/all/all";
@@ -26,6 +26,7 @@ import YouthScoutsForSalePageComponent from "./pages/marketplace/child-pages/you
 import PlayersForStorePageComponent from "./pages/store/child-pages/players/players";
 import StadiumsForStorePageComponent from "./pages/store/child-pages/stadiums/stadiums";
 import YouthScoutsForStorePageComponent from "./pages/store/child-pages/youth-scouts/youth-scouts";
+import OpenPageComponent from "./pages/open/open";
 
 function getLibrary(provider: any) {
   return new Web3(provider);
@@ -42,6 +43,7 @@ const App: FC = () => (
             <Routes>
               <Route path="/" element={<Navigate to="/marketplace" />} />
               <Route path="/play" element={<PlayPageComponent />} />
+              <Route path="/open" element={<OpenPageComponent />} />
               <Route path="/store" element={<StorePageComponent />}>
                 <Route path="players" element={<PlayersForStorePageComponent />} />
                 <Route path="stadiums" element={<StadiumsForStorePageComponent/>} />

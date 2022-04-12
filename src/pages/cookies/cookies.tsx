@@ -112,7 +112,7 @@ function CookiesPageComponent(props: any) {
                         contact methods:</p>
 
                     <ul>
-                        <li>Email: hello@quello.io</li>
+                        <li>Email: hello@nftshootout.com</li>
                     </ul>
                 </div>
             </Content>
