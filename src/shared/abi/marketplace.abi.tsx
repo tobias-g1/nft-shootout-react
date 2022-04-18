@@ -1,4 +1,4 @@
-const marketplaceAbi = [
+const marketplaceAbi: any = [
     {
       inputs: [
         { internalType: "address", name: "_adminAddress", type: "address" },
