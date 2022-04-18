@@ -27,14 +27,9 @@ function MyPlayersPageComponent(props: any) {
       <Content>
         <div className="tab-row">
           <div className="selector">
-            <NavLink to="all" className={(navData) => (navData.isActive ? 'selected' : '')}>
-              <div className="option" >
-                <span>All</span>
-              </div>
-            </NavLink>
-            <NavLink to="unlisted" className={(navData) => (navData.isActive ? 'selected' : '')}>
+            <NavLink to="playable" className={(navData) => (navData.isActive ? 'selected' : '')}>
               <div className="option">
-                <span>Unlisted</span>
+                <span>Playable</span>
               </div>
             </NavLink>
             <NavLink to="for-sale" className={(navData) => (navData.isActive ? 'selected' : '')}>

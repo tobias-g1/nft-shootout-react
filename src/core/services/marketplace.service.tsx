@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { createContext } from 'react';
-import { ListedItem } from '../../shared/models/listed-item.model';
 const baseUrl = 'http://localhost:8082/'
 
 const MarketplaceService = {

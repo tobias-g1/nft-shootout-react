@@ -1,10 +1,5 @@
-import { Col, Row } from "antd";
-import { Content } from "antd/lib/layout/layout";
-import { players } from "../../../../dummy-data";
 import ContentStatusMessageComponent from "../../../../shared/components/content-status-message/content-status-message";
-import PlayerCardComponent from "../../../../shared/components/player-card/player-card";
 import { InfoMessage } from "../../../../shared/models/info-message.model";
-import { Player } from "../../../../shared/models/player.model";
 
 function AllPlayersPageComponent(props: any) {
 

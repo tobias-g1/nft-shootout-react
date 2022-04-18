@@ -59,11 +59,10 @@ const App: FC = () => (
                 <Route index element={<Navigate to="/marketplace/players" />} />
               </Route>
               <Route path="my-players" element={<MyPlayersPageComponent />}>
-                <Route path="all" element={<AllPlayersPageComponent />} />
-                <Route path="unlisted" element={<UnlistedPlayersPageComponent />} />
+                <Route path="playable" element={<UnlistedPlayersPageComponent />} />
                 <Route path="for-sale" element={<ForSalePlayersPageComponent />} />
                 <Route path="*" element={<Navigate to="/my-players" replace />} />
-                <Route index element={<Navigate to="/my-players/all" />} />
+                <Route index element={<Navigate to="/my-players/playable" />} />
               </Route>
               <Route path="/cookies" element={<CookiesPageComponent />} />
               <Route path="/terms" element={<TermsPageComponent />} />
