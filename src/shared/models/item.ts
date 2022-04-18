@@ -1,5 +1,6 @@
 export class Item {
-  tokenId: string;
+  tokenId: number;
+  tokenAddress: string;
   listed: boolean;
   price: string;
   sellerAddress: string;

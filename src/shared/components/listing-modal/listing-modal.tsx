@@ -5,15 +5,25 @@ import { Item } from "../../models/item";
 import fallback from "../../../assets/img/fallback.png"
 import StepIndicatorComponent from "../step-indicator/step-indicator";
 import { Step } from "../../models/step.model";
+import { useWeb3React } from "@web3-react/core";
+import Web3 from "web3";
+import {nftAbi} from "../../abi/collection.abi"
 
 type Props = {
   item: Item;
 };
 
+const rpcURL = "https://bsc-dataseed.binance.org/";
+const web3 = new Web3(rpcURL);
+
 function ListForSaleModal(props: Props, ref: any) {
 
+  const { account } = useWeb3React()
+
+  console.log(account)
   const [isListingModalVisible, setListingModalVisible] = useState(false);
   const [form] = Form.useForm();
+
 
   useImperativeHandle(
     ref,
@@ -51,7 +61,26 @@ function ListForSaleModal(props: Props, ref: any) {
     }
   ]
 
+  const marketplaceContact = '0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7'
 
+   const  approveToken = async () => {
+     
+    web3.eth.setProvider(Web3.givenProvider);
+      const contract = new web3.eth.Contract(nftAbi, props.item.tokenAddress);
+      
+      contract.methods.approve(marketplaceContact, props.item.tokenId).send({from: '0x161A7e9a6Cbc711768aB988E22c8a74094F19a49' })
+      .on('transactionHash', function(hash){
+        console.log(hash)
+      })
+      .on('receipt', function(receipt){
+        console.log(receipt)
+      })
+      .on('confirmation', function(confirmationNumber, receipt){
+        console.log(receipt)
+      })
+      .on('error', console.error);
+  
+  }
 
   return (
     <>
@@ -72,7 +101,7 @@ function ListForSaleModal(props: Props, ref: any) {
        </div>
        </div>
        <div className="approve">
-         <Button type="primary">Approve</Button>
+         <Button type="primary" onClick={approveToken}>Approve</Button>
        </div>
        <div className="set-price">
        <Form form={form} layout="vertical" autoComplete="off">
