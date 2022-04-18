@@ -1,8 +1,16 @@
 import "./listing-modal.scss";
 import { forwardRef, useImperativeHandle, useState } from "react";
-import { Form, Input, Modal, Button } from "antd";
+import { Form, Input, Modal, Button, Image } from "antd";
+import { Item } from "../../models/item";
+import fallback from "../../../assets/img/fallback.png"
+import StepIndicatorComponent from "../step-indicator/step-indicator";
+import { Step } from "../../models/step.model";
 
-function ListForSaleModal(props: any, ref: any) {
+type Props = {
+  item: Item;
+};
+
+function ListForSaleModal(props: Props, ref: any) {
 
   const [isListingModalVisible, setListingModalVisible] = useState(false);
   const [form] = Form.useForm();
@@ -25,20 +33,49 @@ function ListForSaleModal(props: any, ref: any) {
     setListingModalVisible(!isListingModalVisible);
   };
 
+  const getTitle = () => {
+   
+    return `List ${props.item.tokenId} for Sale`
+  }
+
+  const steps: Step[] = [
+    {
+      order: 1,
+      name: 'Approve NFT',
+      status: 0
+    },
+    {
+      order: 2,
+      name: 'Set Price',
+      status: 0
+    }
+  ]
+
+
+
   return (
     <>
       <Modal
         visible={isListingModalVisible}
-        title="List for Sale"
+        title='a'
         onOk={handleOk}
         onCancel={handleCancel}
         footer={null}
       >
-        <p>List your NFT for sale in our marketplace. Upon listing of this NFT, this
+       <div className="modal-wrapper">
+         <Image src={!props.item.imageUrl ? '' : props.item.imageUrl } fallback={fallback}></Image>
+       <div>
+         <p>List your NFT for sale in our marketplace. Upon listing of this NFT, this
           NFT will be removed from your wallet and put on sale at the price
-          entered above. You cancel this listing at anytime.</p>
-
-        <Form form={form} layout="vertical" autoComplete="off">
+          entered above.</p>
+          <StepIndicatorComponent steps={steps}></StepIndicatorComponent>
+       </div>
+       </div>
+       <div className="approve">
+         <Button type="primary">Approve</Button>
+       </div>
+       <div className="set-price">
+       <Form form={form} layout="vertical" autoComplete="off">
           <Form.Item
             name="price"
             label="Set Price"
@@ -60,6 +97,8 @@ function ListForSaleModal(props: any, ref: any) {
             </Button>
           </Form.Item>
         </Form>
+
+      </div>
       </Modal>
     </>
   );
