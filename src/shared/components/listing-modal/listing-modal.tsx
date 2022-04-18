@@ -63,18 +63,12 @@ function ListForSaleModal(props: Props, ref: any) {
 
   const marketplaceContact = '0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7'
 
-   const  approveToken = async () => {
-     
+   const approveToken = async () => {
+
     web3.eth.setProvider(Web3.givenProvider);
       const contract = new web3.eth.Contract(nftAbi, props.item.tokenAddress);
       
       contract.methods.approve(marketplaceContact, props.item.tokenId).send({from: '0x161A7e9a6Cbc711768aB988E22c8a74094F19a49' })
-      .on('transactionHash', function(hash){
-        console.log(hash)
-      })
-      .on('receipt', function(receipt){
-        console.log(receipt)
-      })
       .on('confirmation', function(confirmationNumber, receipt){
         console.log(receipt)
       })
@@ -86,7 +80,7 @@ function ListForSaleModal(props: Props, ref: any) {
     <>
       <Modal
         visible={isListingModalVisible}
-        title='a'
+        title='List for Sale'
         onOk={handleOk}
         onCancel={handleCancel}
         footer={null}
@@ -103,31 +97,6 @@ function ListForSaleModal(props: Props, ref: any) {
        <div className="approve">
          <Button type="primary" onClick={approveToken}>Approve</Button>
        </div>
-       <div className="set-price">
-       <Form form={form} layout="vertical" autoComplete="off">
-          <Form.Item
-            name="price"
-            label="Set Price"
-            rules={[
-              { required: true },
-              { type: "number", min: 1 },
-            ]}
-          >
-            <Input placeholder="Enter List Price" />
-          </Form.Item>
-          <Form.Item >
-            <Button className="footer-submit"
-              key="submit"
-              htmlType="submit"
-              type="primary"
-              onClick={handleOk}
-            >
-              List for Sale
-            </Button>
-          </Form.Item>
-        </Form>
-
-      </div>
       </Modal>
     </>
   );
