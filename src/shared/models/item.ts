@@ -6,5 +6,5 @@ export class Item {
   sellerAddress: string;
   metadata: any[];
   imageUrl: any;
-
+  approved: boolean;
 }

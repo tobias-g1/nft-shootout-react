@@ -11,7 +11,6 @@ function ListingViewerComponent(props: any) {
 
   const handleListingChange = (value) => {
     setListedItems(value)
-    console.log(value)
   }
 
   return (
