@@ -1,0 +1,17 @@
+.listing-card {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+    .header {
+        display: flex;
+        justify-content: space-between;
+        background: #080E39;
+        width: 100%;
+        padding: 15px;
+    }
+    Image {
+        width: 100%;
+        background: #121740;
+        padding: 25px 0;
+    }
+}

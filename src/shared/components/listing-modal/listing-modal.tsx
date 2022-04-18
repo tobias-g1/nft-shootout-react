@@ -2,8 +2,8 @@ import "./listing-modal.scss";
 import { forwardRef, useImperativeHandle, useState } from "react";
 import { Form, Input, Modal, Button } from "antd";
 
-function ListingForSaleModal(props: any, ref: any) {
-  
+function ListForSaleModal(props: any, ref: any) {
+
   const [isListingModalVisible, setListingModalVisible] = useState(false);
   const [form] = Form.useForm();
 
@@ -65,4 +65,4 @@ function ListingForSaleModal(props: any, ref: any) {
   );
 }
 
-export default forwardRef(ListingForSaleModal);
+export default forwardRef(ListForSaleModal);
