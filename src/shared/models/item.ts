@@ -3,7 +3,8 @@ export class Item {
   tokenAddress: string;
   listed: boolean;
   price: string;
-  sellerAddress: string;
+  owner: string;
+  forSale: boolean;
   metadata: any[];
   imageUrl: any;
   approved: boolean;

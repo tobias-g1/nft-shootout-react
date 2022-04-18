@@ -5,15 +5,20 @@ import { useRef } from "react";
 import { Item } from "../../models/item";
 import ListForSaleModal from "../listing-modal/listing-modal";
 import { MoreOutlined } from "@ant-design/icons";
+import { useWeb3React } from "@web3-react/core";
+import Web3 from "web3";
 
 type Props = {
   item: Item;
 };
 
+const rpcURL = "https://bsc-dataseed.binance.org/";
+const web3 = new Web3(rpcURL);
 
 function ItemCardComponent(props: Props) {
 
   const fref: any = useRef();
+  const { account } = useWeb3React()
 
   const handleClick = (e: any) => {
     fref.current.toggleModal();
@@ -22,9 +27,12 @@ function ItemCardComponent(props: Props) {
   const menu = (
     <Menu>
       <Menu.Item key="0">
-        <a href="#" onClick={handleClick}>
+        { !props.item.forSale && account ===  props.item.owner ? <a href="#" onClick={handleClick}>
           List for Sale
-        </a>
+        </a> : null } 
+        { props.item.forSale && account ===  props.item.owner ? <a href="#" onClick={handleClick}>
+          Cancel Listing
+        </a> : null } 
       </Menu.Item>
     </Menu>
   );

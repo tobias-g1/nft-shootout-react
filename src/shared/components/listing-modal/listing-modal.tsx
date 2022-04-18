@@ -82,14 +82,18 @@ function ListForSaleModal(props: Props, ref: any) {
 
    const approveToken = async () => {
 
+    setStepStatus(1, 1);
+
       contract.methods.approve(marketplaceContact, props.item.tokenId).send({from: '0x161A7e9a6Cbc711768aB988E22c8a74094F19a49' })
       .on('receipt', function(receipt){
         setStepStatus(1, 1)
       })
+      .on('error', function(error){
+        setStepStatus(1, 0)
+      })
       .on('confirmation', function(confirmationNumber, receipt){
         setStepStatus(1, 2)
       })
-      .on('error', console.error);
   
   }
 
@@ -103,6 +107,13 @@ function ListForSaleModal(props: Props, ref: any) {
   function isStepComplete(id) {
     const step = steps.find(element => element.id === id);
     if (step.status === 2) {
+      return true;
+    }
+  }
+
+  function isLoading(id) {
+    const step = steps.find(element => element.id === id);
+    if (step.status === 1) {
       return true;
     }
   }
@@ -126,7 +137,31 @@ function ListForSaleModal(props: Props, ref: any) {
        </div>
        </div>
       { (!isStepComplete(1)) ? <div className="approve">
-         <Button type="primary" size="large" onClick={approveToken}>Approve</Button>
+         <Button type="primary" size="large" onClick={approveToken} loading={isLoading(1)}>Approve</Button>
+       </div> : null }
+       { (isStepComplete(1) && !isStepComplete(2)) ? <div className="price">
+       <Form form={form} layout="horizontal" autoComplete="off">
+          <Form.Item
+            name="price"
+            rules={[
+              { required: true },
+              { type: "number", min: 1 },
+            ]}
+          >
+          <Input size="large"  placeholder="Enter List Price" />
+          </Form.Item>
+          <Form.Item >
+            <Button className="footer-submit"
+              key="submit"
+              htmlType="submit"
+              type="primary"
+              size="large"
+              onClick={handleOk}
+            >
+              List for Sale
+            </Button>
+          </Form.Item>
+        </Form>
        </div> : null }
       </Modal>
     </>

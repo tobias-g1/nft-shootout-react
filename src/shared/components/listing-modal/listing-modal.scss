@@ -9,8 +9,6 @@
     }
 
     .footer-submit {
-        margin-left: auto;
-        display: block;
     }
 
     .modal-wrapper {
@@ -27,5 +25,15 @@
     .approve {
         button {
             width: 100%;
+        }
+    }
+
+    .price {
+        form {
+            display: flex;
+            .ant-row:first-child {
+                flex: 1;
+                margin-right: 15px;
+            }
         }
     }
