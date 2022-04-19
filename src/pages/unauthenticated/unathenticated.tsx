@@ -19,7 +19,6 @@ function UnauthenticatedPageComponent(props: any) {
 
   const { account, activate, error } = useWeb3React()
   let navigate = useNavigate();
-  const location = useLocation();
 
   const connectionError = (error: any) => {
     console.log(error)
