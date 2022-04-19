@@ -9,9 +9,11 @@
         width: 100%;
         padding: 15px;
     }
-    Image {
-        width: 100%;
-        background: #121740;
-        padding: 25px 0;
+    a {
+        width: 100%;    
+        div, img {
+            width: 100%;
+        }
     }
+
 }

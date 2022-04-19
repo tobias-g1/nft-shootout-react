@@ -49,7 +49,7 @@ function ItemCardComponent(props: Props) {
   }
 
   return (
-    <Link to={getLink()}>
+    <>
       <div className="listing-card">
         <div className="header">
           <h3>#{props.item.tokenId}</h3>
@@ -57,11 +57,11 @@ function ItemCardComponent(props: Props) {
             <MoreOutlined className="menu-icon" />
           </Dropdown>
         </div>
-        <Image src={!props.item.imageUrl ? '' : props.item.imageUrl } fallback={fallback}></Image>
+        <Link to={getLink()}><Image  src={!props.item.imageUrl ? '' : props.item.imageUrl } fallback={fallback}></Image></Link>
       </div>
       <ListForSaleModal item={props.item} ref={fref}></ListForSaleModal>
       <CancelListingModal item={props.item} ref={cref}></CancelListingModal>
-    </Link>
+    </>
   );
 }
 
