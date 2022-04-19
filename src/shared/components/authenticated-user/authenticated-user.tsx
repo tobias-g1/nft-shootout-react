@@ -74,13 +74,14 @@ function AuthenticatedUserComponent(props: any) {
 
     let shooBalance = balanceInWei;
 
-    setShooBalance(shooBalance)
+    setShooBalance(parseInt(shooBalance).toFixed())
 
   }
 
   function formatBalance(balance: string) {
     return new Intl.NumberFormat('en-GB', { 
-      notation: "compact"
+      notation: "compact",
+      minimumFractionDigits: 2,
     }).format(parseFloat(balance));
   }
 
