@@ -43,6 +43,9 @@ Header {
         align-items: center;
         justify-content: end;
         width: 100%;
+        div {
+            display: flex;
+        }
         .menu {
             font-size: 24px;
             color: white;
@@ -97,7 +100,7 @@ Header {
     }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 955px) {
     .wide {
         display: none !important;
     }
