@@ -10,7 +10,7 @@ import Web3 from "web3";
 import CancelListingModal from "../cancel-listing-modal/cancel-listing-modal";
 import { Link } from "react-router-dom";
 import shoo from "../../../assets/img/shoo.png";
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 type Props = {
@@ -54,14 +54,22 @@ function ItemCardComponent(props: Props) {
   return (
     <>
       <div className="listing-card">
-        <Link to={getLink()}><Image  src={!props.item.imageUrl ? '' : props.item.imageUrl } fallback={fallback}></Image></Link>
+        <div className="image-wrapper">
+           <Dropdown overlay={menu} trigger={["click"]}>
+            <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
+          </Dropdown>
+          <Link to={getLink()}><Image  src={!props.item.imageUrl ? '' : props.item.imageUrl } fallback={fallback}></Image></Link>
+        </div>
+       
         <div className="footer">
           <div>
           <h3>#{props.item.tokenId}</h3>
           </div>
+          <div className="right">
           <div className="price-chip">
             <img src={shoo} alt="" />
             <span>{props.item.price}</span>
+          </div>
           </div>
         </div>
       </div>

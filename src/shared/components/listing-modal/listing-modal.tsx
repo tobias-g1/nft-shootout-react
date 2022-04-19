@@ -2,7 +2,7 @@ import "./listing-modal.scss";
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import { Form, Input, Modal, Button, Image } from "antd";
 import { Item } from "../../models/item";
-import fallback from "../../../assets/img/fallback.png"
+import fallback from "../../../assets/img/fallback.svg"
 import StepIndicatorComponent from "../step-indicator/step-indicator";
 import { Step } from "../../models/step.model";
 import { useWeb3React } from "@web3-react/core";

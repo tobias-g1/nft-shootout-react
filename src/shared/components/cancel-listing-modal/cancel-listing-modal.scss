@@ -15,11 +15,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      img {
-          margin: auto;
-          margin-bottom: 25px;
+      .image-wrap {
+        background: #000527;
+        width: 100%;   
+        img {
+            margin: auto;
+            margin-bottom: 25px;
+            padding: 50px;
+        }
       }
-
     }
 
     .cancel {
