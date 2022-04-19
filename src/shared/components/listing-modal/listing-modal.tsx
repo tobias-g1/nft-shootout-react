@@ -46,11 +46,6 @@ function ListForSaleModal(props: Props, ref: any) {
     setListingModalVisible(!isListingModalVisible);
   };
 
-  const getTitle = () => {
-   
-    return `List ${props.item.tokenId} for Sale`
-  }
-
   const stepList: Step[] = [
     {
       id: 1,

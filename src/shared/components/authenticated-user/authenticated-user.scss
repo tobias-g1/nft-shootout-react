@@ -12,6 +12,7 @@
         min-width: 125px;
         justify-content: space-between;
         margin-right: 15px;
+        border: 1px solid #30323e;
         img {
             height: 25px;
             border-radius: 100%;
@@ -21,6 +22,18 @@
             font-weight: bold;
             color: white;
         }
+    }
+    .wallet {
+        display: flex;
+        background: #000527;
+        height: 35px;
+        width: 35px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        padding: 25px;
+        color: white;
+        border: 1px solid #30323e;
     }
 }
 .auth-modal-wrapper {

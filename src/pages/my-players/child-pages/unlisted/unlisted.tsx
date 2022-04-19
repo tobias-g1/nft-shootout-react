@@ -13,42 +13,42 @@ function UnlistedPlayersPageComponent(props: any) {
   const infoMessage: InfoMessage = {
     header: "You don't have any unlisted players",
     description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis.",
     link: "/marketplace",
     buttonText: "Visit our Marketplace",
-};
+  };
 
-const [listedItems, setListedItems] = useState([]);
-const [isLoading, toggleLoading] = useState(false);
-const location = useLocation();
-const baseUrl = 'http://localhost:8082/'
+  const [listedItems, setListedItems] = useState([]);
+  const [isLoading, toggleLoading] = useState(false);
+  const location = useLocation();
+  const baseUrl = 'http://localhost:8082/'
 
-async function search() {
-  toggleLoading(true)
-  await axios.get(baseUrl + 'items/0x943f9a17aaa6eb0586187c2093c114ad7b8f2e16/0x161A7e9a6Cbc711768aB988E22c8a74094F19a49')
-  .then(res => {
-    setListedItems(res.data.items)
-    toggleLoading(false)
-  })
-}
-
-useEffect(() => {
-  search()
-}, [location]);
-
-return (
-  <div>
-     {
-        isLoading ? <FullLoadingComponent /> : 
-<Row gutter={25}>
-{listedItems.map((listing, index) => {
-        return <Col xs={24} sm={24} md={6} lg={6} xl={6}><ItemCardComponent key={index} item={listing}></ItemCardComponent></Col>
+  async function search() {
+    toggleLoading(true)
+    await axios.get(baseUrl + 'items/0x943f9a17aaa6eb0586187c2093c114ad7b8f2e16/0x161A7e9a6Cbc711768aB988E22c8a74094F19a49')
+      .then(res => {
+        setListedItems(res.data.items)
+        toggleLoading(false)
       })
+  }
+
+  useEffect(() => {
+    search()
+  }, [location]);
+
+  return (
+    <div>
+      {
+        isLoading ? <FullLoadingComponent /> :
+          <Row gutter={25}>
+            {listedItems.map((listing, index) => {
+              return <Col xs={24} sm={24} md={6} lg={6} xl={6}><ItemCardComponent key={index} item={listing}></ItemCardComponent></Col>
+            })
+            }
+          </Row>
       }
-      </Row>
-}
-  </div>
-);
+    </div>
+  );
 
 }
 

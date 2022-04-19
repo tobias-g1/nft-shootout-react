@@ -1,11 +1,9 @@
-import PageHeaderComponent from '../../shared/components/page-header/page-header';
-import './open.scss'
+import './packs.scss'
 import DocumentMeta from 'react-document-meta';
-import ContentStatusMessageComponent from '../../shared/components/content-status-message/content-status-message';
-import { InfoMessage } from '../../shared/models/info-message.model';
-import { Outlet } from 'react-router-dom';
+import ContentStatusMessageComponent from '../../../../shared/components/content-status-message/content-status-message';
+import { InfoMessage } from '../../../../shared/models/info-message.model';
 
-function OpenPageComponent(props: any) {
+function OpenPacksPageComponent(props: any) {
 
     const title: string = 'Open';
     const description: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse';
@@ -15,7 +13,7 @@ function OpenPageComponent(props: any) {
         meta: {}
       };
 
-      const infoMessage: InfoMessage = {
+      const infoMessage: InfoMessage= {
         header: "You have no packs to open",
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis.",
@@ -24,15 +22,17 @@ function OpenPageComponent(props: any) {
     };
 
     return (
-        <div className="my-players page-wrapper" style={{ backgroundImage: "url(/assets/img/background.png)" }}>
+        <div className="packs page-wrapper" style={{ backgroundImage: "url(/assets/img/background.png)" }}>
             <DocumentMeta {...meta} />
-            <PageHeaderComponent header={title} description={description}/>
-            <Outlet />
+            <ContentStatusMessageComponent header={infoMessage.header}
+                    description={infoMessage.description}
+                    link={infoMessage.link}
+                    buttonText={infoMessage.buttonText}></ContentStatusMessageComponent>
         </div>
     );
 }
 
-export default OpenPageComponent;
+export default OpenPacksPageComponent;
 
 
 

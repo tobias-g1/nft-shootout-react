@@ -28,6 +28,9 @@ import StadiumsForStorePageComponent from "./pages/store/child-pages/stadiums/st
 import YouthScoutsForStorePageComponent from "./pages/store/child-pages/youth-scouts/youth-scouts";
 import OpenPageComponent from "./pages/open/open";
 import ItemPageComponent from "./pages/listed-item/item";
+import PrivateRoute from "./shared/components/private-route/private-route";
+import UnauthenticatedPageComponent from "./pages/unauthenticated/unathenticated";
+import OpenPacksPageComponent from "./pages/open/children/packs/packs";
 
 function getLibrary(provider: any) {
   return new Web3(provider);
@@ -44,7 +47,12 @@ const App: FC = () => (
             <Routes>
               <Route path="/" element={<Navigate to="/marketplace" />} />
               <Route path="/play" element={<PlayPageComponent />} />
-              <Route path="/open" element={<OpenPageComponent />} />
+              <Route path="/open" element={<OpenPageComponent />}>
+                <Route path="packs" element={<PrivateRoute><OpenPacksPageComponent /></PrivateRoute>} />
+                <Route path="login" element={<UnauthenticatedPageComponent />} />
+                <Route path="*" element={<Navigate to="/open" replace />} />
+                <Route index element={<Navigate to="/open/packs" />} />
+              </Route>
               <Route path="/store" element={<StorePageComponent />}>
                 <Route path="players" element={<PlayersForStorePageComponent />} />
                 <Route path="stadiums" element={<StadiumsForStorePageComponent/>} />
@@ -54,15 +62,17 @@ const App: FC = () => (
               </Route>
               <Route path="/item/:collection/:id" element={<ItemPageComponent />}></Route>
               <Route path="/marketplace" element={<MarketplacePageComponent />}>
-                <Route path="players" element={<PlayersForSalePageComponent />} />
-                <Route path="stadiums" element={<StadiumsForSalePageComponent />} />
-                <Route path="youth-scouts" element={<YouthScoutsForSalePageComponent />} />
+                <Route path="players" element={<PrivateRoute><PlayersForSalePageComponent /></PrivateRoute>} />
+                <Route path="stadiums" element={<PrivateRoute><StadiumsForSalePageComponent /></PrivateRoute>} />
+                <Route path="youth-scouts" element={<PrivateRoute><YouthScoutsForSalePageComponent /></PrivateRoute>} />
                 <Route path="*" element={<Navigate to="/marketplace" replace />} />
+                <Route path="login" element={<UnauthenticatedPageComponent />} />
                 <Route index element={<Navigate to="/marketplace/players" />} />
               </Route>
               <Route path="my-players" element={<MyPlayersPageComponent />}>
-                <Route path="playable" element={<UnlistedPlayersPageComponent />} />
-                <Route path="for-sale" element={<ForSalePlayersPageComponent />} />
+                <Route path="playable" element={<PrivateRoute><UnlistedPlayersPageComponent/></PrivateRoute>} />
+                <Route path="for-sale" element={<PrivateRoute><ForSalePlayersPageComponent /></PrivateRoute>} />
+                <Route path="login" element={<UnauthenticatedPageComponent />} />
                 <Route path="*" element={<Navigate to="/my-players" replace />} />
                 <Route index element={<Navigate to="/my-players/playable" />} />
               </Route>

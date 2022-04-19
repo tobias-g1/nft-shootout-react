@@ -7,11 +7,14 @@ import shoo from "../../../assets/img/shoo.png";
 import { Button } from "antd";
 import { useWeb3React } from "@web3-react/core";
 import Web3 from "web3";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWallet } from '@fortawesome/free-solid-svg-icons'
 
 const rpcURL = "https://bsc-dataseed.binance.org/";
 const web3 = new Web3(rpcURL);
 
 function AuthenticatedUserComponent(props: any) {
+
   const { deactivate, account } = useWeb3React();
 
   async function disconnect() {
@@ -65,6 +68,7 @@ function AuthenticatedUserComponent(props: any) {
   let contract = new web3.eth.Contract(minABI, tokenAddress);
   
   async function getBalance() {
+    
     const balance = await contract.methods.balanceOf(walletAddress).call();
     const balanceInWei = web3.utils.fromWei(balance);
 
@@ -89,8 +93,8 @@ function AuthenticatedUserComponent(props: any) {
           <img src={shoo} alt="Shoo Token" />
           <span>{ formatBalance(shooBalance) }</span>
         </div>
-        <span onClick={showModal}>
-          <Avatar size="large" icon={<UserOutlined />} />
+        <span className="wallet" onClick={showModal}>
+          <FontAwesomeIcon icon={faWallet} />
         </span>
       </div>
       <Modal
