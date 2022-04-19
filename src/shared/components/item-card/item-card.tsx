@@ -8,6 +8,7 @@ import { MoreOutlined } from "@ant-design/icons";
 import { useWeb3React } from "@web3-react/core";
 import Web3 from "web3";
 import CancelListingModal from "../cancel-listing-modal/cancel-listing-modal";
+import { Link } from "react-router-dom";
 
 type Props = {
   item: Item;
@@ -43,8 +44,12 @@ function ItemCardComponent(props: Props) {
     </Menu>
   );
 
+  function getLink () {
+    return '/item/' + props.item.tokenAddress + '/' + props.item.tokenId
+  }
+
   return (
-    <>
+    <Link to={getLink()}>
       <div className="listing-card">
         <div className="header">
           <h3>#{props.item.tokenId}</h3>
@@ -56,7 +61,7 @@ function ItemCardComponent(props: Props) {
       </div>
       <ListForSaleModal item={props.item} ref={fref}></ListForSaleModal>
       <CancelListingModal item={props.item} ref={cref}></CancelListingModal>
-    </>
+    </Link>
   );
 }
 
