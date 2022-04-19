@@ -10,9 +10,36 @@
         padding: 15px;
     }
     a {
+        background: #000527;
         width: 100%;    
         div, img {
             width: 100%;
+        }
+
+        img {
+            padding: 50px;
+        }
+    }
+    .footer {
+        background: #080f39;
+        display: flex;
+        flex-direction: revert;
+        justify-content: space-between;
+        padding: 20px;
+        .price-chip {
+            display: flex;
+            align-items: center;
+            img {
+                height: 25px;
+                width: 25px;
+                border-radius: 100%;
+            }
+            span {
+                font-weight: bold;
+                color: white;
+                margin-left: 10px;
+                font-size: 18px;
+            }
         }
     }
 

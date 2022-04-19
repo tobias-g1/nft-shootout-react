@@ -43,7 +43,7 @@ function ForSalePlayersPageComponent(props: any) {
         isLoading ? <FullLoadingComponent /> :
           <Row gutter={25}>
             {listedItems.map((listing, index) => {
-              return <Col xs={24} sm={24} md={6} lg={6} xl={6}><ItemCardComponent item={listing}></ItemCardComponent></Col>
+              return <Col xs={24} sm={24} md={6} lg={6} xl={4}><ItemCardComponent item={listing}></ItemCardComponent></Col>
             })
             }
           </Row>
