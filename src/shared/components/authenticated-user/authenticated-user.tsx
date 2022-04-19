@@ -104,20 +104,16 @@ function AuthenticatedUserComponent(props: any) {
         onCancel={handleCancel}
       >
         <div className="auth-modal-wrapper">
-          <div className="address-details mb-5">
+          <div className="address-details mb-10">
             <span className="label">Your Address</span>
             <span className="address">{account}</span>
           </div>
-          <a
-            href={getLink()}
-            className="mb-5"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View on BSc Scan
-          </a>
           <div className="balance-row mb-15">
-            <span className="balance-label">Shoo Balance</span>
+            <div> 
+              <img src={shoo} alt="Shoo Token" />
+              <span className="balance-label">Shoo Balance</span>
+            </div>
+          
             <span className="balance-amount">{ formatBalance(shooBalance) }</span>
           </div>
           <Button onClick={disconnect} className="disconnect-button">
