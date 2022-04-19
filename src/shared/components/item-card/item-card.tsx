@@ -37,17 +37,17 @@ function ItemCardComponent(props: Props) {
   const menu = (
     <Menu>
       <Menu.Item key="0">
-        { !props.item.forSale && account ===  props.item.owner ? <span onClick={handleListingModal}>
+        {!props.item.forSale && account === props.item.owner ? <span onClick={handleListingModal}>
           List for Sale
-        </span> : null } 
-        { props.item.forSale && account ===  props.item.owner ? <span onClick={handleCancelModal}>
+        </span> : null}
+        {props.item.forSale && account === props.item.owner ? <span onClick={handleCancelModal}>
           Cancel Listing
-        </span> : null } 
+        </span> : null}
       </Menu.Item>
     </Menu>
   );
 
-  function getLink () {
+  function getLink() {
     return '/item/' + props.item.tokenAddress + '/' + props.item.tokenId
   }
 
@@ -55,21 +55,20 @@ function ItemCardComponent(props: Props) {
     <>
       <div className="listing-card">
         <div className="image-wrapper">
-           <Dropdown overlay={menu} trigger={["click"]}>
+          <Dropdown overlay={menu} trigger={["click"]}>
             <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
           </Dropdown>
-          <Link to={getLink()}><Image  src={!props.item.imageUrl ? '' : props.item.imageUrl } fallback={fallback}></Image></Link>
+          <Link to={getLink()}><Image src={!props.item.imageUrl ? '' : props.item.imageUrl} fallback={fallback}></Image></Link>
         </div>
-       
         <div className="footer">
           <div>
-          <h3>#{props.item.tokenId}</h3>
+            <h3>#{props.item.tokenId}</h3>
           </div>
           <div className="right">
-          <div className="price-chip">
-            <img src={shoo} alt="" />
-            <span>{props.item.price}</span>
-          </div>
+            {props.item.forSale ? <div className="price-chip">
+              <img src={shoo} alt="" />
+              <span>{props.item.price}</span>
+            </div> : null}
           </div>
         </div>
       </div>
