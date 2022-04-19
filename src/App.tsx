@@ -60,7 +60,7 @@ const App: FC = () => (
                 <Route path="*" element={<Navigate to="/store" replace />} />
                 <Route index element={<Navigate to="/store/players" />} />
               </Route>
-              <Route path="/item/:collection/:id" element={<ItemPageComponent />}></Route>
+              <Route path="/item/:collectionAddress/:tokenId" element={<ItemPageComponent />}></Route>
               <Route path="/marketplace" element={<MarketplacePageComponent />}>
                 <Route path="players" element={<PrivateRoute><PlayersForSalePageComponent /></PrivateRoute>} />
                 <Route path="stadiums" element={<PrivateRoute><StadiumsForSalePageComponent /></PrivateRoute>} />
