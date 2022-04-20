@@ -1,6 +1,6 @@
 import "./cancel-listing-modal.scss";
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
-import { Form, Input, Modal, Button, Image } from "antd";
+import { Form, Input, Modal, Button, Image, notification } from "antd";
 import { Item } from "../../models/item";
 import fallback from "../../../assets/img/fallback.svg"
 import { useWeb3React } from "@web3-react/core";
@@ -18,6 +18,7 @@ function CancelListingModal(props: Props, ref: any) {
 
   const { account } = useWeb3React()
   const [isCancelListingModalVisible, setCancelListingModalVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useImperativeHandle(
     ref,
@@ -38,12 +39,33 @@ function CancelListingModal(props: Props, ref: any) {
   };
 
   web3.eth.setProvider(Web3.givenProvider);
+  const marketplaceContactAddress = '0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7';
+  const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, marketplaceContactAddress);
+  
+  const cancelListing = () => {
 
-  const contract = new web3.eth.Contract(marketplaceAbi, props.item.tokenAddress);
-  
-   const cancelListing = async () => {
-  
-  }
+    setIsLoading(true)
+
+    marketPlaceContract.methods.cancelAskOrder(props.item.tokenAddress, props.item.tokenId).send({from: '0x161A7e9a6Cbc711768aB988E22c8a74094F19a49' })
+    .on('error', function(error){
+      setIsLoading(false)
+      openNotificationWithIcon('error', 'Error', "We we're unable to cancel your listing, please try again later.")
+    })
+    .on('confirmation', function(confirmationNumber, receipt){
+      setIsLoading(false);
+      setCancelListingModalVisible(false);
+      if (confirmationNumber === 0) {
+        openNotificationWithIcon('success', 'Your listing has been cancelled successfully', 'Your NFT is now be available within your wallet to play')
+      }
+    })
+  };
+
+  const openNotificationWithIcon = (type: string, title: string, text: string) => {
+    notification[type]({
+      message: title,
+      description: text
+    });
+  };
 
   return (
     <>
@@ -62,7 +84,7 @@ function CancelListingModal(props: Props, ref: any) {
          <p>Cancel your listing...</p>
        </div>
        </div>
-         <Button type="primary" className="cancel" size="large" onClick={cancelListing}>Cancel Listing</Button>
+         <Button type="primary" className="cancel" size="large" loading={isLoading} onClick={cancelListing}>Cancel Listing</Button>
          </Modal>
     </>
   );

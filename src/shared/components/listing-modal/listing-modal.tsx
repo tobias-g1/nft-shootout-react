@@ -1,6 +1,6 @@
 import "./listing-modal.scss";
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
-import { Form, Input, Modal, Button, Image } from "antd";
+import { Form, Input, Modal, Button, Image, notification } from "antd";
 import { Item } from "../../models/item";
 import fallback from "../../../assets/img/fallback.svg"
 import StepIndicatorComponent from "../step-indicator/step-indicator";
@@ -9,6 +9,7 @@ import { useWeb3React } from "@web3-react/core";
 import Web3 from "web3";
 import {nftAbi} from "../../abi/collection.abi"
 import { useLocation } from "react-router-dom";
+import { marketplaceAbi } from "../../abi/marketplace.abi";
 
 type Props = {
   item: Item;
@@ -38,10 +39,6 @@ function ListForSaleModal(props: Props, ref: any) {
     []
   );
 
-  const handleOk = () => {
-    setListingModalVisible(!isListingModalVisible);
-  };
-
   const handleCancel = () => {
     setListingModalVisible(!isListingModalVisible);
   };
@@ -62,6 +59,7 @@ function ListForSaleModal(props: Props, ref: any) {
   ]
 
   const [steps, setStepList] = useState(stepList);
+  const [price, setPrice] = useState(0)
 
   function setStepStatus(id: number, status: number) {
     const index = stepList.findIndex(element => element.id === id);
@@ -69,28 +67,49 @@ function ListForSaleModal(props: Props, ref: any) {
     setStepList(stepList)
   }
 
+  const openNotificationWithIcon = (type: string, title: string, text: string) => {
+    notification[type]({
+      message: title,
+      description: text
+    });
+  };
+
   web3.eth.setProvider(Web3.givenProvider);
 
   const contract = new web3.eth.Contract(nftAbi, props.item.tokenAddress);
-  
-  const marketplaceContact = '0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7'
+  const marketplaceContactAddress = '0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7'
+  const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, marketplaceContactAddress);
 
    const approveToken = async () => {
 
     setStepStatus(1, 1);
 
-      contract.methods.approve(marketplaceContact, props.item.tokenId).send({from: '0x161A7e9a6Cbc711768aB988E22c8a74094F19a49' })
-      .on('receipt', function(receipt){
-        setStepStatus(1, 1)
-      })
+      contract.methods.approve(marketplaceContactAddress, props.item.tokenId).send({from: '0x161A7e9a6Cbc711768aB988E22c8a74094F19a49' })
       .on('error', function(error){
         setStepStatus(1, 0)
       })
       .on('confirmation', function(confirmationNumber, receipt){
-        setStepStatus(1, 2)
+        if (confirmationNumber === 0) {
+          setStepStatus(1, 2)
+        }
       })
   
   }
+
+  const listForSale = () => {
+
+    marketPlaceContract.methods.createAskOrder(props.item.tokenAddress, props.item.tokenId, web3.utils.toWei(price.toString(), 'ether')).send({from: '0x161A7e9a6Cbc711768aB988E22c8a74094F19a49' })
+    .on('error', function(error){
+      setStepStatus(2, 0)
+    })
+    .on('confirmation', function(confirmationNumber, receipt){
+      if (confirmationNumber === 0) {
+        setStepStatus(2, 2)
+        setListingModalVisible(false)
+        openNotificationWithIcon('success', 'Your listing was successful', 'Your NFT is now listed on our marketplace.')
+      }
+    })
+  };
 
   async function checkForApproved() {
     if (props.item.approved) {
@@ -118,7 +137,6 @@ function ListForSaleModal(props: Props, ref: any) {
       <Modal
         visible={isListingModalVisible}
         title='List for Sale'
-        onOk={handleOk}
         onCancel={handleCancel}
         footer={null}
       >
@@ -139,11 +157,10 @@ function ListForSaleModal(props: Props, ref: any) {
           <Form.Item
             name="price"
             rules={[
-              { required: true },
-              { type: "number", min: 1 },
+              { required: true }
             ]}
           >
-          <Input size="large"  placeholder="Enter List Price" />
+          <Input size="large"  placeholder="Enter List Price" value={price} onChange={(e)=> setPrice(parseInt(e.target.value))}/>
           </Form.Item>
           <Form.Item >
             <Button className="footer-submit"
@@ -151,7 +168,8 @@ function ListForSaleModal(props: Props, ref: any) {
               htmlType="submit"
               type="primary"
               size="large"
-              onClick={handleOk}
+              onClick={listForSale}
+              loading={isLoading(2)}
             >
               List for Sale
             </Button>

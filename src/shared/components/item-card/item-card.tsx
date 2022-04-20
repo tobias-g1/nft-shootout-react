@@ -63,9 +63,11 @@ function ItemCardComponent(props: Props) {
     <>
       <div className="listing-card">
         <div className="image-wrapper">
+        <div className="menu-wrapper">
           <Dropdown overlay={menu} trigger={["click"]}>
             <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
           </Dropdown>
+          </div>
           <Link to={getLink()}><Image src={!props.item.imageUrl ? '' : props.item.imageUrl} fallback={fallback}></Image></Link>
         </div>
         <div className="footer">
