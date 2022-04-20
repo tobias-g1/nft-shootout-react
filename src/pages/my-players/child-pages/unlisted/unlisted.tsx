@@ -39,13 +39,13 @@ function UnlistedPlayersPageComponent(props: any) {
   return (
     <div>
       {
-        isLoading ? <FullLoadingComponent /> :
+        isLoading ? <FullLoadingComponent /> : listedItems.length !== 0 ?
           <Row gutter={25}>
             {listedItems.map((listing, index) => {
               return <Col xs={24} sm={24} md={8} lg={6} xl={4}><ItemCardComponent key={index} item={listing}></ItemCardComponent></Col>
             })
             }
-          </Row>
+          </Row> : <ContentStatusMessageComponent header={infoMessage.header} description={infoMessage.description} link={infoMessage.link} buttonText={infoMessage.buttonText}></ContentStatusMessageComponent>
       }
     </div>
   );
