@@ -90,14 +90,13 @@ function ListForSaleModal(props: Props, ref: any) {
   web3.eth.setProvider(Web3.givenProvider);
 
   const contract = new web3.eth.Contract(nftAbi, props.item.tokenAddress);
-  const marketplaceContactAddress = '0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7'
-  const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, marketplaceContactAddress);
+  const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, process.env.REACT_APP_MARKETPLACE_ADDRESS);
 
    const approveToken = async () => {
 
     setStepStatus(1, 1);
 
-      contract.methods.approve(marketplaceContactAddress, props.item.tokenId).send({from: '0x161A7e9a6Cbc711768aB988E22c8a74094F19a49' })
+      contract.methods.approve(process.env.REACT_APP_MARKETPLACE_ADDRESS, props.item.tokenId).send({from: '0x161A7e9a6Cbc711768aB988E22c8a74094F19a49' })
       .on('error', function(error){
         setStepStatus(1, 0)
       })

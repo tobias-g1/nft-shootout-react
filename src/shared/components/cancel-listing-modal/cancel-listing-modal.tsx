@@ -39,8 +39,8 @@ function CancelListingModal(props: Props, ref: any) {
   };
 
   web3.eth.setProvider(Web3.givenProvider);
-  const marketplaceContactAddress = '0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7';
-  const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, marketplaceContactAddress);
+
+  const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, process.env.REACT_APP_MARKETPLACE_ADDRESS);
   
   const cancelListing = () => {
 

@@ -90,15 +90,14 @@ function BuyModal(props: Props, ref: any) {
   web3.eth.setProvider(Web3.givenProvider);
 
   const tokenContract = new web3.eth.Contract(tokenAbi, props.item.tokenAddress);
-  const marketplaceContactAddress = '0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7'
   const tokenAddress = '0xcC046a8ba1f82B4FbB186f76e23E3DbEf297dA4c'
-  const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, marketplaceContactAddress);
+  const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, process.env.REACT_APP_MARKETPLACE_ADDRESS);
 
    const approveToken = async () => {
 
     setStepStatus(1, 1);
 
-    tokenContract.methods.approve(tokenAddress, marketplaceContactAddress).send({from: '0x161A7e9a6Cbc711768aB988E22c8a74094F19a49' })
+    tokenContract.methods.approve(tokenAddress, process.env.REACT_APP_MARKETPLACE_ADDRESS).send({from: '0x161A7e9a6Cbc711768aB988E22c8a74094F19a49' })
       .on('error', function(error){
         setStepStatus(1, 0)
       })
