@@ -10,6 +10,7 @@ import Web3 from "web3";
 import {nftAbi} from "../../abi/collection.abi"
 import { useLocation } from "react-router-dom";
 import { marketplaceAbi } from "../../abi/marketplace.abi";
+import axios from "axios";
 
 type Props = {
   item: Item;
@@ -22,11 +23,13 @@ function ListForSaleModal(props: Props, ref: any) {
 
   const { account } = useWeb3React()
   const [isListingModalVisible, setListingModalVisible] = useState(false);
+  const [shooPrice, setShooPrice] = useState(null);
   const [form] = Form.useForm();
   const location = useLocation();
 
   useEffect(() => {
     checkForApproved();
+    getShooPrice();
   }, [location]);
 
   useImperativeHandle(
@@ -65,6 +68,15 @@ function ListForSaleModal(props: Props, ref: any) {
     const index = stepList.findIndex(element => element.id === id);
     stepList[index].status = status; 
     setStepList(stepList)
+  }
+
+  const baseUrl = 'http://localhost:8082/'
+
+  async function getShooPrice() {
+    await axios.get(baseUrl + `price/current`)
+      .then(res => {
+        setShooPrice(res.data.usd)
+      })
   }
 
   const openNotificationWithIcon = (type: string, title: string, text: string) => {
@@ -132,6 +144,10 @@ function ListForSaleModal(props: Props, ref: any) {
     }
   }
 
+  const priceAfter = () => {
+    return shooPrice
+  }
+
   return (
     <>
       <Modal
@@ -160,7 +176,7 @@ function ListForSaleModal(props: Props, ref: any) {
               { required: true }
             ]}
           >
-          <Input size="large"  placeholder="Enter List Price" value={price} onChange={(e)=> setPrice(parseInt(e.target.value))}/>
+          <Input size="large"  placeholder="Enter List Price" value={price} onChange={(e)=> setPrice(parseInt(e.target.value))}  addonAfter={(shooPrice * price).toFixed(2)}/>
           </Form.Item>
           <Form.Item >
             <Button className="footer-submit"
