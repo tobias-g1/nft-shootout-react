@@ -11,11 +11,9 @@ function PlayersForSalePageComponent(props: any) {
     buttonText: "Visit our Store",
   };
 
-  const collectionAddress = "0x943f9a17aaa6eb0586187c2093c114ad7b8f2e16";
-
   return (
     <div>
-      <ListingViewerComponent collectionAddress={collectionAddress} infoMessage={infoMessage}></ListingViewerComponent>
+      <ListingViewerComponent collectionAddress={process.env.REACT_APP_PLAYER_ADDRESS} infoMessage={infoMessage}></ListingViewerComponent>
     </div>
   );
 }

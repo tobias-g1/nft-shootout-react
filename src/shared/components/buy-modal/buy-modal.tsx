@@ -18,8 +18,7 @@ type Props = {
   item: Item;
 };
 
-const rpcURL = "https://bsc-dataseed.binance.org/";
-const web3 = new Web3(rpcURL);
+const web3 = new Web3(process.env.REACT_APP_RPC_URL);
 
 function BuyModal(props: Props, ref: any) {
 
@@ -27,6 +26,7 @@ function BuyModal(props: Props, ref: any) {
   const [shooPrice, setShooPrice] = useState(0);
   const [form] = Form.useForm();
   const location = useLocation();
+  const { account } = useWeb3React()
 
   useEffect(() => {
     checkForApproved();
@@ -71,10 +71,8 @@ function BuyModal(props: Props, ref: any) {
     setStepList(stepList)
   }
 
-  const baseUrl = 'http://localhost:8082/'
-
   async function getShooPrice() {
-    await axios.get(baseUrl + `price/current`)
+    await axios.get(process.env.REACT_APP_API_BASE_URL + `price/current`)
       .then(res => {
         setShooPrice(res.data.usd)
       })
@@ -90,14 +88,13 @@ function BuyModal(props: Props, ref: any) {
   web3.eth.setProvider(Web3.givenProvider);
 
   const tokenContract = new web3.eth.Contract(tokenAbi, props.item.tokenAddress);
-  const tokenAddress = '0xcC046a8ba1f82B4FbB186f76e23E3DbEf297dA4c'
   const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, process.env.REACT_APP_MARKETPLACE_ADDRESS);
 
    const approveToken = async () => {
 
     setStepStatus(1, 1);
 
-    tokenContract.methods.approve(tokenAddress, process.env.REACT_APP_MARKETPLACE_ADDRESS).send({from: '0x161A7e9a6Cbc711768aB988E22c8a74094F19a49' })
+    tokenContract.methods.approve(process.env.REACT_APP_TOKEN_ADDRESS, process.env.REACT_APP_MARKETPLACE_ADDRESS).send({from: account })
       .on('error', function(error){
         setStepStatus(1, 0)
       })
@@ -111,7 +108,7 @@ function BuyModal(props: Props, ref: any) {
 
   const buyItem = () => {
 
-    marketPlaceContract.methods.buyTokenWithSHOO(props.item.tokenAddress, props.item.tokenId, web3.utils.toWei(price.toString(), 'ether')).send({from: '0x161A7e9a6Cbc711768aB988E22c8a74094F19a49' })
+    marketPlaceContract.methods.buyTokenWithSHOO(props.item.tokenAddress, props.item.tokenId, web3.utils.toWei(price.toString(), 'ether')).send({from: account })
     .on('error', function(error){
       setStepStatus(2, 0)
     })

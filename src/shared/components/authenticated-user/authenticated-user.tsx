@@ -9,9 +9,9 @@ import { useWeb3React } from "@web3-react/core";
 import Web3 from "web3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWallet } from '@fortawesome/free-solid-svg-icons'
+import { tokenAbi } from "../../abi/token.abi";
 
-const rpcURL = "https://bsc-dataseed.binance.org/";
-const web3 = new Web3(rpcURL);
+const web3 = new Web3(process.env.REACT_APP_RPC_URL);
 
 function AuthenticatedUserComponent(props: any) {
 
@@ -37,39 +37,11 @@ function AuthenticatedUserComponent(props: any) {
     setIsModalVisible(false);
   };
 
-  function getLink() {
-    return "https://bscscan.com/address/" + account;
-  }
-
-  let tokenAddress = "0x0fcc11F873360450a1afD8CB7Cfe0a9d787cc25E";
-  let walletAddress = account;
-  
-  // The minimum ABI to get ERC20 Token balance
-  let minABI: any = [
-    // balanceOf
-    {
-      "constant":true,
-      "inputs":[{"name":"account","type":"address"}],
-      "name":"balanceOf",
-      "outputs":[{"name":"balance","type":"uint256"}],
-      "type":"function"
-    },
-    // decimals
-    {
-      "constant":true,
-      "inputs":[],
-      "name":"decimals",
-      "outputs":[{"name":"","type":"uint8"}],
-      "type":"function"
-    }
-  ];
-  
-  // Get ERC20 Token contract instance
-  let contract = new web3.eth.Contract(minABI, tokenAddress);
+  let contract = new web3.eth.Contract(tokenAbi, process.env.REACT_APP_TOKEN_ADDRESS);
   
   async function getBalance() {
     
-    const balance = await contract.methods.balanceOf(walletAddress).call();
+    const balance = await contract.methods.balanceOf(account).call();
     const balanceInWei = web3.utils.fromWei(balance);
 
     let shooBalance = balanceInWei;

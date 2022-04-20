@@ -21,11 +21,11 @@ function ItemPageComponent(props: any) {
       const [isLoading, toggleLoading] = useState(false);
       const location = useLocation();
       const { collectionAddress, tokenId } = useParams();
-      const baseUrl = 'http://localhost:8082/'
+
 
       async function search() {
         toggleLoading(true)
-        await axios.get(baseUrl + `items/single/${collectionAddress}/${tokenId}`)
+        await axios.get(process.env.REACT_APP_API_BASE_URL + `items/single/${collectionAddress}/${tokenId}`)
           .then(res => {
             setItem(res.data.items)
             toggleLoading(false)

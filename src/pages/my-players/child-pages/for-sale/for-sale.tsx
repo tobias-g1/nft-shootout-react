@@ -1,16 +1,19 @@
+import { useWeb3React } from "@web3-react/core";
 import { Col, Row } from "antd";
-import { Content } from "antd/lib/layout/layout";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import ContentStatusMessageComponent from "../../../../shared/components/content-status-message/content-status-message";
 import FullLoadingComponent from "../../../../shared/components/full-loading/full-loading";
 import ItemCardComponent from "../../../../shared/components/item-card/item-card";
-import PlayerCardComponent from "../../../../shared/components/item-card/item-card";
 import { InfoMessage } from "../../../../shared/models/info-message.model";
 
 function ForSalePlayersPageComponent(props: any) {
-  let players: string[] = [];
+
+  const [listedItems, setListedItems] = useState([]);
+  const [isLoading, toggleLoading] = useState(false);
+  const location = useLocation();
+  const { account } = useWeb3React();
   const infoMessage: InfoMessage = {
     header: "You don't have any players for sale",
     description:
@@ -19,14 +22,10 @@ function ForSalePlayersPageComponent(props: any) {
     buttonText: "Visit our Marketplace",
   };
 
-  const [listedItems, setListedItems] = useState([]);
-  const [isLoading, toggleLoading] = useState(false);
-  const location = useLocation();
-  const baseUrl = 'http://localhost:8082/'
 
   async function search() {
     toggleLoading(true)
-    await axios.get(baseUrl + 'marketplace/listed/0x943f9a17aaa6eb0586187c2093c114ad7b8f2e16/0x161A7e9a6Cbc711768aB988E22c8a74094F19a49')
+    await axios.get(process.env.REACT_APP_API_BASE_URL + 'marketplace/listed/' + process.env.REACT_APP_PLAYER_ADDRESS + '/' + account)
       .then(res => {
         setListedItems(res.data)
         toggleLoading(false)

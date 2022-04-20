@@ -17,8 +17,7 @@ type Props = {
   item: Item;
 };
 
-const rpcURL = "https://bsc-dataseed.binance.org/";
-const web3 = new Web3(rpcURL);
+const web3 = new Web3(process.env.REACT_APP_RPC_URL);
 
 function ListForSaleModal(props: Props, ref: any) {
 
@@ -71,10 +70,8 @@ function ListForSaleModal(props: Props, ref: any) {
     setStepList(stepList)
   }
 
-  const baseUrl = 'http://localhost:8082/'
-
   async function getShooPrice() {
-    await axios.get(baseUrl + `price/current`)
+    await axios.get(process.env.REACT_APP_API_BASE_URL + `price/current`)
       .then(res => {
         setShooPrice(res.data.usd)
       })
@@ -96,7 +93,7 @@ function ListForSaleModal(props: Props, ref: any) {
 
     setStepStatus(1, 1);
 
-      contract.methods.approve(process.env.REACT_APP_MARKETPLACE_ADDRESS, props.item.tokenId).send({from: '0x161A7e9a6Cbc711768aB988E22c8a74094F19a49' })
+      contract.methods.approve(process.env.REACT_APP_MARKETPLACE_ADDRESS, props.item.tokenId).send({from: account })
       .on('error', function(error){
         setStepStatus(1, 0)
       })
@@ -110,7 +107,7 @@ function ListForSaleModal(props: Props, ref: any) {
 
   const listForSale = () => {
 
-    marketPlaceContract.methods.createAskOrder(props.item.tokenAddress, props.item.tokenId, web3.utils.toWei(price.toString(), 'ether')).send({from: '0x161A7e9a6Cbc711768aB988E22c8a74094F19a49' })
+    marketPlaceContract.methods.createAskOrder(props.item.tokenAddress, props.item.tokenId, web3.utils.toWei(price.toString(), 'ether')).send({from: account })
     .on('error', function(error){
       setStepStatus(2, 0)
     })

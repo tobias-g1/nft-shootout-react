@@ -19,7 +19,6 @@ import Web3 from "web3";
 import { HelmetProvider } from "react-helmet-async";
 import ForSalePlayersPageComponent from "./pages/my-players/child-pages/for-sale/for-sale";
 import UnlistedPlayersPageComponent from "./pages/my-players/child-pages/unlisted/unlisted";
-import AllPlayersPageComponent from "./pages/my-players/child-pages/all/all";
 import PlayersForSalePageComponent from "./pages/marketplace/child-pages/players/players";
 import StadiumsForSalePageComponent from "./pages/marketplace/child-pages/stadiums/stadiums";
 import YouthScoutsForSalePageComponent from "./pages/marketplace/child-pages/youth-scouts/youth-scouts";

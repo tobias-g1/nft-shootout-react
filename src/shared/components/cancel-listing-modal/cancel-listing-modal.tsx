@@ -11,8 +11,7 @@ type Props = {
   item: Item;
 };
 
-const rpcURL = "https://bsc-dataseed.binance.org/";
-const web3 = new Web3(rpcURL);
+const web3 = new Web3(process.env.REACT_APP_RPC_URL);
 
 function CancelListingModal(props: Props, ref: any) {
 
@@ -46,7 +45,7 @@ function CancelListingModal(props: Props, ref: any) {
 
     setIsLoading(true)
 
-    marketPlaceContract.methods.cancelAskOrder(props.item.tokenAddress, props.item.tokenId).send({from: '0x161A7e9a6Cbc711768aB988E22c8a74094F19a49' })
+    marketPlaceContract.methods.cancelAskOrder(props.item.tokenAddress, props.item.tokenId).send({from: account })
     .on('error', function(error){
       setIsLoading(false)
       openNotificationWithIcon('error', 'Error', "We we're unable to cancel your listing, please try again later.")

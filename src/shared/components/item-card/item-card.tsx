@@ -4,9 +4,7 @@ import fallback from "../../../assets/img/fallback.svg"
 import { useRef } from "react";
 import { Item } from "../../models/item";
 import ListForSaleModal from "../listing-modal/listing-modal";
-import { MoreOutlined } from "@ant-design/icons";
 import { useWeb3React } from "@web3-react/core";
-import Web3 from "web3";
 import CancelListingModal from "../cancel-listing-modal/cancel-listing-modal";
 import { Link } from "react-router-dom";
 import shoo from "../../../assets/img/shoo.png";
@@ -17,9 +15,6 @@ import BuyModal from "../buy-modal/buy-modal";
 type Props = {
   item: Item;
 };
-
-const rpcURL = "https://bsc-dataseed.binance.org/";
-const web3 = new Web3(rpcURL);
 
 function ItemCardComponent(props: Props) {
 

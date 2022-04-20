@@ -1,3 +1,4 @@
+import { useWeb3React } from "@web3-react/core";
 import { Row, Col } from "antd";
 import { Content } from "antd/lib/layout/layout";
 import axios from "axios";
@@ -10,6 +11,10 @@ import { InfoMessage } from "../../../../shared/models/info-message.model";
 
 function UnlistedPlayersPageComponent(props: any) {
 
+  const { account } = useWeb3React();
+  const [listedItems, setListedItems] = useState([]);
+  const [isLoading, toggleLoading] = useState(false);
+  const location = useLocation();
   const infoMessage: InfoMessage = {
     header: "You don't have any unlisted players",
     description:
@@ -18,14 +23,9 @@ function UnlistedPlayersPageComponent(props: any) {
     buttonText: "Visit our Marketplace",
   };
 
-  const [listedItems, setListedItems] = useState([]);
-  const [isLoading, toggleLoading] = useState(false);
-  const location = useLocation();
-  const baseUrl = 'http://localhost:8082/'
-
   async function search() {
     toggleLoading(true)
-    await axios.get(baseUrl + 'items/0x943f9a17aaa6eb0586187c2093c114ad7b8f2e16/0x161A7e9a6Cbc711768aB988E22c8a74094F19a49')
+    await axios.get(process.env.REACT_APP_API_BASE_URL + 'items/' + process.env.REACT_APP_PLAYER_ADDRESS + '/' + account)
       .then(res => {
         setListedItems(res.data.items)
         toggleLoading(false)
