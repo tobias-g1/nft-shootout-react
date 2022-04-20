@@ -5,11 +5,11 @@ function YouthScoutsForSalePageComponent(props: any) {
 
   let scouts: string[] = [];
   const infoMessage: InfoMessage = {
-    header: "No Youth Scouts for Sale",
+    header: "Youth Scouts are coming soon",
     description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis.",
     link: "/marketplace",
-    buttonText: "Visit our Marketplace",
+    buttonText: "Visit our Store",
 };
 
   return (
