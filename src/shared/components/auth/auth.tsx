@@ -7,7 +7,7 @@ import AuthenticatedUserComponent from '../authenticated-user/authenticated-user
 
 function AuthComponent(props: any) {
 
-  const { active, library, connector, activate, error } = useWeb3React()
+  const { active, activate, error } = useWeb3React()
 
   const connectionError = (error: any) => {
     console.log(error)

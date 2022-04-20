@@ -27,7 +27,7 @@ h6 {
   text-transform: capitalize;
   line-height: normal;
   letter-spacing: 1.5px;
-  text-transform: uppercase;
+
 }
 
 p {
@@ -41,7 +41,6 @@ p {
 font-weight: 600;
 margin: 0;
 margin-top: 5px;
-text-transform: capitalize;
 font-size: 23px;
 line-height: normal;
 letter-spacing: 2.5px;
@@ -72,11 +71,15 @@ p {
 }
 
 button {
-  text-transform: uppercase;
+
 }
 
 .mb-5 {
   margin-bottom: 5px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
 }
 
 .mb-15 {
@@ -113,4 +116,8 @@ button {
 
 .menu-icon {
   color: white !important;
+}
+
+.ant-modal-body {
+  padding-top: 50px!important;
 }

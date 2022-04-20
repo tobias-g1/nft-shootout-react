@@ -6,6 +6,7 @@ import "./my-players.scss";
 import DocumentMeta from "react-document-meta";
 import { InfoMessage } from "../../shared/models/info-message.model";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import { useWeb3React } from "@web3-react/core";
 
 function MyPlayersPageComponent(props: any) {
   const title: string = "My Players";
@@ -16,6 +17,7 @@ function MyPlayersPageComponent(props: any) {
     description: "TBA",
     meta: {},
   };
+  const { account } = useWeb3React()
 
   return (
     <div
@@ -25,16 +27,12 @@ function MyPlayersPageComponent(props: any) {
       <DocumentMeta {...meta} />
       <PageHeaderComponent header={title} description={description} />
       <Content>
-        <div className="tab-row">
+        {
+          (account) ? <div className="tab-row">
           <div className="selector">
-            <NavLink to="all" className={(navData) => (navData.isActive ? 'selected' : '')}>
-              <div className="option" >
-                <span>All</span>
-              </div>
-            </NavLink>
-            <NavLink to="unlisted" className={(navData) => (navData.isActive ? 'selected' : '')}>
+            <NavLink to="playable" className={(navData) => (navData.isActive ? 'selected' : '')}>
               <div className="option">
-                <span>Unlisted</span>
+                <span>Playable</span>
               </div>
             </NavLink>
             <NavLink to="for-sale" className={(navData) => (navData.isActive ? 'selected' : '')}>
@@ -43,7 +41,8 @@ function MyPlayersPageComponent(props: any) {
               </div>
             </NavLink>
           </div>
-        </div>
+        </div> : null
+        }
         <Outlet />
       </Content>
     </div>

@@ -7,11 +7,14 @@ import shoo from "../../../assets/img/shoo.png";
 import { Button } from "antd";
 import { useWeb3React } from "@web3-react/core";
 import Web3 from "web3";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWallet } from '@fortawesome/free-solid-svg-icons'
+import { tokenAbi } from "../../abi/token.abi";
 
-const rpcURL = "https://bsc-dataseed.binance.org/";
-const web3 = new Web3(rpcURL);
+const web3 = new Web3(process.env.REACT_APP_RPC_URL);
 
 function AuthenticatedUserComponent(props: any) {
+
   const { deactivate, account } = useWeb3React();
 
   async function disconnect() {
@@ -34,49 +37,23 @@ function AuthenticatedUserComponent(props: any) {
     setIsModalVisible(false);
   };
 
-  function getLink() {
-    return "https://bscscan.com/address/" + account;
-  }
-
-  let tokenAddress = "0x0fcc11F873360450a1afD8CB7Cfe0a9d787cc25E";
-  let walletAddress = account;
-  
-  // The minimum ABI to get ERC20 Token balance
-  let minABI: any = [
-    // balanceOf
-    {
-      "constant":true,
-      "inputs":[{"name":"account","type":"address"}],
-      "name":"balanceOf",
-      "outputs":[{"name":"balance","type":"uint256"}],
-      "type":"function"
-    },
-    // decimals
-    {
-      "constant":true,
-      "inputs":[],
-      "name":"decimals",
-      "outputs":[{"name":"","type":"uint8"}],
-      "type":"function"
-    }
-  ];
-  
-  // Get ERC20 Token contract instance
-  let contract = new web3.eth.Contract(minABI, tokenAddress);
+  let contract = new web3.eth.Contract(tokenAbi, process.env.REACT_APP_TOKEN_ADDRESS);
   
   async function getBalance() {
-    const balance = await contract.methods.balanceOf(walletAddress).call();
+    
+    const balance = await contract.methods.balanceOf(account).call();
     const balanceInWei = web3.utils.fromWei(balance);
 
     let shooBalance = balanceInWei;
 
-    setShooBalance(shooBalance)
+    setShooBalance(parseInt(shooBalance).toFixed())
 
   }
 
   function formatBalance(balance: string) {
     return new Intl.NumberFormat('en-GB', { 
-      notation: "compact"
+      notation: "compact",
+      minimumFractionDigits: 2,
     }).format(parseFloat(balance));
   }
 
@@ -89,8 +66,8 @@ function AuthenticatedUserComponent(props: any) {
           <img src={shoo} alt="Shoo Token" />
           <span>{ formatBalance(shooBalance) }</span>
         </div>
-        <span onClick={showModal}>
-          <Avatar size="large" icon={<UserOutlined />} />
+        <span className="wallet" onClick={showModal}>
+          <FontAwesomeIcon icon={faWallet} />
         </span>
       </div>
       <Modal
@@ -100,20 +77,16 @@ function AuthenticatedUserComponent(props: any) {
         onCancel={handleCancel}
       >
         <div className="auth-modal-wrapper">
-          <div className="address-details mb-5">
+          <div className="address-details mb-10">
             <span className="label">Your Address</span>
             <span className="address">{account}</span>
           </div>
-          <a
-            href={getLink()}
-            className="mb-5"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View on BSc Scan
-          </a>
           <div className="balance-row mb-15">
-            <span className="balance-label">Shoo Balance</span>
+            <div> 
+              <img src={shoo} alt="Shoo Token" />
+              <span className="balance-label">Shoo Balance</span>
+            </div>
+          
             <span className="balance-amount">{ formatBalance(shooBalance) }</span>
           </div>
           <Button onClick={disconnect} className="disconnect-button">

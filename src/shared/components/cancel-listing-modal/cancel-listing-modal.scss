@@ -1,0 +1,32 @@
+
+    .listing-modal-info-message {
+        font-size: 13px;
+        line-height: 20px;
+    }
+
+    .ant-form-item:last-child {
+        margin: 0;
+    }
+
+    .footer-submit {
+    }
+
+    .modal-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .image-wrap {
+        background: #000527;
+        width: 100%;   
+        img {
+            margin: auto;
+            margin-bottom: 25px;
+            padding: 50px;
+        }
+      }
+    }
+
+    .cancel {
+            width: 100%;
+    }
+

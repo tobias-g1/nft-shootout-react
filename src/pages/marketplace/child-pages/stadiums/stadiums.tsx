@@ -4,12 +4,13 @@ import { InfoMessage } from "../../../../shared/models/info-message.model";
 function StadiumsForSalePageComponent(props: any) {
 
   let stadiums: string[] = [];
+
   const infoMessage: InfoMessage = {
-    header: "No Stadiums for Sale",
+    header: "Stadiums are coming soon",
     description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis.",
-    link: "/marketplace",
-    buttonText: "Visit our Marketplace",
+    link: "/store",
+    buttonText: "Visit our Store",
 };
 
   return (

@@ -12,6 +12,7 @@
         min-width: 125px;
         justify-content: space-between;
         margin-right: 15px;
+        border: 1px solid #30323e;
         img {
             height: 25px;
             border-radius: 100%;
@@ -20,6 +21,22 @@
         span {
             font-weight: bold;
             color: white;
+        }
+    }
+    .wallet {
+        display: flex;
+        background: #000527;
+        height: 35px;
+        width: 35px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        padding: 25px;
+        color: white;
+        border: 1px solid #30323e;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.7;
         }
     }
 }
@@ -52,6 +69,12 @@
         .balance-amount {
             font-weight: bold;
             color: #ffffff;
+        }
+        img {
+            border-radius: 100%;
+            height: 25px;
+            width: 25px;
+            margin-right: 10px;
         }
     }
     a {

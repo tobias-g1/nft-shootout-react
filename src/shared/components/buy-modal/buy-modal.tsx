@@ -1,4 +1,4 @@
-import "./listing-modal.scss";
+import "./buy-modal.scss";
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import { Form, Input, Modal, Button, Image, notification } from "antd";
 import { Item } from "../../models/item";
@@ -12,6 +12,7 @@ import { useLocation } from "react-router-dom";
 import { marketplaceAbi } from "../../abi/marketplace.abi";
 import axios from "axios";
 import shoo from "../../../assets/img/shoo.png";
+import { tokenAbi } from "../../abi/token.abi";
 
 type Props = {
   item: Item;
@@ -19,13 +20,13 @@ type Props = {
 
 const web3 = new Web3(process.env.REACT_APP_RPC_URL);
 
-function ListForSaleModal(props: Props, ref: any) {
+function BuyModal(props: Props, ref: any) {
 
-  const { account } = useWeb3React()
   const [isListingModalVisible, setListingModalVisible] = useState(false);
   const [shooPrice, setShooPrice] = useState(0);
   const [form] = Form.useForm();
   const location = useLocation();
+  const { account } = useWeb3React()
 
   useEffect(() => {
     checkForApproved();
@@ -50,13 +51,13 @@ function ListForSaleModal(props: Props, ref: any) {
     {
       id: 1,
       order: 1,
-      name: 'Approve NFT',
+      name: 'Approve Token',
       status: 0
     },
     {
       id: 2,
       order: 2,
-      name: 'Set Price',
+      name: 'Buy',
       status: 0
     }
   ]
@@ -86,14 +87,14 @@ function ListForSaleModal(props: Props, ref: any) {
 
   web3.eth.setProvider(Web3.givenProvider);
 
-  const contract = new web3.eth.Contract(nftAbi, props.item.tokenAddress);
+  const tokenContract = new web3.eth.Contract(tokenAbi, props.item.tokenAddress);
   const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, process.env.REACT_APP_MARKETPLACE_ADDRESS);
 
    const approveToken = async () => {
 
     setStepStatus(1, 1);
 
-      contract.methods.approve(process.env.REACT_APP_MARKETPLACE_ADDRESS, props.item.tokenId).send({from: account })
+    tokenContract.methods.approve(process.env.REACT_APP_TOKEN_ADDRESS, process.env.REACT_APP_MARKETPLACE_ADDRESS).send({from: account })
       .on('error', function(error){
         setStepStatus(1, 0)
       })
@@ -105,9 +106,9 @@ function ListForSaleModal(props: Props, ref: any) {
   
   }
 
-  const listForSale = () => {
+  const buyItem = () => {
 
-    marketPlaceContract.methods.createAskOrder(props.item.tokenAddress, props.item.tokenId, web3.utils.toWei(price.toString(), 'ether')).send({from: account })
+    marketPlaceContract.methods.buyTokenWithSHOO(props.item.tokenAddress, props.item.tokenId, web3.utils.toWei(price.toString(), 'ether')).send({from: account })
     .on('error', function(error){
       setStepStatus(2, 0)
     })
@@ -115,7 +116,7 @@ function ListForSaleModal(props: Props, ref: any) {
       if (confirmationNumber === 0) {
         setStepStatus(2, 2)
         setListingModalVisible(false)
-        openNotificationWithIcon('success', 'Your listing was successful', 'Your NFT is now listed on our marketplace.')
+        openNotificationWithIcon('success', 'Purchase successful', 'You have successfully purchased this item.')
       }
     })
   };
@@ -139,10 +140,6 @@ function ListForSaleModal(props: Props, ref: any) {
     if (step.status === 1) {
       return true;
     }
-  }
-
-  const priceAfter = () => {
-    return shooPrice
   }
 
   return (
@@ -181,7 +178,7 @@ function ListForSaleModal(props: Props, ref: any) {
               htmlType="submit"
               type="primary"
               size="large"
-              onClick={listForSale}
+              onClick={buyItem}
               loading={isLoading(2)}
             >
               List for Sale
@@ -194,4 +191,4 @@ function ListForSaleModal(props: Props, ref: any) {
   );
 }
 
-export default forwardRef(ListForSaleModal);
+export default forwardRef(BuyModal);
