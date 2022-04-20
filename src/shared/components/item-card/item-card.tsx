@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import shoo from "../../../assets/img/shoo.png";
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import BuyModal from "../buy-modal/buy-modal";
 
 type Props = {
   item: Item;
@@ -23,6 +24,7 @@ const web3 = new Web3(rpcURL);
 function ItemCardComponent(props: Props) {
 
   const fref: any = useRef();
+  const bref: any = useRef();
   const cref: any = useRef();
   const { account } = useWeb3React()
   const { price } = props.item;
@@ -35,11 +37,18 @@ function ItemCardComponent(props: Props) {
     cref.current.toggleModal();
   };
 
+  const handleBuyModal = (e: any) => {
+    bref.current.toggleModal();
+  };
+
   const menu = (
     <Menu>
       <Menu.Item key="0">
         {!props.item.forSale && account === props.item.owner ? <span onClick={handleListingModal}>
           List for Sale
+        </span> : null}
+        {props.item.forSale && account !== props.item.owner ? <span onClick={handleBuyModal}>
+          Quick Buy
         </span> : null}
         {props.item.forSale && account === props.item.owner ? <span onClick={handleCancelModal}>
           Cancel Listing
@@ -84,6 +93,7 @@ function ItemCardComponent(props: Props) {
       </div>
       <ListForSaleModal item={props.item} ref={fref}></ListForSaleModal>
       <CancelListingModal item={props.item} ref={cref}></CancelListingModal>
+      <BuyModal item={props.item} ref={bref}></BuyModal>
     </>
   );
 }

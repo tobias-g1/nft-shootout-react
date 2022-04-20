@@ -1,4 +1,4 @@
-const tokenAbi = [
+const tokenAbi: any = [
   { inputs: [], stateMutability: "nonpayable", type: "constructor" },
   {
     anonymous: false,
