@@ -1,5 +1,5 @@
 import "./item-card.scss";
-import { Dropdown, Image, Menu } from "antd";
+import { Dropdown, Image, Menu, Tooltip } from "antd";
 import fallback from "../../../assets/img/fallback.svg"
 import { useRef } from "react";
 import { Item } from "../../models/item";
@@ -25,6 +25,7 @@ function ItemCardComponent(props: Props) {
   const fref: any = useRef();
   const cref: any = useRef();
   const { account } = useWeb3React()
+  const { price } = props.item;
 
   const handleListingModal = (e: any) => {
     fref.current.toggleModal();
@@ -51,6 +52,13 @@ function ItemCardComponent(props: Props) {
     return '/item/' + props.item.tokenAddress + '/' + props.item.tokenId
   }
 
+  function formatBalance(balance: string) {
+    return new Intl.NumberFormat('en-GB', { 
+      notation: "compact",
+      minimumFractionDigits: 2,
+    }).format(parseFloat(balance));
+  }
+
   return (
     <>
       <div className="listing-card">
@@ -65,10 +73,10 @@ function ItemCardComponent(props: Props) {
             <h3>#{props.item.tokenId}</h3>
           </div>
           <div className="right">
-            {props.item.forSale ? <div className="price-chip">
+            {props.item.forSale ? <Tooltip title={props.item.price}> <div className="price-chip">
               <img src={shoo} alt="" />
-              <span>{props.item.price}</span>
-            </div> : null}
+              <span>{formatBalance(props.item.price)}</span>
+            </div> </Tooltip>: null} 
           </div>
         </div>
       </div>
