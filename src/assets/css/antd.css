@@ -14101,7 +14101,7 @@ textarea.ant-input {
   font-weight: normal;
   font-size: 14px;
   text-align: center;
-  background-color: #fafafa;
+  background-color: 0;
   border: 1px solid #8092a3;
   border-radius: 2px;
   transition: all 0.3s;
@@ -14810,7 +14810,7 @@ textarea.ant-input-number {
   font-weight: normal;
   font-size: 14px;
   text-align: center;
-  background-color: #fafafa;
+  background-color: 0;
   border: 1px solid #8092a3;
   border-radius: 2px;
   transition: all 0.3s;
@@ -17099,14 +17099,14 @@ textarea.ant-mentions {
   text-decoration: none;
 }
 .ant-modal-header {
-  padding: 16px 24px;
+  padding: 50px 50px;
   color: #89aed2;
-  background: #080E39;
+  background: 50px;
   border-bottom: 1px solid #080E39;
   border-radius: 2px 2px 0 0;
 }
 .ant-modal-body {
-  padding: 24px;
+  padding: 50px;
   font-size: 14px;
   line-height: 1.5715;
   word-wrap: break-word;

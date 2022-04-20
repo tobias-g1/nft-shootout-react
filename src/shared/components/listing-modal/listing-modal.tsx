@@ -2,7 +2,7 @@ import "./listing-modal.scss";
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import { Form, Input, Modal, Button, Image, notification } from "antd";
 import { Item } from "../../models/item";
-import fallback from "../../../assets/img/fallback.svg"
+import fallback from "../../../assets/img/player-cards/0034.png"
 import StepIndicatorComponent from "../step-indicator/step-indicator";
 import { Step } from "../../models/step.model";
 import { useWeb3React } from "@web3-react/core";
@@ -11,6 +11,7 @@ import {nftAbi} from "../../abi/collection.abi"
 import { useLocation } from "react-router-dom";
 import { marketplaceAbi } from "../../abi/marketplace.abi";
 import axios from "axios";
+import shoo from "../../../assets/img/shoo.png";
 
 type Props = {
   item: Item;
@@ -23,7 +24,7 @@ function ListForSaleModal(props: Props, ref: any) {
 
   const { account } = useWeb3React()
   const [isListingModalVisible, setListingModalVisible] = useState(false);
-  const [shooPrice, setShooPrice] = useState(null);
+  const [shooPrice, setShooPrice] = useState(0);
   const [form] = Form.useForm();
   const location = useLocation();
 
@@ -152,13 +153,13 @@ function ListForSaleModal(props: Props, ref: any) {
     <>
       <Modal
         visible={isListingModalVisible}
-        title='List for Sale'
         onCancel={handleCancel}
         footer={null}
       >
        <div className="modal-wrapper">
          <Image src={!props.item.imageUrl ? '' : props.item.imageUrl } fallback={fallback}></Image>
        <div>
+         <h2 className="mb-15">List #{props.item.tokenId} for Sale </h2>
          <p>List your NFT for sale in our marketplace. Upon listing of this NFT, this
           NFT will be removed from your wallet and put on sale at the price
           entered above.</p>
@@ -173,10 +174,10 @@ function ListForSaleModal(props: Props, ref: any) {
           <Form.Item
             name="price"
             rules={[
-              { required: true }
+              { required: true, message: 'Please enter a price' }
             ]}
           >
-          <Input size="large"  placeholder="Enter List Price" value={price} onChange={(e)=> setPrice(parseInt(e.target.value))}  addonAfter={(shooPrice * price).toFixed(2)}/>
+          <Input size="large"  placeholder="Enter List Price" value={price} onChange={(e)=> setPrice(parseInt(e.target.value || '0'))} prefix={<img className="shoo-icon" src={shoo} />}  addonAfter={ <span>{'$ ' + ((price) ? (shooPrice * price).toFixed(2) : '0.00')}</span>}/>
           </Form.Item>
           <Form.Item >
             <Button className="footer-submit"
