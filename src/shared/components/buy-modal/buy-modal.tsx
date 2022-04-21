@@ -13,6 +13,7 @@ import { marketplaceAbi } from "../../abi/marketplace.abi";
 import axios from "axios";
 import shoo from "../../../assets/img/shoo.png";
 import { tokenAbi } from "../../abi/token.abi";
+import NotificationService from "../../../core/services/notification.service";
 
 type Props = {
   item: Item;
@@ -24,6 +25,7 @@ function BuyModal(props: Props, ref: any) {
 
   const [isListingModalVisible, setListingModalVisible] = useState(false);
   const [isApproved, setApproval] = useState(false);
+  const [isBuying, setIsBuying] = useState(false);
   const [loadingApproved, setLoadingApproved] = useState(false);
   const [shooPrice, setShooPrice] = useState(0);
   const [form] = Form.useForm();
@@ -49,21 +51,6 @@ function BuyModal(props: Props, ref: any) {
     setListingModalVisible(!isListingModalVisible);
   };
 
-  const stepList: Step[] = [
-    {
-      id: 1,
-      order: 1,
-      name: 'Approve Token',
-      status: 0
-    },
-    {
-      id: 2,
-      order: 2,
-      name: 'Buy',
-      status: 0
-    }
-  ]
-
   const [price, setPrice] = useState(0)
 
   async function getShooPrice() {
@@ -73,13 +60,6 @@ function BuyModal(props: Props, ref: any) {
       })
   }
 
-  const openNotificationWithIcon = (type: string, title: string, text: string) => {
-    notification[type]({
-      message: title,
-      description: text
-    });
-  };
-
   web3.eth.setProvider(Web3.givenProvider);
 
   const tokenContract = new web3.eth.Contract(tokenAbi, process.env.REACT_APP_TOKEN_ADDRESS);
@@ -87,9 +67,9 @@ function BuyModal(props: Props, ref: any) {
 
    const approveToken = async () => {
 
-     setLoadingApproved(true)
+    setLoadingApproved(true)
 
-    tokenContract.methods.approve(process.env.REACT_APP_MARKETPLACE_ADDRESS, web3.utils.toWei(price.toString(), 'ether')).send({from: account })
+    tokenContract.methods.approve(process.env.REACT_APP_MARKETPLACE_ADDRESS, process.env.DEFAULT_APPROVAL).send({from: account })
       .on('error', function(error){
              setLoadingApproved(false)
       })
@@ -99,12 +79,10 @@ function BuyModal(props: Props, ref: any) {
           setApproval(true)
         }
       })
-  
+     
   }
 
   const buyItem = () => {
-
-    console.log(props.item.tokenAddress, props.item.tokenId, web3.utils.toWei(price.toString(), 'ether'))
 
     marketPlaceContract.methods.buyTokenWithSHOO(props.item.tokenAddress, props.item.tokenId, web3.utils.toWei(price.toString(), 'ether')).send({from: account })
     .on('error', function(error){
@@ -113,7 +91,7 @@ function BuyModal(props: Props, ref: any) {
     .on('confirmation', function(confirmationNumber, receipt){
       if (confirmationNumber === 0) {
         setListingModalVisible(false)
-        openNotificationWithIcon('success', 'Purchase successful', 'You have successfully purchased this item.')
+        NotificationService.sendNotification('success', 'Purchase successful', 'You have successfully purchased this item.')
       }
     })
   };
@@ -147,8 +125,8 @@ function BuyModal(props: Props, ref: any) {
           entered above.</p>
        </div>
        </div>
-        {!isApproved && <Button className="modal-button" type="primary" size="large" onClick={approveToken}>Approve</Button>}
-        {isApproved && <Button className="modal-button" type="primary" size="large" onClick={buyItem}> Buy with SHOO </Button>}
+        {!isApproved && <Button loading={loadingApproved} className="modal-button" type="primary" size="large" onClick={approveToken}>Approve</Button>}
+        {isApproved && <Button loading={isBuying}className="modal-button" type="primary" size="large" onClick={buyItem}> Buy with SHOO </Button>}
         <span className="estimate">Full Price: {props.item.price} {process.env.REACT_APP_TOKEN_SYMBOL}</span>
 
       </Modal>

@@ -12,7 +12,6 @@
         min-width: 125px;
         justify-content: space-between;
         margin-right: 15px;
-        border: 1px solid #30323e;
         img {
             height: 25px;
             border-radius: 100%;
@@ -25,15 +24,14 @@
     }
     .wallet {
         display: flex;
-        background: #000527;
+        text-align: center;
         height: 35px;
         width: 35px;
         align-items: center;
         justify-content: center;
         border-radius: 100%;
-        padding: 25px;
         color: white;
-        border: 1px solid #30323e;
+        font-size: 20px;
         cursor: pointer;
         &:hover {
             opacity: 0.7;
@@ -41,6 +39,7 @@
     }
 }
 .auth-modal-wrapper {
+    text-align: center;
     .address-details {
         display: flex;
         flex-direction: column;
@@ -62,6 +61,7 @@
         display: flex;
         justify-content: space-between;
         font-size: 15px;
+        margin: 25px 0;
         .balance-label {
             font-weight: bold;
             color: #ffffff;
@@ -85,4 +85,10 @@
     .disconnect-button {
         width: 100%;
     }
+}
+
+.explorer-link {
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 0 !important;
 }

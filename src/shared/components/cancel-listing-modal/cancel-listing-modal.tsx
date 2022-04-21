@@ -6,6 +6,7 @@ import fallback from "../../../assets/img/fallback.svg"
 import { useWeb3React } from "@web3-react/core";
 import Web3 from "web3";
 import {marketplaceAbi} from "../../abi/marketplace.abi"
+import NotificationService from "../../../core/services/notification.service";
 
 type Props = {
   item: Item;
@@ -23,7 +24,7 @@ function CancelListingModal(props: Props, ref: any) {
     ref,
     () => ({
       toggleModal() {
-        setCancelListingModalVisible(!isCancelListingModalVisible);
+        setCancelListingModalVisible(!isCancelListingModalVisible)
       },
     }),
     []
@@ -48,42 +49,35 @@ function CancelListingModal(props: Props, ref: any) {
     marketPlaceContract.methods.cancelAskOrder(props.item.tokenAddress, props.item.tokenId).send({from: account })
     .on('error', function(error){
       setIsLoading(false)
-      openNotificationWithIcon('error', 'Error', "We we're unable to cancel your listing, please try again later.")
+      NotificationService.sendNotification('error', 'Error', "We we're unable to cancel your listing, please try again later.")
     })
     .on('confirmation', function(confirmationNumber, receipt){
       setIsLoading(false);
       setCancelListingModalVisible(false);
       if (confirmationNumber === 0) {
-        openNotificationWithIcon('success', 'Your listing has been cancelled successfully', 'Your NFT is now be available within your wallet to play')
+        NotificationService.sendNotification('success', 'Your listing has been cancelled successfully', 'Your NFT is now be available within your wallet to play')
       }
     })
-  };
-
-  const openNotificationWithIcon = (type: string, title: string, text: string) => {
-    notification[type]({
-      message: title,
-      description: text
-    });
   };
 
   return (
     <>
       <Modal
         visible={isCancelListingModalVisible}
-        title='Cancel Listing'
         onOk={handleOk}
         onCancel={handleCancel}
         footer={null}
       >
-       <div className="modal-wrapper">
-         <div className="image-wrap">
-         <Image src={!props.item.imageUrl ? '' : props.item.imageUrl } fallback={fallback}></Image>
-         </div>
-       <div>
-         <p>Cancel your listing...</p>
+         <div className="action-modal">
+         <Image className="mb-15" src={!props.item.imageUrl ? '' : props.item.imageUrl } fallback={fallback}></Image>
+       <div className="contents">
+         <h2 className="mb-15">Cancel listing for #{props.item.tokenId}</h2>
+         <p>List your NFT for sale in our marketplace. Upon listing of this NFT, this
+          NFT will be removed from your wallet and put on sale at the price
+          entered above.</p>
        </div>
        </div>
-         <Button type="primary" className="cancel" size="large" loading={isLoading} onClick={cancelListing}>Cancel Listing</Button>
+        <Button loading={isLoading} className="modal-button" type="primary" size="large" onClick={cancelListing}>Cancel Listing</Button>
          </Modal>
     </>
   );
