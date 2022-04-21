@@ -50,6 +50,10 @@ function AuthenticatedUserComponent(props: any) {
 
   }
 
+  const getExplorer = () => {
+    return 'https://bscscan.com/address/' + account
+  }
+
   function formatBalance(balance: string) {
     return new Intl.NumberFormat('en-GB', { 
       notation: "compact",
@@ -71,14 +75,14 @@ function AuthenticatedUserComponent(props: any) {
         </span>
       </div>
       <Modal
-        title="Your Wallet"
         visible={isModalVisible}
         footer={null}
         onCancel={handleCancel}
       >
         <div className="auth-modal-wrapper">
-          <div className="address-details mb-10">
-            <span className="label">Your Address</span>
+          <h2 className="mb-10">Your Wallet</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit reprehenderit quae sit, dolorum voluptate harum laudantium esse.</p>
+          <div className="address-details mb-15">
             <span className="address">{account}</span>
           </div>
           <div className="balance-row mb-15">
@@ -86,12 +90,12 @@ function AuthenticatedUserComponent(props: any) {
               <img src={shoo} alt="Shoo Token" />
               <span className="balance-label">Shoo Balance</span>
             </div>
-          
             <span className="balance-amount">{ formatBalance(shooBalance) }</span>
           </div>
           <Button onClick={disconnect} className="disconnect-button">
             Disconnect
           </Button>
+          <a href={getExplorer()} rel="noreferrer" target="_blank" className="explorer-link">View Wallet on Explorer</a>
         </div>
       </Modal>
     </>

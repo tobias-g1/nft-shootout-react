@@ -1,57 +1,20 @@
-
-    .listing-modal-info-message {
-        font-size: 13px;
-        line-height: 20px;
-    }
-
-    .ant-form-item:last-child {
-        margin: 0;
-    }
-
-    .footer-submit {
-    }
-
-    .modal-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      img {
-          margin: auto;
-          margin-bottom: 25px;
-          height: 350px;
-      }
-
-    }
-
-    .ant-form-item {
-        margin-bottom: 0;
-    }
-
-    .approve {
-        button {
-            width: 100%;
-        }
-    }
-
-    .price {
-        form {
-            display: flex;
-            .ant-row:first-child {
-                flex: 1;
-                margin-right: 15px;
-            }
-        }
-    }
-
-    .price-info {
+.price {
+    form {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-top: 5px;
+        .ant-row:first-child {
+            flex: 1;
+            margin-right: 15px;
+        }
     }
+}
 
-    .shoo-icon {
-        height: 20px;
-        width: 20px;
-        border-radius: 100%;
-    }
+.shoo-icon {
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    margin-right: 5px;
+}
+
+.ant-form-item {
+    margin-bottom: 0;
+}
