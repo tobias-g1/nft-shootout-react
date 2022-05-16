@@ -7,6 +7,7 @@ const NotificationService = {
       description: text,
     });
   },
+  
 };
 
 export default NotificationService;

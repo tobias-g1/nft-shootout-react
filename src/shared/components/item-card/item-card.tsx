@@ -44,7 +44,6 @@ function ItemCardComponent(props: Props) {
   const menu = (
     <Menu>
       
-      
         <Menu.Item key="5">
           <Link to={getLink()}><span onClick={handleListingModal}>View Item</span></Link>
         </Menu.Item>
