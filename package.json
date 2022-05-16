@@ -61,8 +61,7 @@
     "postinstall": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
-    "ssr": "node server/index.js",
-    "start:heroku": "node server/index.js"
+    "ssr": "node server/index.js"
   },
   "eslintConfig": {
     "extends": [
