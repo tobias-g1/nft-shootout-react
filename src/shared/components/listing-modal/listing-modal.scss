@@ -1,0 +1,20 @@
+.price {
+    form {
+        display: flex;
+        .ant-row:first-child {
+            flex: 1;
+            margin-right: 15px;
+        }
+    }
+}
+
+.shoo-icon {
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    margin-right: 5px;
+}
+
+.ant-form-item {
+    margin-bottom: 0;
+}

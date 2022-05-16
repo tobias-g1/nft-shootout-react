@@ -1,0 +1,50 @@
+Footer {
+    padding: 50px;
+    .wrapper {
+        .top {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            align-items: center;
+            img {
+                height: 50px;
+            }
+            div {
+                a {
+                    font-size: 20px;
+                    margin-right: 10px;
+                }
+            }
+        }
+        .middle {
+            ul {
+                list-style: none;
+                padding: 0;
+                li {
+                    display: inline;
+                    margin-right: 10px;
+                }
+            }
+        }
+        p {
+            font-size: 13px;
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    Footer {
+        .wrapper {
+            text-align: center;
+            .top {
+                margin-bottom: 10px;
+            }
+        }
+    }
+    .rights-label {
+        display: block;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+}
