@@ -58,6 +58,7 @@
   "scripts": {
     "start": "lessc './src/main.less' './src/assets/css/antd.css' --js && react-app-rewired start",
     "build": "react-app-rewired build",
+    "postinstall": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "ssr": "node server/index.js",
