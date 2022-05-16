@@ -24,7 +24,7 @@ h5,
 h6 {
   font-weight: bold;
   margin: 0;
-  text-transform: capitalize;
+  text-transform: uppercase;
   line-height: normal;
   letter-spacing: 1.5px;
 
@@ -67,11 +67,11 @@ p {
   margin: 0;
   line-height: 24.5px;
   margin-bottom: 15px;
-  color: #8092a3;
+  color: #b6b8b9;
 }
 
 button {
-
+  text-transform: uppercase;
 }
 
 .mb-5 {
@@ -99,7 +99,6 @@ button {
   background-size: cover;
   background-position: bottom;
   background-blend-mode: color;
-  background-color: #080f3985;
 }
 
 @keyframes pulse {

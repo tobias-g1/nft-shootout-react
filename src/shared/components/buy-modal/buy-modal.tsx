@@ -128,7 +128,6 @@ function BuyModal(props: Props, ref: any) {
         {!isApproved && <Button loading={loadingApproved} className="modal-button" type="primary" size="large" onClick={approveToken}>Approve</Button>}
         {isApproved && <Button loading={isBuying}className="modal-button" type="primary" size="large" onClick={buyItem}> Buy with SHOO </Button>}
         <span className="estimate">Full Price: {props.item.price} {process.env.REACT_APP_TOKEN_SYMBOL}</span>
-
       </Modal>
     </>
   );

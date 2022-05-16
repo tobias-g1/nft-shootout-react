@@ -1,5 +1,5 @@
 import { Layout } from 'antd';
-import logo from '../../assets/img/logo.png'
+import logo from '../../assets/img/logo.jpeg'
 import './footer.scss'
 import SocialLinksComponent from '../../shared/components/social-links/social-links';
 import { Link } from 'react-router-dom';
