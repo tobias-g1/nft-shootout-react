@@ -1,14 +1,11 @@
 import "./listing-modal.scss";
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
-import { Form, Input, Modal, Button, Image, notification } from "antd";
+import { Form, Input, Modal, Button, Image } from "antd";
 import { Item } from "../../models/item";
 import fallback from "../../../assets/img/fallback.svg"
-import StepIndicatorComponent from "../step-indicator/step-indicator";
-import { Step } from "../../models/step.model";
 import { useWeb3React } from "@web3-react/core";
 import Web3 from "web3";
 import {nftAbi} from "../../abi/collection.abi"
-import { useLocation } from "react-router-dom";
 import { marketplaceAbi } from "../../abi/marketplace.abi";
 import axios from "axios";
 import shoo from "../../../assets/img/shoo.png";
@@ -28,7 +25,6 @@ function ListForSaleModal(props: Props, ref: any) {
   const [price, setPrice] = useState(0)
   const [shooPrice, setShooPrice] = useState(0);
   const [form] = Form.useForm();
-  const location = useLocation();
 
   web3.eth.setProvider(Web3.givenProvider);
 
@@ -38,7 +34,7 @@ function ListForSaleModal(props: Props, ref: any) {
   useEffect(() => {
     getShooPrice();
     checkApprovalState();
-  }, [isListingModalVisible]);
+  }, [isListingModalVisible, getShooPrice]);
 
   useImperativeHandle(
     ref,
@@ -78,7 +74,6 @@ function ListForSaleModal(props: Props, ref: any) {
 
   const checkApprovalState = async () => {
       const approval = await contract.methods.isApprovedForAll(account, process.env.REACT_APP_MARKETPLACE_ADDRESS).call()
-      console.log(approval)
       if (approval) { setApproval(true) } else { 
         const approvedAddress = await contract.methods.getApproved(props.item.tokenId).call()
         if (approvedAddress === process.env.REACT_APP_MARKETPLACE_ADDRESS) {

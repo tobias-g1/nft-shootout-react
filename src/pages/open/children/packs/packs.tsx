@@ -6,7 +6,6 @@ import { InfoMessage } from '../../../../shared/models/info-message.model';
 function OpenPacksPageComponent(props: any) {
 
     const title: string = 'Open';
-    const description: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse';
     const meta: any = {
         title,
         description: 'TBA',

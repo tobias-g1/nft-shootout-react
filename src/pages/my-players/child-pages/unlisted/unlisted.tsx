@@ -1,6 +1,5 @@
 import { useWeb3React } from "@web3-react/core";
 import { Row, Col } from "antd";
-import { Content } from "antd/lib/layout/layout";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";

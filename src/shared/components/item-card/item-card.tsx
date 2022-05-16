@@ -23,7 +23,6 @@ function ItemCardComponent(props: Props) {
   const cref: any = useRef();
   const chref: any = useRef();
   const { account } = useWeb3React();
-  const { price } = props.item;
 
   const handleListingModal = (e: any) => {
     fref.current.toggleModal();

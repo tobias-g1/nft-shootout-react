@@ -1,4 +1,4 @@
-import { useEffect, createContext } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./filter-options.scss";
 import axios from 'axios';

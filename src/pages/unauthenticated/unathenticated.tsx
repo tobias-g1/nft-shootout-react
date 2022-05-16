@@ -1,11 +1,10 @@
-import PageHeaderComponent from "../../shared/components/page-header/page-header";
 import "./unauthenticated.scss";
 import DocumentMeta from "react-document-meta";
 import { Content } from "antd/lib/layout/layout";
 import { Button, message } from "antd";
 import { useWeb3React } from "@web3-react/core";
 import { injected } from "../../shared/components/wallet/connectors";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 function UnauthenticatedPageComponent(props: any) {

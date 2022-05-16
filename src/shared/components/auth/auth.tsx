@@ -36,7 +36,7 @@ function AuthComponent(props: any) {
       }
     }
     connectWalletOnPageLoad()
-  }, [])
+  }, [activate])
 
   return (
     <div>

@@ -29,7 +29,7 @@ function SocialLinksComponent(props: any) {
     return (
         <div className="social-links">
             {socialLinks.map(function (link, index) {
-                return <a href={link.link} key={index} target="_blank"><FontAwesomeIcon icon={link.icon} /></a>;
+                return <a href={link.link} key={index} target="_blank" rel="noreferrer"><FontAwesomeIcon icon={link.icon} /></a>;
             })
             }
         </div>

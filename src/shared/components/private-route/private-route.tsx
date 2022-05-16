@@ -13,7 +13,7 @@ function PrivateRoute(props: { children: React.ReactNode }) {
       ) : (
         <Navigate
           replace={true}
-          to={location.pathname.match(/^\/[^\/]+/)[0] + '/login'}
+          to={location.pathname.match(/^\/[^/]+/)[0] + '/login'}
           state={{ from: location.pathname }}
         />
       )

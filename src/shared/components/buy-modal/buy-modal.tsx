@@ -1,17 +1,13 @@
 import "./buy-modal.scss";
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
-import { Form, Input, Modal, Button, Image, notification } from "antd";
+import { Form, Modal, Button, Image } from "antd";
 import { Item } from "../../models/item";
 import fallback from "../../../assets/img/player-cards/0034.png"
-import StepIndicatorComponent from "../step-indicator/step-indicator";
-import { Step } from "../../models/step.model";
 import { useWeb3React } from "@web3-react/core";
 import Web3 from "web3";
-import {nftAbi} from "../../abi/collection.abi"
 import { useLocation } from "react-router-dom";
 import { marketplaceAbi } from "../../abi/marketplace.abi";
 import axios from "axios";
-import shoo from "../../../assets/img/shoo.png";
 import { tokenAbi } from "../../abi/token.abi";
 import NotificationService from "../../../core/services/notification.service";
 

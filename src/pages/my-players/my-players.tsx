@@ -1,11 +1,8 @@
 import { Content } from "antd/lib/layout/layout";
-import InfoMessageComponent from "../../shared/components/info-message/info-message";
 import PageHeaderComponent from "../../shared/components/page-header/page-header";
-import { Row, Col } from "antd";
 import "./my-players.scss";
 import DocumentMeta from "react-document-meta";
-import { InfoMessage } from "../../shared/models/info-message.model";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { useWeb3React } from "@web3-react/core";
 
 function MyPlayersPageComponent(props: any) {

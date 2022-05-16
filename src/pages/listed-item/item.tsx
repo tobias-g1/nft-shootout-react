@@ -1,7 +1,6 @@
 import PageHeaderComponent from '../../shared/components/page-header/page-header';
 import './item.scss'
 import DocumentMeta from 'react-document-meta';
-import { Item } from '../../shared/models/item';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';

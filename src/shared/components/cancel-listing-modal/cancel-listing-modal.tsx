@@ -1,6 +1,6 @@
 import "./cancel-listing-modal.scss";
-import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
-import { Form, Input, Modal, Button, Image, notification } from "antd";
+import { forwardRef, useImperativeHandle, useState } from "react";
+import { Modal, Button, Image} from "antd";
 import { Item } from "../../models/item";
 import fallback from "../../../assets/img/fallback.svg"
 import { useWeb3React } from "@web3-react/core";
@@ -27,7 +27,7 @@ function CancelListingModal(props: Props, ref: any) {
         setCancelListingModalVisible(!isCancelListingModalVisible)
       },
     }),
-    []
+    [setCancelListingModalVisible, isCancelListingModalVisible]
   );
 
   const handleOk = () => {

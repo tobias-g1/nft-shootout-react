@@ -1,6 +1,4 @@
-import Avatar from "antd/lib/avatar/avatar";
 import "./authenticated-user.scss";
-import { UserOutlined } from "@ant-design/icons";
 import Modal from "antd/lib/modal/Modal";
 import { useState } from "react";
 import shoo from "../../../assets/img/shoo.png";

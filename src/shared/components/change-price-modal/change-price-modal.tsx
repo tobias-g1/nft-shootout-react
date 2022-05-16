@@ -28,7 +28,7 @@ function ChangePriceModal(props: Props, ref: any) {
 
   useEffect(() => {
     getShooPrice();
-  }, [location]);
+  }, [location, getShooPrice]);
 
   useImperativeHandle(
     ref,
