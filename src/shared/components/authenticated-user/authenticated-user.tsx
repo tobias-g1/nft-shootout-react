@@ -34,7 +34,7 @@ function AuthenticatedUserComponent(props: any) {
     setIsModalVisible(false);
   };
 
-  let contract = new web3.eth.Contract(tokenAbi, process.env.REACT_APP_TOKEN_ADDRESS);
+  let contract = new web3.eth.Contract(tokenAbi, "0xcC046a8ba1f82B4FbB186f76e23E3DbEf297dA4c");
   
   async function getBalance() {
 

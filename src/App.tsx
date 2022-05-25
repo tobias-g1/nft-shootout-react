@@ -61,11 +61,10 @@ const App: FC = () => (
               </Route>
               <Route path="/item/:collectionAddress/:tokenId" element={<ItemPageComponent />}></Route>
               <Route path="/marketplace" element={<MarketplacePageComponent />}>
-                <Route path="players" element={<PrivateRoute><PlayersForSalePageComponent /></PrivateRoute>} />
-                <Route path="stadiums" element={<PrivateRoute><StadiumsForSalePageComponent /></PrivateRoute>} />
-                <Route path="youth-scouts" element={<PrivateRoute><YouthScoutsForSalePageComponent /></PrivateRoute>} />
+                <Route path="players" element={<PlayersForSalePageComponent />} />
+                <Route path="stadiums" element={<StadiumsForSalePageComponent />} />
+                <Route path="youth-scouts" element={<YouthScoutsForSalePageComponent />} />
                 <Route path="*" element={<Navigate to="/marketplace" replace />} />
-                <Route path="login" element={<UnauthenticatedPageComponent />} />
                 <Route index element={<Navigate to="/marketplace/players" />} />
               </Route>
               <Route path="my-players" element={<MyPlayersPageComponent />}>
