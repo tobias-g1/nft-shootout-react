@@ -1,5 +1,6 @@
 {
   "name": "nft-shootout-react",
+  "homepage": "https://nft-shootout-dev.herokuapp.com/",
   "version": "0.1.0",
   "config-overrides-path": "./config-overrides.js",
   "private": true,
