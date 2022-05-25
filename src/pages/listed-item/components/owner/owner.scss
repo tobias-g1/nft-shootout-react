@@ -1,6 +1,9 @@
 .owner-full {
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
+    max-width: 100%;
+    word-break: break-all;
     h2 {
         margin-bottom: 15px;
     }

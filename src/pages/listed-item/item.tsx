@@ -54,23 +54,19 @@ function ItemPageComponent(props: any) {
   }, []);
 
   return (
-    <div
-      className="item page-wrapper"
-      style={{ backgroundImage: "url(/assets/img/background.jpeg)" }}
-    >
+    <div className="item page-wrapper" style={{ backgroundImage: "url(/assets/img/background.jpeg)" }}>
       <DocumentMeta {...meta} />
-    
       {isLoading ? (
         <FullLoadingComponent />
       ) : (
        <>
-        <PageHeaderComponent showBack={true} header={title} />
+        <PageHeaderComponent header={title} />
         <Content>
           <Row gutter={50}>
-            <Col xs={2} sm={4} md={6} lg={12} xl={9}>
+            <Col xs={24} sm={24} md={12} lg={12} xl={9}>
               <ImageViewerComponent item={item} />
             </Col>
-            <Col xs={2} sm={4} md={6} lg={12} xl={15}>
+            <Col xs={24} sm={24} md={12} lg={12} xl={15}>
               <OverviewComponent item={item} />
               <AttributesComponent item={item} />
               <CollectionComponent item={item} />

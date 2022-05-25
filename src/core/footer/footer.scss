@@ -13,7 +13,7 @@ Footer {
             div {
                 a {
                     font-size: 22px;
-                    margin-right: 10px;
+                    margin: 5px;
                 }
             }
         }
@@ -23,7 +23,7 @@ Footer {
                 padding: 0;
                 li {
                     display: inline;
-                    margin-right: 10px;
+                    margin: 5px;
                 }
             }
         }
@@ -38,7 +38,12 @@ Footer {
         .wrapper {
             text-align: center;
             .top {
+                display: flex;
+                flex-direction: column;
                 margin-bottom: 10px;
+                img {
+                    margin-bottom: 10px;
+                }
             }
         }
     }
