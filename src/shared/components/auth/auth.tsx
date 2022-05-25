@@ -4,24 +4,55 @@ import './auth.scss'
 import { useWeb3React } from "@web3-react/core"
 import { useEffect } from 'react';
 import AuthenticatedUserComponent from '../authenticated-user/authenticated-user';
+import Web3 from "web3";
 
 function AuthComponent(props: any) {
 
+  const web3 = new Web3(process.env.REACT_APP_RPC_URL);
+
   const { active, activate, error } = useWeb3React()
 
-  const connectionError = (error: any) => {
-    console.log(error)
-    message.error(error.toString());
-  };
-
   async function connect() {
+    await checkNetwork();
     await activate(injected).then(res => {
-      if (error) {
-        connectionError(error)
-        return;
-      }
       localStorage.setItem('isWalletConnected', 'true')
     })
+  }
+
+  async function checkNetwork() {
+    if (window.ethereum) {
+      if (window.ethereum) {
+        try {
+          // check if the chain to connect to is installed
+          await window.ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: '0x61' }], // chainId must be in hexadecimal numbers
+          });
+        } catch (error) {
+          // This error code indicates that the chain has not been added to MetaMask
+          // if it is not, then install it into the user MetaMask
+          if (error.code === 4902) {
+            try {
+              await window.ethereum.request({
+                method: 'wallet_addEthereumChain',
+                params: [
+                  {
+                    chainId: '0x61',
+                    rpcUrl: process.env.REACT_APP_RPC_URL,
+                  },
+                ],
+              });
+            } catch (addError) {
+              console.error(addError);
+            }
+          }
+          console.error(error);
+        }
+      } else {
+        // if no window.ethereum then MetaMask is not installed
+        alert('MetaMask is not installed. Please consider installing it: https://metamask.io/download.html');
+      } 
+    }
   }
 
   useEffect(() => {
@@ -31,7 +62,6 @@ function AuthComponent(props: any) {
           await activate(injected)
           localStorage.setItem('isWalletConnected', 'true')
         } catch (ex) {
-          console.log(4)
         }
       }
     }

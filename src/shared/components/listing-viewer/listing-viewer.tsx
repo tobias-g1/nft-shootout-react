@@ -35,9 +35,7 @@ function ListingViewerComponent(props: any) {
           return <Col xs={24} sm={12} md={8} lg={6} xl={4}><ItemCardComponent item={listing}></ItemCardComponent></Col>
         })}</Row> : <ContentStatusMessageComponent header={infoMessage.header} description={infoMessage.description} link={infoMessage.link} buttonText={infoMessage.buttonText}></ContentStatusMessageComponent>
       }
-
     </div>
-
   );
 }
 

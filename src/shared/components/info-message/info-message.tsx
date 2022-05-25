@@ -7,7 +7,7 @@ function InfoMessageComponent(props: InfoMessage) {
     return (
         <div className="info-message">
             <div className="left">
-                <h2 className="mb-5">{props.header}</h2>
+                <h3 className="mb-15">{props.header}</h3>
                 <p>{props.description}</p>
             </div>
             <Link to={props.link}>

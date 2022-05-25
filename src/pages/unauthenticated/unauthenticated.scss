@@ -4,7 +4,15 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    max-width: 950px;
+    max-width: 500px;
     margin: auto;
     height: calc(100vh - 510px);
+    background: #000;
+    border-radius: 25px;
+    padding: 50px;
+    height: 250px;
+    img {
+        height: 50px;
+        margin-bottom: 15px;
+    }
 }

@@ -95,7 +95,7 @@ function ItemCardComponent(props: Props) {
             </Dropdown>
           </div>
           <Link to={getLink()}>
-            <Image
+            <Image preview={false}
               src={!props.item.imageUrl ? "" : props.item.imageUrl}
               fallback={fallback}
             ></Image>
@@ -114,7 +114,7 @@ function ItemCardComponent(props: Props) {
                   <span>{formatBalance(props.item.price)}</span>
                 </div>{" "}
               </Tooltip>
-            ) : null}
+            ) : null }
           </div>
         </div>
       </div>

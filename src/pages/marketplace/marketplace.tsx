@@ -19,7 +19,7 @@ function MarketplacePageComponent(props: any) {
     return (
         <div
             className="my-players page-wrapper"
-            style={{ backgroundImage: "url(/assets/img/background.png)" }}
+            style={{ backgroundImage: "url(/assets/img/background.jpeg)" }}
         >
             <DocumentMeta {...meta} />
             <PageHeaderComponent header={title} description={description} />

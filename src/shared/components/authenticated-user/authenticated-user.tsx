@@ -9,10 +9,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWallet } from '@fortawesome/free-solid-svg-icons'
 import { tokenAbi } from "../../abi/token.abi";
 
-const web3 = new Web3(process.env.REACT_APP_RPC_URL);
-
 function AuthenticatedUserComponent(props: any) {
-
+  const rpcURL = "https://data-seed-prebsc-1-s1.binance.org:8545/";
+  const web3 = new Web3(rpcURL);
   const { deactivate, account } = useWeb3React();
 
   async function disconnect() {
@@ -38,8 +37,8 @@ function AuthenticatedUserComponent(props: any) {
   let contract = new web3.eth.Contract(tokenAbi, process.env.REACT_APP_TOKEN_ADDRESS);
   
   async function getBalance() {
-    
-    const balance = await contract.methods.balanceOf(account).call();
+
+    const balance =  await contract.methods.balanceOf(account).call();
     const balanceInWei = web3.utils.fromWei(balance);
 
     let shooBalance = balanceInWei;
@@ -79,7 +78,7 @@ function AuthenticatedUserComponent(props: any) {
       >
         <div className="auth-modal-wrapper">
           <h2 className="mb-10">Your Wallet</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit reprehenderit quae sit, dolorum voluptate harum laudantium esse.</p>
+          <p>View your connected wallet, SHOO balance and disconnect your wallet.</p>
           <div className="address-details mb-15">
             <span className="address">{account}</span>
           </div>

@@ -7,6 +7,7 @@ import ContentStatusMessageComponent from "../../../../shared/components/content
 import FullLoadingComponent from "../../../../shared/components/full-loading/full-loading";
 import ItemCardComponent from "../../../../shared/components/item-card/item-card";
 import { InfoMessage } from "../../../../shared/models/info-message.model";
+import { Item } from "../../../../shared/models/item";
 
 function ForSalePlayersPageComponent(props: any) {
 
@@ -16,8 +17,7 @@ function ForSalePlayersPageComponent(props: any) {
   const { account } = useWeb3React();
   const infoMessage: InfoMessage = {
     header: "You don't have any players for sale",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis.",
+    description: "You don't have any players for sale at the moment. You can visit our marketplace to expand your team.",
     link: "/marketplace",
     buttonText: "Visit our Marketplace",
   };
@@ -26,7 +26,7 @@ function ForSalePlayersPageComponent(props: any) {
   async function search() {
     toggleLoading(true)
     await axios.get(process.env.REACT_APP_API_BASE_URL + 'marketplace/listed/' + process.env.REACT_APP_PLAYER_ADDRESS + '/' + account)
-      .then(res => {
+      .then((res) => {
         setListedItems(res.data)
         toggleLoading(false)
       })
@@ -42,7 +42,7 @@ function ForSalePlayersPageComponent(props: any) {
         isLoading ? <FullLoadingComponent /> : listedItems.length !== 0 ?
           <Row gutter={25}>
             {listedItems.map((listing, index) => {
-              return <Col xs={24} sm={12} md={8} lg={6} xl={4}><ItemCardComponent item={listing}></ItemCardComponent></Col>
+              return <Col xs={24} sm={12} md={8} lg={6} xl={6}><ItemCardComponent item={listing}></ItemCardComponent></Col>
             })
             }
           </Row> : <ContentStatusMessageComponent header={infoMessage.header} description={infoMessage.description} link={infoMessage.link} buttonText={infoMessage.buttonText}></ContentStatusMessageComponent>

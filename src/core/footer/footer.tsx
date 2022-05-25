@@ -24,7 +24,7 @@ function FooterComponent() {
                    <li><Link to="cookies">Cookies</Link></li>
                </ul>
            </div>
-           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac dictum ligula, eu vulputate sem. Phasellus tellus tortor, auctor id ullamcorper eu, finibus sit amet sem. </p>
+           <p>NFTShootouts exclusive marketplace for buying, selling, and discovering players and items to use in game. </p>
         </div>
         </Footer>
     );

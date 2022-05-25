@@ -16,12 +16,13 @@
       flex-direction: column;
       align-items: center;
       .image-wrap {
-        background: #201f1f;
+        background: #1F242B;
         width: 100%;   
         img {
             margin: auto;
             margin-bottom: 25px;
             padding: 50px;
+            border-radius: 25px;
         }
       }
     }

@@ -6,8 +6,7 @@ function YouthScoutsForSalePageComponent(props: any) {
   let scouts: string[] = [];
   const infoMessage: InfoMessage = {
     header: "Youth Scouts are coming soon",
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis.",
+    description: 'Youth Scouts allow you to “Train” new youth players and "breed" new NFTs.',
     link: "/marketplace",
     buttonText: "Visit our Store",
 };

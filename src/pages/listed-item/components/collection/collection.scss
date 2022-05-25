@@ -1,0 +1,30 @@
+.collection-full {
+    display: flex;
+    flex-direction: column;
+    h2 {
+        margin-bottom: 15px;
+    }
+    .collection-wrap {
+        display: flex;
+        margin-bottom: 15px;
+        align-items: center;
+        .image-wrap {
+            background: black;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            border-radius: 100%;
+            margin-right: 10px;
+            img {
+                height: 35px;
+                width: 35px;
+            }
+        }
+        span {
+            font-size: 18px;
+            color: white;
+            font-weight: 500;
+        }
+    }
+}

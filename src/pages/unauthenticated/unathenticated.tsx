@@ -6,6 +6,7 @@ import { useWeb3React } from "@web3-react/core";
 import { injected } from "../../shared/components/wallet/connectors";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import logo from '../../assets/img/logo-small.jpeg'
 
 function UnauthenticatedPageComponent(props: any) {
 
@@ -20,7 +21,6 @@ function UnauthenticatedPageComponent(props: any) {
   let navigate = useNavigate();
 
   const connectionError = (error: any) => {
-    console.log(error)
     message.error(error.toString());
   };
 
@@ -42,22 +42,18 @@ function UnauthenticatedPageComponent(props: any) {
   }
 
   return (
-    <div
-      className="page-wrapper"
-      style={{ backgroundImage: "url(/assets/img/background.png)" }}
-    >
+    <div className="general-wrapper">
       <DocumentMeta {...meta} />
-      <Content>
         <div className="login">
           <div className="left">
-            <h2 className="mb-5">Please connect your wallet via metamask to access this page</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam nemo neque tempora similique, unde facere iure et natus, numquam delectus beatae cumque at sequi quos magni quasi repellendus nostrum accusamus.</p>
+            <img src={logo} alt="" />
+            <h2 className="mb-5">Connect Wallet</h2>
+            <p>Please connect your wallet to access this page.</p>
           </div>
             <Button onClick={connect} type="primary" size="large">
-              Connect
+              Connect Wallet
             </Button>
         </div>
-      </Content>
     </div>
   );
 }

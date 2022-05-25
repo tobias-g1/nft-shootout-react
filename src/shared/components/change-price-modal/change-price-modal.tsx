@@ -83,7 +83,7 @@ function ChangePriceModal(props: Props, ref: any) {
         footer={null}
       >
        <div className="action-modal">
-         <Image className="mb-15" src={!props.item.imageUrl ? '' : props.item.imageUrl } fallback={fallback}></Image>
+         <Image preview={false} className="mb-15" src={!props.item.imageUrl ? '' : props.item.imageUrl } fallback={fallback}></Image>
        <div>
          <h2 className="mb-15">Change Listing Price for #{props.item.tokenId} </h2>
          <p>List your NFT for sale in our marketplace. Upon listing of this NFT, this

@@ -3,7 +3,6 @@
     align-items: center;
     justify-content: center;
     .balance-chip {
-        background: #201f1f;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -12,6 +11,8 @@
         min-width: 125px;
         justify-content: space-between;
         margin-right: 15px;
+        border: 1px solid #FCE681;
+        border-radius: 10px;
         img {
             height: 25px;
             border-radius: 100%;
@@ -51,10 +52,11 @@
             margin-bottom: 5px;
         }
         .address {
-            background: #201f1f;
+            background: #1F242B;
             color: #ffffff;
             padding: 15px;
             font-size: 15px;
+            border-radius: 10px;
         }
     }
     .balance-row {
@@ -62,6 +64,7 @@
         justify-content: space-between;
         font-size: 15px;
         margin: 25px 0;
+        border-radius: 15px;
         .balance-label {
             font-weight: bold;
             color: #ffffff;

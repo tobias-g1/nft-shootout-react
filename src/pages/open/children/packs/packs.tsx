@@ -15,13 +15,13 @@ function OpenPacksPageComponent(props: any) {
       const infoMessage: InfoMessage= {
         header: "You have no packs to open",
         description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis.",
-        link: "/marketplace",
-        buttonText: "Visit our Marketplace",
+            "You don't have any packs to open at the moment. Visit our store to purchase new packs.",
+        link: "/store",
+        buttonText: "Visit our Store",
     };
 
     return (
-        <div className="packs page-wrapper" style={{ backgroundImage: "url(/assets/img/background.png)" }}>
+        <div className="packs">
             <DocumentMeta {...meta} />
             <ContentStatusMessageComponent header={infoMessage.header}
                     description={infoMessage.description}

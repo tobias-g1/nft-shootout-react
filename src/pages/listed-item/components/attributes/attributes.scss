@@ -1,0 +1,31 @@
+.attribute-full {
+    display: flex;
+    flex-direction: column;
+    h2 {
+        margin-bottom: 15px;
+    }
+    .attribute-wrap {
+        display: flex;
+        align-items: start;
+        flex-wrap: wrap;
+        .attribute-chip {
+            background: #000;
+            border-radius: 10px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            min-width: 150px;
+            margin-right: 25px;
+            margin-bottom: 25px;
+            text-transform: capitalize;
+            .title {
+                font-size: 14px;
+            }
+            .value {
+                font-size: 18px;
+                font-weight: bold;
+                color: #fff;
+            }
+        }
+    }
+}

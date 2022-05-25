@@ -19,9 +19,7 @@ function FilterOptionsComponent(props: any) {
   }, [location]);
   
   return (
-    <div className="filter-options-wrapper">
-     
-    </div>
+    <div className="filter-options-wrapper"></div>
   );
 }
 

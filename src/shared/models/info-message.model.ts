@@ -3,7 +3,6 @@ export class InfoMessage {
     description: string;
     link: string;
     buttonText: string;
-
     constructor() {
         this.header = '';
         this.description = '';

@@ -7,7 +7,7 @@ import { NavLink, Outlet } from "react-router-dom";
 function StorePageComponent(props: any) {
     const title: string = "Store";
     const description: string =
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse";
+        "Buy new player, stadium & youth scout packs to use in-game.";
     const meta: any = {
         title,
         description: "TBA",
@@ -17,7 +17,7 @@ function StorePageComponent(props: any) {
     return (
         <div
             className="my-players page-wrapper"
-            style={{ backgroundImage: "url(/assets/img/background.png)" }}
+            style={{ backgroundImage: "url(/assets/img/background.jpeg)" }}
         >
             <DocumentMeta {...meta} />
             <PageHeaderComponent header={title} description={description} />

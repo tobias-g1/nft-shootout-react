@@ -7,7 +7,6 @@ function PrivateRoute(props: { children: React.ReactNode }) {
     const { account } = useWeb3React();
     const location = useLocation()
     
-    console.log(location)
     return account ? (
         <>{children}</>
       ) : (

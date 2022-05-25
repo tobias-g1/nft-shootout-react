@@ -6,7 +6,7 @@ import "./content-status-message.scss";
 function ContentStatusMessageComponent(props: InfoMessage) {
     return (
         <div className="content-status-message">
-                <h2 className="mb-5">{props.header}</h2>
+                <h3 className="mb-15">{props.header}</h3>
                 <p>{props.description}</p>
             <Link to={props.link}>
                 <Button type='primary' size='large'>{props.buttonText}</Button>

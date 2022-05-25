@@ -46,12 +46,16 @@ line-height: normal;
 letter-spacing: 2.5px;
 }
 
+h1 {
+  font-size: 28px;
+}
+
 h2 {
   font-size: 24px;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 22px;
 }
 
 h5 {
@@ -96,9 +100,11 @@ button {
 
 .page-wrapper {
   min-height: calc(100vh - 299px);
-  background-size: cover;
+  background-size: cover !important;
+  background-blend-mode: overlay;
+  background: #0d0808b3;
+  background-repeat: no-repeat;
   background-position: bottom;
-  background-blend-mode: color;
 }
 
 @keyframes pulse {

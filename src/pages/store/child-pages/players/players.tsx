@@ -5,7 +5,7 @@ function PlayersForStorePageComponent(props: any) {
   const infoMessage: InfoMessage = {
     header: "No Player Packs Available",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis.",
+    "All our player packs are currently sold out, please visit our marketplace to find new players to expand your team.",
     link: "/marketplace",
     buttonText: "Visit our Marketplace",
   };

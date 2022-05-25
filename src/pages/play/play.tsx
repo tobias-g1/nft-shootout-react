@@ -1,42 +1,50 @@
-import PageHeaderComponent from '../../shared/components/page-header/page-header';
-import './play.scss'
-import DocumentMeta from 'react-document-meta';
-import ContentStatusMessageComponent from '../../shared/components/content-status-message/content-status-message';
-import { InfoMessage } from '../../shared/models/info-message.model';
+import PageHeaderComponent from "../../shared/components/page-header/page-header";
+import "./play.scss";
+import DocumentMeta from "react-document-meta";
+import ContentStatusMessageComponent from "../../shared/components/content-status-message/content-status-message";
+import { InfoMessage } from "../../shared/models/info-message.model";
+import { Content } from "antd/lib/layout/layout";
+import gameplay from "../../assets/img/gp1.jpeg";
+import windows from "../../assets/img/windows-badge.svg";
+import google from "../../assets/img/google-play-badge.svg";
+import ios from "../../assets/img/app-store-badge.svg";
 
 function PlayPageComponent(props: any) {
+  const title: string = "Play";
+  const description: string =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse";
+  const meta: any = {
+    title,
+    description: "TBA",
+    meta: {},
+  };
 
-    const title: string = 'Play';
-    const description: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse';
-    const meta: any = {
-        title,
-        description: 'TBA',
-        meta: {}
-      };
-
-      const infoMessage: InfoMessage = {
-        header: "Game preview coming soon",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis.",
-        link: "/marketplace",
-        buttonText: "Visit our Marketplace",
-    };
-
-
-    return (
-        <div className="my-players page-wrapper" style={{ backgroundImage: "url(/assets/img/background.png)" }}>
-            <DocumentMeta {...meta} />
-            <PageHeaderComponent header={title} description={description}/>
-            <ContentStatusMessageComponent header={infoMessage.header}
-                    description={infoMessage.description}
-                    link={infoMessage.link}
-                    buttonText={infoMessage.buttonText}></ContentStatusMessageComponent>
+  return (
+    <div
+      className="play page-wrapper"
+      style={{ backgroundImage: "url(/assets/img/background.jpeg)" }}
+    >
+      <DocumentMeta {...meta} />
+      <PageHeaderComponent header={title}/>
+      <Content>
+        <div className="play-wrapper">
+          <img className="game" src={gameplay} alt="" />
+          <h1 className="mb-10">Get started with our game</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+            atque consectetur, ipsa voluptas ab, itaque perspiciatis placeat vel
+            eum maxime soluta nemo, aut sapiente praesentium animi illum. Sed,
+            sapiente inventore.
+          </p>
+          <div className="download-options">
+            <img src={windows} alt="" />
+            <img src={ios} alt="" />
+            <img src={google} alt="" />
+          </div>
         </div>
-    );
+      </Content>
+    </div>
+  );
 }
 
 export default PlayPageComponent;
-
-
-
-

@@ -17,7 +17,7 @@ function UnlistedPlayersPageComponent(props: any) {
   const infoMessage: InfoMessage = {
     header: "You don't have any unlisted players",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis.",
+      "You don't have any unlisted players at the moment. Visit our marketplace to purchase new players to use in game.",
     link: "/marketplace",
     buttonText: "Visit our Marketplace",
   };
@@ -41,7 +41,7 @@ function UnlistedPlayersPageComponent(props: any) {
         isLoading ? <FullLoadingComponent /> : listedItems.length !== 0 ?
           <Row gutter={25}>
             {listedItems.map((listing, index) => {
-              return <Col xs={24} sm={12} md={8} lg={6} xl={4}><ItemCardComponent key={index} item={listing}></ItemCardComponent></Col>
+              return <Col xs={24} sm={12} md={8} lg={6} xl={6}><ItemCardComponent key={index} item={listing}></ItemCardComponent></Col>
             })
             }
           </Row> : <ContentStatusMessageComponent header={infoMessage.header} description={infoMessage.description} link={infoMessage.link} buttonText={infoMessage.buttonText}></ContentStatusMessageComponent>
