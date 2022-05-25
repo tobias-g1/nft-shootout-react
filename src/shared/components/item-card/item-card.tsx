@@ -90,9 +90,9 @@ function ItemCardComponent(props: Props) {
       <div className="listing-card">
         <div className="image-wrapper">
           <div className="menu-wrapper">
-            <Dropdown overlay={menu} trigger={["click"]}>
+            { account ? <Dropdown overlay={menu} trigger={["click"]}>
               <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
-            </Dropdown>
+            </Dropdown> : null}
           </div>
           <Link to={getLink()}>
             <Image preview={false}

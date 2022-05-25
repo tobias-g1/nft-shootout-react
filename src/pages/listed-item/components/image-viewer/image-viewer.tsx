@@ -96,6 +96,7 @@ function ImageViewerComponent(props: any) {
             {props.item.forSale ? formatBalance(props.item.price) : "Unlisted"}
           </span>
         </div>
+        {account ? 
         <div className="menu-wrapper">
           {getButton()}
           {props.item.forSale ? (
@@ -103,7 +104,7 @@ function ImageViewerComponent(props: any) {
               <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
             </Dropdown>
           ) : null}
-        </div>
+        </div> : null }
       </div>
       <ListForSaleModal item={props.item} ref={fref}></ListForSaleModal>
       <CancelListingModal item={props.item} ref={cref}></CancelListingModal>
