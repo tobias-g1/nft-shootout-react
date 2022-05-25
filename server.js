@@ -1,9 +1,7 @@
-const express = require('express')
-const path = require('path');
+const express = require("express");
+const path = require("path");
+const app = express();
 
-const app = express()
-const port = process.env.PORT || 3000 // Heroku will need the PORT environment variable
-
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.listen(port, () => console.log(`App is live on port ${port}!`))
+//This will create a middleware.
+//When you navigate to the root page, it would use the built react-app
+app.use(express.static(path.resolve(__dirname, "./client/build")));
