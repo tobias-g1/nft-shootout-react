@@ -38,7 +38,6 @@ function getLibrary(provider: any) {
 const App: FC = () => (
   <HelmetProvider>
     <Web3ReactProvider getLibrary={getLibrary}>
-      <div className="App">
         <Layout>
           <Router>
             <HeaderComponent></HeaderComponent>
@@ -82,7 +81,6 @@ const App: FC = () => (
             <FooterComponent />
           </Router>
         </Layout>
-      </div>
     </Web3ReactProvider>
   </HelmetProvider>
 );

@@ -1,8 +1,6 @@
 import PageHeaderComponent from "../../shared/components/page-header/page-header";
 import "./play.scss";
 import DocumentMeta from "react-document-meta";
-import ContentStatusMessageComponent from "../../shared/components/content-status-message/content-status-message";
-import { InfoMessage } from "../../shared/models/info-message.model";
 import { Content } from "antd/lib/layout/layout";
 import gameplay from "../../assets/img/gp1.jpeg";
 import windows from "../../assets/img/windows-badge.svg";
@@ -29,7 +27,7 @@ function PlayPageComponent(props: any) {
       <Content>
         <div className="play-wrapper">
           <img className="game" src={gameplay} alt="" />
-          <h1 className="mb-10">Get started with our game</h1>
+          <h1 className="mb-10">Get started with NFTShootout</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
             atque consectetur, ipsa voluptas ab, itaque perspiciatis placeat vel

@@ -2,12 +2,12 @@ export class Item {
   name: string;
   description: string;
   tokenId: number;
-  tokenAddress: string;
+  collectionAddress: string;
   listed: boolean;
-  price: string;
+  listPrice: string;
   owner: string;
   forSale: boolean;
-  metadata: any[];
-  imageUrl: any;
+  attributes: any[];
+  image: any;
   approved: boolean;
 }

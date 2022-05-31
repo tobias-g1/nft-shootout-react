@@ -90,10 +90,6 @@ button {
     margin-bottom: 15px;
 }
 
-.ant-affix {
-  top: 0 !important;
-}
-
 .ant-layout {
   min-height: 100vh;
 }
@@ -105,6 +101,7 @@ button {
   background: #0d0808b3;
   background-repeat: no-repeat;
   background-position: bottom;
+  background-attachment: fixed;
 }
 
 @keyframes pulse {

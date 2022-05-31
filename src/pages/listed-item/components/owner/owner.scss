@@ -10,7 +10,8 @@
     .owner-wrap {
         color: white;
         padding: 25px;
-        background: #000;
+        background-color: #110f0fb0;
+        backdrop-filter: blur(5px);
         width: fit-content;
         border-radius: 10px;
         svg {

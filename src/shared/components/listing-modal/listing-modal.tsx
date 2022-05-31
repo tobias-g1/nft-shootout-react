@@ -17,7 +17,7 @@ type Props = {
 
 const web3 = new Web3(process.env.REACT_APP_RPC_URL);
 
-function ListForSaleModal(props: Props, ref: any) {
+function ListForSaleModal(props: any, ref: any) {
 
   const { account } = useWeb3React()
   const [isListingModalVisible, setListingModalVisible] = useState(false);
@@ -28,11 +28,10 @@ function ListForSaleModal(props: Props, ref: any) {
 
   web3.eth.setProvider(Web3.givenProvider);
 
-  const contract = new web3.eth.Contract(nftAbi, props.item.tokenAddress);
-  const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, process.env.REACT_APP_MARKETPLACE_ADDRESS);
+  const contract = new web3.eth.Contract(nftAbi, props.item.collectionAddress);
+  const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, '0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7');
 
   useEffect(() => {
-    getShooPrice();
     checkApprovalState();
   }, [isListingModalVisible, getShooPrice]);
 
@@ -59,41 +58,37 @@ function ListForSaleModal(props: Props, ref: any) {
   }
 
    const approveToken = async () => {
-
-      contract.methods.setApprovalForAll(process.env.REACT_APP_MARKETPLACE_ADDRESS, true).send({from: account })
-      .on('error', function(error){
-       
-      })
+      contract.methods.setApprovalForAll('0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7', true).send({from: account })
       .on('confirmation', function(confirmationNumber, receipt){
         if (confirmationNumber === 0) {
          setApproval(true)
         }
       })
-  
   }
 
   const checkApprovalState = async () => {
-      const approval = await contract.methods.isApprovedForAll(account, process.env.REACT_APP_MARKETPLACE_ADDRESS).call()
+      const approval = await contract.methods.isApprovedForAll(account, '0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7').call()
       if (approval) { setApproval(true) } else { 
         const approvedAddress = await contract.methods.getApproved(props.item.tokenId).call()
-        if (approvedAddress === process.env.REACT_APP_MARKETPLACE_ADDRESS) {
-                setApproval(true) 
+        if (approvedAddress === '0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7') {
+            setApproval(true) 
         } else {
             setApproval(false) 
         }
       } 
   }
 
-
   const listForSale = () => {
 
-    marketPlaceContract.methods.createAskOrder(props.item.tokenAddress, props.item.tokenId, web3.utils.toWei(price.toString(), 'ether')).send({from: account })
+    marketPlaceContract.methods.createAskOrder(props.item.collectionAddress, props.item.tokenId, web3.utils.toWei(price.toString(), 'ether')).send({from: account })
     .on('error', function(error){
-     
+      props.requestRefresh()
     })
     .on('confirmation', function(confirmationNumber, receipt){
       if (confirmationNumber === 0) {
+
         setListingModalVisible(false)
+        props.requestRefresh();
         NotificationService.sendNotification('success', 'Your listing was successful', 'Your NFT is now listed on our marketplace.')
       }
     })
@@ -107,7 +102,7 @@ function ListForSaleModal(props: Props, ref: any) {
         footer={null}
       >
        <div className="action-modal">
-         <Image className="mb-15" src={!props.item.imageUrl ? '' : props.item.imageUrl } fallback={fallback}></Image>
+         <Image className="mb-15" src={!props.item.image ? '' : props.item.image } fallback={fallback}></Image>
        <div>
          <h2 className="mb-15">List #{props.item.tokenId} for Sale </h2>
          <p>List your NFT for sale in our marketplace. Upon listing of this NFT, this

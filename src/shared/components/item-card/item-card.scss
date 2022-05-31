@@ -12,8 +12,9 @@
     .image-wrapper {
         border-top-left-radius: 25px;
         border-top-right-radius: 25px;
-        background-color: #f6f6f6;
-        padding: 20px;
+        background-color: #110f0fb0;
+        padding: 35px 0;
+        backdrop-filter: blur(5px);
         a {
             div, img {
                 border-top-left-radius: 25px;
@@ -34,7 +35,7 @@
             border-radius: 100%;
             svg {
                 font-size: 26px;
-                color: black;
+                color: #fff;
                 cursor: pointer;
             }
         }

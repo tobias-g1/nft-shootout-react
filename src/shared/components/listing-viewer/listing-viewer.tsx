@@ -1,5 +1,5 @@
 import { Col, Row } from "antd";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { InfoMessage } from "../../models/info-message.model";
 import { Item } from "../../models/item";
 import ContentStatusMessageComponent from "../content-status-message/content-status-message";
@@ -8,14 +8,19 @@ import FullLoadingComponent from "../full-loading/full-loading";
 import ItemCardComponent from "../item-card/item-card";
 import "./listing-viewer";
 
-function ListingViewerComponent(props: any) {
+function ListingViewerComponent(props: any, ref: any) {
 
+  const foRef: any = useRef();
   const [isLoading, toggleLoading] = useState(true);
   const [listedItems, setListedItems] = useState([]);
 
   const handleListingChange = (value) => {
     setListedItems(value)
-    toggleLoading(!isLoading)
+    toggleLoading(false)
+  }
+
+  function requestRefresh() {
+    foRef.requestRefresh();
   }
 
   const infoMessage: InfoMessage = {
@@ -28,11 +33,11 @@ function ListingViewerComponent(props: any) {
 
   return (
     <div className="listing-viewer-wrapper">
-      <FilterOptionsComponent sendData={v => handleListingChange(v)}></FilterOptionsComponent>
+      <FilterOptionsComponent ref={foRef} toggleLoading={v => toggleLoading(v)} sendData={v => handleListingChange(v)}></FilterOptionsComponent>
       {
         isLoading ? <FullLoadingComponent /> : listedItems.length !== 0 ? <Row gutter={25}>
         {listedItems.map((listing: Item, index) => {
-          return <Col xs={24} sm={12} md={8} lg={6} xl={6}><ItemCardComponent item={listing}></ItemCardComponent></Col>
+          return <Col key={index} xs={24} sm={12} md={8} lg={8} xl={6}><ItemCardComponent requestRefresh={v => requestRefresh()} item={listing}></ItemCardComponent></Col>
         })}</Row> : <ContentStatusMessageComponent header={infoMessage.header} description={infoMessage.description} link={infoMessage.link} buttonText={infoMessage.buttonText}></ContentStatusMessageComponent>
       }
     </div>

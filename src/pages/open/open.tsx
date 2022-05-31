@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom';
 function OpenPageComponent(props: any) {
 
     const title: string = 'Open';
-    const description: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse';
+    const description: string = 'Open packs to expand your teams, stadiums & staff.'
     const meta: any = {
         title,
         description: 'TBA',

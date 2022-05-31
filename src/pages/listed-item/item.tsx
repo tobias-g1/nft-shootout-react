@@ -42,7 +42,7 @@ function ItemPageComponent(props: any) {
         const item: Item = res.data;
         setTitle(item.name + " #" + item.tokenId);
         setItem(item);
-        if (!item.tokenAddress) {
+        if (!item.collectionAddress) {
           navigate("../not-found", { replace: true });
         }
         toggleLoading(false);

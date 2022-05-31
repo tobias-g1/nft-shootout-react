@@ -25,7 +25,6 @@ function MarketplacePageComponent(props: any) {
             <PageHeaderComponent header={title} description={description} />
             <Content>
                 {
-                    (account) ?
                         <div className="tab-row">
                             <div className="selector">
                                 <NavLink to="players" className={(navData) => (navData.isActive ? 'selected' : '')}>
@@ -44,7 +43,7 @@ function MarketplacePageComponent(props: any) {
                                     </div>
                                 </NavLink>
                             </div>
-                        </div> : null
+                        </div> 
                 }
                 <Outlet />
             </Content>

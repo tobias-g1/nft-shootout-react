@@ -1,0 +1,78 @@
+.filter-options-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+    .filter-option {
+        margin-right: 15px;
+        min-width: 150px;
+        padding: 7.5px 15px;
+        min-width: 25px;
+        font-size: 17px;
+        border: 2px solid #FCE681;
+        color: white;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+    }
+    .selected-options {
+        margin-top: 15px;
+        color: white;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        .selected {
+            background: #fbe681;
+            display: inline-flex;
+            padding: 5px 15px;
+            font-size: 16px;
+            border-radius: 20px;
+            color: #000;
+            align-items: center;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            .label {
+                margin-right: 5px;
+            }
+            .data {
+                margin-right: 10px;
+                text-transform: capitalize;
+            }
+            &:hover {
+                cursor: pointer;
+                opacity: 0.7;
+            }
+        }
+    }
+}
+
+.ant-popover-inner-content {
+    min-width: 150px !important;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    span {
+        font-size: 16px !important;
+    }
+ }
+
+ .ant-popover-arrow {
+     display: none;
+ }
+
+ .ant-checkbox-wrapper + .ant-checkbox-wrapper {
+     margin: 0;
+ }
+
+ @media screen and (max-width: 1100px) {
+    .filter-options-wrapper {
+        justify-content: center;
+    .filter-option {
+        margin-bottom: 15px;
+    }
+    .selected-options {
+        justify-content: center;
+    }
+}
+  }

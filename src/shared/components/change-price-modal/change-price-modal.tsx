@@ -11,13 +11,9 @@ import axios from "axios";
 import shoo from "../../../assets/img/shoo.png";
 import NotificationService from "../../../core/services/notification.service";
 
-type Props = {
-  item: Item;
-};
-
 const web3 = new Web3(process.env.REACT_APP_RPC_URL);
 
-function ChangePriceModal(props: Props, ref: any) {
+function ChangePriceModal(props: any, ref: any) {
 
   const { account } = useWeb3React()
   const [isListingModalVisible, setListingModalVisible] = useState(false);
@@ -25,10 +21,6 @@ function ChangePriceModal(props: Props, ref: any) {
   const [shooPrice, setShooPrice] = useState(0);
   const [form] = Form.useForm();
   const location = useLocation();
-
-  useEffect(() => {
-    getShooPrice();
-  }, [location, getShooPrice]);
 
   useImperativeHandle(
     ref,
@@ -55,18 +47,20 @@ function ChangePriceModal(props: Props, ref: any) {
 
   web3.eth.setProvider(Web3.givenProvider);
 
-  const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, process.env.REACT_APP_MARKETPLACE_ADDRESS);
+  const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, '0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7');
 
    const cancelListing = async () => {
 
     setIsCancelling(true)
 
-    marketPlaceContract.methods.modifyAskOrder(props.item.tokenAddress, props.item.tokenId, web3.utils.toWei(price.toString(), 'ether')).send({from: account })
+    marketPlaceContract.methods.modifyAskOrder(props.item.collectionAddress, props.item.tokenId, web3.utils.toWei(price.toString(), 'ether')).send({from: account })
       .on('error', function(error){
+        props.requestRefresh()
         setIsCancelling(false)
       })
       .on('confirmation', function(confirmationNumber, receipt){
         if (confirmationNumber === 0) {
+          props.requestRefresh();
           setIsCancelling(false)
           setListingModalVisible(false)
           NotificationService.sendNotification('success', 'Your listing price has been updated successfully', 'Your NFT is now be available within your wallet to play')
@@ -83,7 +77,7 @@ function ChangePriceModal(props: Props, ref: any) {
         footer={null}
       >
        <div className="action-modal">
-         <Image preview={false} className="mb-15" src={!props.item.imageUrl ? '' : props.item.imageUrl } fallback={fallback}></Image>
+         <Image preview={false} className="mb-15" src={!props.item.image ? '' : props.item.image } fallback={fallback}></Image>
        <div>
          <h2 className="mb-15">Change Listing Price for #{props.item.tokenId} </h2>
          <p>List your NFT for sale in our marketplace. Upon listing of this NFT, this

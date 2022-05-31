@@ -8,6 +8,7 @@
     margin: auto;
     height: calc(100vh - 510px);
     background: #000;
+    backdrop-filter: blur(5px);
     border-radius: 25px;
     padding: 50px;
     height: 250px;

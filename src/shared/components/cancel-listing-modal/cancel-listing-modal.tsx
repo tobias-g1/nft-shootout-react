@@ -8,13 +8,10 @@ import Web3 from "web3";
 import {marketplaceAbi} from "../../abi/marketplace.abi"
 import NotificationService from "../../../core/services/notification.service";
 
-type Props = {
-  item: Item;
-};
 
 const web3 = new Web3(process.env.REACT_APP_RPC_URL);
 
-function CancelListingModal(props: Props, ref: any) {
+function CancelListingModal(props: any, ref: any) {
 
   const { account } = useWeb3React()
   const [isCancelListingModalVisible, setCancelListingModalVisible] = useState(false);
@@ -40,19 +37,21 @@ function CancelListingModal(props: Props, ref: any) {
 
   web3.eth.setProvider(Web3.givenProvider);
 
-  const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, process.env.REACT_APP_MARKETPLACE_ADDRESS);
+  const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, '0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7');
   
   const cancelListing = () => {
 
     setIsLoading(true)
 
-    marketPlaceContract.methods.cancelAskOrder(props.item.tokenAddress, props.item.tokenId).send({from: account })
+    marketPlaceContract.methods.cancelAskOrder(props.item.collectionAddress, props.item.tokenId).send({from: account })
     .on('error', function(error){
       setIsLoading(false)
+      props.requestRefresh();
       NotificationService.sendNotification('error', 'Error', "We we're unable to cancel your listing, please try again later.")
     })
     .on('confirmation', function(confirmationNumber, receipt){
       setIsLoading(false);
+      props.requestRefresh();
       setCancelListingModalVisible(false);
       if (confirmationNumber === 0) {
         NotificationService.sendNotification('success', 'Your listing has been cancelled successfully', 'Your NFT is now be available within your wallet to play')
@@ -69,7 +68,7 @@ function CancelListingModal(props: Props, ref: any) {
         footer={null}
       >
          <div className="action-modal">
-         <Image preview={false} className="mb-15" src={!props.item.imageUrl ? '' : props.item.imageUrl } fallback={fallback}></Image>
+         <Image preview={false} className="mb-15" src={!props.item.image ? '' : props.item.image } fallback={fallback}></Image>
        <div className="contents">
          <h2 className="mb-15">Cancel listing for #{props.item.tokenId}</h2>
          <p>List your NFT for sale in our marketplace. Upon listing of this NFT, this

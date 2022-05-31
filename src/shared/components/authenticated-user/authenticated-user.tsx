@@ -8,6 +8,7 @@ import Web3 from "web3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWallet } from '@fortawesome/free-solid-svg-icons'
 import { tokenAbi } from "../../abi/token.abi";
+import FormattingService from "../../../core/services/formatting.service";
 
 function AuthenticatedUserComponent(props: any) {
   const rpcURL = "https://data-seed-prebsc-1-s1.binance.org:8545/";
@@ -51,13 +52,6 @@ function AuthenticatedUserComponent(props: any) {
     return 'https://bscscan.com/address/' + account
   }
 
-  function formatBalance(balance: string) {
-    return new Intl.NumberFormat('en-GB', { 
-      notation: "compact",
-      minimumFractionDigits: 2,
-    }).format(parseFloat(balance));
-  }
-
   getBalance()
 
   return (
@@ -65,7 +59,7 @@ function AuthenticatedUserComponent(props: any) {
       <div className="authenticated-user">
         <div className="balance-chip">
           <img src={shoo} alt="Shoo Token" />
-          <span>{ formatBalance(shooBalance) }</span>
+          <span>{ FormattingService.formatBalance(shooBalance) }</span>
         </div>
         <span className="wallet" onClick={showModal}>
           <FontAwesomeIcon icon={faWallet} />
@@ -87,7 +81,7 @@ function AuthenticatedUserComponent(props: any) {
               <img src={shoo} alt="Shoo Token" />
               <span className="balance-label">Shoo Balance</span>
             </div>
-            <span className="balance-amount">{ formatBalance(shooBalance) }</span>
+            <span className="balance-amount">{ FormattingService.formatBalance(shooBalance) }</span>
           </div>
           <Button onClick={disconnect} className="disconnect-button">
             Disconnect

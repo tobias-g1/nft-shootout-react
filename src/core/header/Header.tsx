@@ -1,4 +1,4 @@
-import { Layout } from "antd";
+import { Affix, Layout } from "antd";
 import './Header.scss';
 import logo from '../../assets/img/logo.jpeg'
 import { Link } from 'react-router-dom';
@@ -59,7 +59,7 @@ function HeaderComponent() {
           <SocialLinksComponent />
         </div>
       </div>}
-    </>
+   </>
 
 
   );

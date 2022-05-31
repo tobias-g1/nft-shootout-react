@@ -10,6 +10,7 @@ import { marketplaceAbi } from "../../abi/marketplace.abi";
 import axios from "axios";
 import { tokenAbi } from "../../abi/token.abi";
 import NotificationService from "../../../core/services/notification.service";
+import FormattingService from "../../../core/services/formatting.service";
 
 type Props = {
   item: Item;
@@ -17,7 +18,7 @@ type Props = {
 
 const web3 = new Web3(process.env.REACT_APP_RPC_URL);
 
-function BuyModal(props: Props, ref: any) {
+function BuyModal(props: any, ref: any) {
 
   const [isListingModalVisible, setListingModalVisible] = useState(false);
   const [isApproved, setApproval] = useState(false);
@@ -30,7 +31,6 @@ function BuyModal(props: Props, ref: any) {
 
   useEffect(() => {
     checkForApproved();
-    getShooPrice();
   }, [location]);
 
   useImperativeHandle(
@@ -47,30 +47,25 @@ function BuyModal(props: Props, ref: any) {
     setListingModalVisible(!isListingModalVisible);
   };
 
-  const [price, setPrice] = useState(0)
-
-  async function getShooPrice() {
-    await axios.get(process.env.REACT_APP_API_BASE_URL + `price/current`)
-      .then(res => {
-        setShooPrice(res.data.usd)
-      })
-  }
+  const [price, setPrice] = useState(0);
 
   web3.eth.setProvider(Web3.givenProvider);
 
-  const tokenContract = new web3.eth.Contract(tokenAbi, process.env.REACT_APP_TOKEN_ADDRESS);
-  const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, process.env.REACT_APP_MARKETPLACE_ADDRESS);
+  const tokenContract = new web3.eth.Contract(tokenAbi, '0xcC046a8ba1f82B4FbB186f76e23E3DbEf297dA4c');
+  const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, '0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7');
 
    const approveToken = async () => {
 
     setLoadingApproved(true)
 
-    tokenContract.methods.approve(process.env.REACT_APP_MARKETPLACE_ADDRESS, process.env.DEFAULT_APPROVAL).send({from: account })
+    tokenContract.methods.approve('0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7', '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff').send({from: account })
       .on('error', function(error){
+        props.requestRefresh()
              setLoadingApproved(false)
       })
       .on('confirmation', function(confirmationNumber, receipt){
         if (confirmationNumber === 0) {
+          props.requestRefresh()
           setLoadingApproved(true)
           setApproval(true)
         }
@@ -80,7 +75,7 @@ function BuyModal(props: Props, ref: any) {
 
   const buyItem = () => {
 
-    marketPlaceContract.methods.buyTokenWithSHOO(props.item.tokenAddress, props.item.tokenId, web3.utils.toWei(price.toString(), 'ether')).send({from: account })
+    marketPlaceContract.methods.buyTokenWithSHOO(props.item.listPrice, props.item.tokenId, web3.utils.toWei(price.toString(), 'ether')).send({from: account })
     .on('error', function(error){
 
     })
@@ -98,13 +93,6 @@ function BuyModal(props: Props, ref: any) {
      }
   }
 
-  function formatBalance(balance: string) {
-    return new Intl.NumberFormat('en-GB', { 
-      notation: "compact",
-      minimumFractionDigits: 2,
-    }).format(parseFloat(balance));
-  }
-
   return (
     <>
       <Modal
@@ -113,9 +101,9 @@ function BuyModal(props: Props, ref: any) {
         footer={null}
       >
        <div className="action-modal">
-         <Image preview={false} className="mb-15" src={!props.item.imageUrl ? '' : props.item.imageUrl } fallback={fallback}></Image>
+         <Image preview={false} className="mb-15" src={!props.item.image ? '' : props.item.image } fallback={fallback}></Image>
        <div className="contents">
-         <h2 className="mb-15">Buy #{props.item.tokenId} for {formatBalance(props.item.price)} SHOO</h2>
+         <h2 className="mb-15">Buy #{props.item.tokenId} for {FormattingService.formatBalance(props.item.listPrice)} SHOO</h2>
          <p>List your NFT for sale in our marketplace. Upon listing of this NFT, this
           NFT will be removed from your wallet and put on sale at the price
           entered above.</p>
@@ -123,7 +111,7 @@ function BuyModal(props: Props, ref: any) {
        </div>
         {!isApproved && <Button loading={loadingApproved} className="modal-button" type="primary" size="large" onClick={approveToken}>Approve</Button>}
         {isApproved && <Button loading={isBuying}className="modal-button" type="primary" size="large" onClick={buyItem}> Buy with SHOO </Button>}
-        <span className="estimate">Full Price: {props.item.price} {process.env.REACT_APP_TOKEN_SYMBOL}</span>
+        <span className="estimate">Full Price: {props.item.listPrice} {process.env.REACT_APP_TOKEN_SYMBOL}</span>
       </Modal>
     </>
   );
