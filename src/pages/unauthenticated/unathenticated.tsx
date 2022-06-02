@@ -7,6 +7,7 @@ import { injected } from "../../shared/components/wallet/connectors";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import logo from '../../assets/img/logo-small.jpeg'
+import AuthService from "../../core/services/auth.service";
 
 function UnauthenticatedPageComponent(props: any) {
 
@@ -31,13 +32,9 @@ function UnauthenticatedPageComponent(props: any) {
   }, [account, navigate]);
 
   async function connect() {
+    await AuthService.checkNetwork();
     await activate(injected).then(res => {
-      if (error) {
-        connectionError(error)
-        return;
-      }
-      localStorage.setItem('isWalletConnected', 'true');
-      navigate("../", { replace: true });
+      localStorage.setItem('isWalletConnected', 'true')
     })
   }
 
