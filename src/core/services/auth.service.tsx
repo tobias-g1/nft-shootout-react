@@ -1,10 +1,8 @@
-import { useWeb3React } from "@web3-react/core";
-import { injected } from '../../shared/components/wallet/connectors';
+import NotificationService from "./notification.service";
 
 const AuthService = {
     async checkNetwork() {
         if (window.ethereum) {
-          if (window.ethereum) {
             try {
               // check if the chain to connect to is installed
               await window.ethereum.request({
@@ -32,11 +30,10 @@ const AuthService = {
               console.error(error);
             }
           } else {
-            // if no window.ethereum then MetaMask is not installed
-            alert('MetaMask is not installed. Please consider installing it: https://metamask.io/download.html');
+            window.open("https://metamask.app.link/dapp/nft-shootout-dev.herokuapp.com/", "_blank");
+            NotificationService.sendNotification('error', 'Error', "Metamask not detected");
           } 
         }
-      }
 };
 
 export default AuthService;

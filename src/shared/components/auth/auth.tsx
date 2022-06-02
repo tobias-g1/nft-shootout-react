@@ -15,14 +15,11 @@ function AuthComponent(props: any) {
 
   async function connect() {
     await AuthService.checkNetwork();
-    if (error) { 
-      if (!window.ethereum) {
-        window.open("https://metamask.app.link/dapp/nft-shootout-dev.herokuapp.com/", "_blank")
-      }
-     };
-    await activate(injected).then(res => {
-      localStorage.setItem('isWalletConnected', 'true')
-    })
+    if (!error) {
+      await activate(injected).then(res => {
+        localStorage.setItem('isWalletConnected', 'true')
+      })
+    }
   }
 
   const connectWalletOnPageLoad = async () => {

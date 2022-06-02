@@ -64,7 +64,7 @@ function BuyModal(props: any, ref: any) {
              setLoadingApproved(false)
       })
       .on('confirmation', function(confirmationNumber, receipt){
-        if (confirmationNumber === 0) {
+        if (confirmationNumber === 3) {
           props.requestRefresh()
           setLoadingApproved(true)
           setApproval(true)
@@ -80,7 +80,7 @@ function BuyModal(props: any, ref: any) {
 
     })
     .on('confirmation', function(confirmationNumber, receipt){
-      if (confirmationNumber === 0) {
+      if (confirmationNumber === 3) {
         setListingModalVisible(false)
         NotificationService.sendNotification('success', 'Purchase successful', 'You have successfully purchased this item.')
       }

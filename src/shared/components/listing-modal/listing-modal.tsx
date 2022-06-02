@@ -60,7 +60,7 @@ function ListForSaleModal(props: any, ref: any) {
    const approveToken = async () => {
       contract.methods.setApprovalForAll('0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7', true).send({from: account })
       .on('confirmation', function(confirmationNumber, receipt){
-        if (confirmationNumber === 0) {
+        if (confirmationNumber === 3) {
          setApproval(true)
         }
       })
@@ -85,7 +85,7 @@ function ListForSaleModal(props: any, ref: any) {
       props.requestRefresh()
     })
     .on('confirmation', function(confirmationNumber, receipt){
-      if (confirmationNumber === 0) {
+      if (confirmationNumber === 3) {
 
         setListingModalVisible(false)
         props.requestRefresh();

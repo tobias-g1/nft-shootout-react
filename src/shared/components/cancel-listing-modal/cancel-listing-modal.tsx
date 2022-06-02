@@ -53,7 +53,7 @@ function CancelListingModal(props: any, ref: any) {
       setIsLoading(false);
       props.requestRefresh();
       setCancelListingModalVisible(false);
-      if (confirmationNumber === 0) {
+      if (confirmationNumber === 3) {
         NotificationService.sendNotification('success', 'Your listing has been cancelled successfully', 'Your NFT is now be available within your wallet to play')
       }
     })

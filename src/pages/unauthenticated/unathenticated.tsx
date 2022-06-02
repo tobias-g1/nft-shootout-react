@@ -21,10 +21,6 @@ function UnauthenticatedPageComponent(props: any) {
   const { account, activate, error } = useWeb3React()
   let navigate = useNavigate();
 
-  const connectionError = (error: any) => {
-    message.error(error.toString());
-  };
-
   useEffect(() => {
     if (account) {
       navigate("../", { replace: true });
@@ -33,9 +29,11 @@ function UnauthenticatedPageComponent(props: any) {
 
   async function connect() {
     await AuthService.checkNetwork();
-    await activate(injected).then(res => {
-      localStorage.setItem('isWalletConnected', 'true')
-    })
+    if (!error) {
+      await activate(injected).then(res => {
+        localStorage.setItem('isWalletConnected', 'true')
+      })
+    }
   }
 
   return (

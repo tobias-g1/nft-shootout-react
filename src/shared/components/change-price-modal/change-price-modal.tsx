@@ -59,7 +59,7 @@ function ChangePriceModal(props: any, ref: any) {
         setIsCancelling(false)
       })
       .on('confirmation', function(confirmationNumber, receipt){
-        if (confirmationNumber === 0) {
+        if (confirmationNumber === 3) {
           props.requestRefresh();
           setIsCancelling(false)
           setListingModalVisible(false)
