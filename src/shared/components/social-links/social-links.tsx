@@ -1,6 +1,7 @@
 import './social-links.scss'
 import { faTwitter, faDiscord, faFacebook, faTelegram, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const socialLinks = [
     {
@@ -29,7 +30,7 @@ function SocialLinksComponent(props: any) {
     return (
         <div className="social-links">
             {socialLinks.map(function (link, index) {
-                return <a href={link.link} key={index} target="_blank" rel="noreferrer"><FontAwesomeIcon icon={link.icon} /></a>;
+                return <a href={link.link} key={index} target="_blank" rel="noreferrer"><FontAwesomeIcon icon={link.icon as IconProp} /></a>;
             })
             }
         </div>

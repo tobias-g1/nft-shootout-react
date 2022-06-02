@@ -6,6 +6,7 @@ import { Button, Checkbox, Popover } from "antd";
 import FormattingService from "../../../core/services/formatting.service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 function FilterOptionsComponent(props: any, ref: any) {
   const [searchOptions, setSearchOptions] = useState([]);
@@ -142,7 +143,7 @@ function FilterOptionsComponent(props: any, ref: any) {
       <div className="selected-options">
         {getSelectedOptions().map((o, index) => {
           return ( o.values.map(v => {
-              return ( <div className="selected" onClick={() => toggleItem(o.type, v.value)} key={index}><span className="label">{FormattingService.formatAttributeNames(o.type)}: </span><span className="data">{v.value}</span><FontAwesomeIcon icon={faClose} /></div>)
+              return ( <div className="selected" onClick={() => toggleItem(o.type, v.value)} key={index}><span className="label">{FormattingService.formatAttributeNames(o.type)}: </span><span className="data">{v.value}</span><FontAwesomeIcon icon={faClose as IconProp} /></div>)
               })
           );
         })}

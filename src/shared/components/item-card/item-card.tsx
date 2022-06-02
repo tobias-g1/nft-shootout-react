@@ -14,6 +14,7 @@ import BuyModal from "../buy-modal/buy-modal";
 import ChangePriceModal from "../change-price-modal/change-price-modal";
 import Web3 from "web3";
 import FormattingService from "../../../core/services/formatting.service";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 
 const web3 = new Web3(process.env.REACT_APP_RPC_URL);
@@ -91,7 +92,7 @@ function ItemCardComponent(props: any) {
         <div className="image-wrapper">
           <div className="menu-wrapper">
             { account ? <Dropdown overlay={menu} trigger={["click"]}>
-              <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
+              <FontAwesomeIcon icon={faEllipsisVertical as IconProp}></FontAwesomeIcon>
             </Dropdown> : null}
           </div>
           <Link to={getLink()}>

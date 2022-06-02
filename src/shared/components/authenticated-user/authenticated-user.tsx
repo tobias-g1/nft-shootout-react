@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWallet } from '@fortawesome/free-solid-svg-icons'
 import { tokenAbi } from "../../abi/token.abi";
 import FormattingService from "../../../core/services/formatting.service";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 function AuthenticatedUserComponent(props: any) {
   const rpcURL = "https://data-seed-prebsc-1-s1.binance.org:8545/";
@@ -62,7 +63,7 @@ function AuthenticatedUserComponent(props: any) {
           <span>{ FormattingService.formatBalance(shooBalance) }</span>
         </div>
         <span className="wallet" onClick={showModal}>
-          <FontAwesomeIcon icon={faWallet} />
+          <FontAwesomeIcon icon={faWallet as IconProp} />
         </span>
       </div>
       <Modal

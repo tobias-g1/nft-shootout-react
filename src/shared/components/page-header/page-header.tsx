@@ -2,12 +2,13 @@ import "./page-header.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { Affix } from "antd";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 function PageHeaderComponent(props: any) {
 
   function showBack() {
     if (props.showBack) {
-      return <FontAwesomeIcon onClick={() => window.history.back()} icon={faArrowLeftLong}></FontAwesomeIcon>
+      return <FontAwesomeIcon onClick={() => window.history.back()} icon={faArrowLeftLong as IconProp}></FontAwesomeIcon>
     }
   }
 

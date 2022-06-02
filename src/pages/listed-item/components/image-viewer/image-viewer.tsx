@@ -10,6 +10,7 @@ import CancelListingModal from "../../../../shared/components/cancel-listing-mod
 import ChangePriceModal from "../../../../shared/components/change-price-modal/change-price-modal";
 import ListForSaleModal from "../../../../shared/components/listing-modal/listing-modal";
 import FormattingService from "../../../../core/services/formatting.service";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 function ImageViewerComponent(props: any) {
   
@@ -94,7 +95,7 @@ function ImageViewerComponent(props: any) {
           {getButton()}
           {props.item && props.item.forSale ? (
             <Dropdown overlay={menu} trigger={["click"]}>
-              <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
+              <FontAwesomeIcon icon={faEllipsisVertical as IconProp}></FontAwesomeIcon>
             </Dropdown>
           ) : null}
         </div> : null }

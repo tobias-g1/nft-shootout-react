@@ -9,6 +9,7 @@ import { useState } from "react";
 import SocialLinksComponent from "../../shared/components/social-links/social-links";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const { Header } = Layout;
 
@@ -42,11 +43,11 @@ function HeaderComponent() {
         </div>
         <div className="right-content">
           <AuthComponent />
-          <FontAwesomeIcon onClick={toggleMenu} className="menu narrow" icon={faBars} />
+          <FontAwesomeIcon onClick={toggleMenu} className="menu narrow" icon={faBars as IconProp} />
         </div>
       </Header>
       {isMenuVisible && <div className="menu-overlay">
-      <FontAwesomeIcon onClick={toggleMenu} className="close" icon={faTimes} />
+      <FontAwesomeIcon onClick={toggleMenu} className="close" icon={faTimes as IconProp} />
         <img className="logo" src={logo} alt="Logo"></img>
         <ul>
           <Link to="play"><li>Play</li></Link>
