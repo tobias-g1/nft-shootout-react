@@ -96,7 +96,6 @@ button {
 
 .page-wrapper {
   min-height: calc(100vh - 299px);
-  background-size: cover !important;
   background-blend-mode: overlay;
   background: #0d0808b3;
   background-repeat: no-repeat;
