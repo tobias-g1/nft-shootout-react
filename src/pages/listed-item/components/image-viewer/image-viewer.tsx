@@ -18,7 +18,7 @@ function ImageViewerComponent(props: any) {
   const bref: any = useRef();
   const cref: any = useRef();
   const chref: any = useRef();
-  const { account } = useWeb3React();
+  let { account } = useWeb3React();
 
   const handleListingModal = (e: any) => {
     fref.current.toggleModal();
@@ -36,15 +36,16 @@ function ImageViewerComponent(props: any) {
     chref.current.toggleModal();
   };
 
+  account = (account?account:'').toLowerCase();
+  let owner = (props.item.owner?props.item.owner:'').toLowerCase();
+
+  console.log(account)
+  console.log(owner)
+  console.log(props.item)
+
   const menu = (
     <Menu>
-      {props.item && props.item.forSale && account && props.item.owner && account.toLowerCase() !== props.item.owner.toLowerCase() ? (
-        <Menu.Item key="2">
-          <span onClick={handleBuyModal}>Quick Buy</span>
-        </Menu.Item>
-      ) : null}
-
-      {props.item && props.item.forSale && account && props.item.owner && account.toLowerCase() === props.item.owner.toLowerCase() ? (
+      {props.item.forSale && account === owner ? (
         <Menu.Item key="3">
           <span onClick={handleChangePrice}>Change Price</span>
         </Menu.Item>
@@ -53,21 +54,22 @@ function ImageViewerComponent(props: any) {
   );
 
   function getButton() {
-    if (props.item && props.item.forSale && account && props.item.owner && account.toLowerCase() === props.item.owner.toLowerCase()) {
+    if (props.item.forSale && account === owner) {
       return (
         <Button type="default" size="large" onClick={handleCancelModal}>
           Cancel Listing
         </Button>
       );
     }
-    if (props.item && !props.item.forSale && account && props.item.owner && account.toLowerCase() === props.item.owner.toLowerCase()) {
+    if (props.item && !props.item.forSale && account === owner) {
       return (
         <Button type="primary" size="large" onClick={handleListingModal}>
           List for Sale
         </Button>
       );
     }
-    if (props.item && props.item.forSale && account && props.item.owner && account.toLowerCase() !== props.item.owner.toLowerCase() ) {
+    console.log(props.item.forSale && (account !== owner))
+    if (props.item.forSale && (account !== owner)) {
       return (
         <Button type="primary" size="large" onClick={handleBuyModal}>
           Buy
@@ -90,15 +92,14 @@ function ImageViewerComponent(props: any) {
             {props.item &&props.item.forSale ? FormattingService.formatBalance(props.item.listPrice) : "Unlisted"}
           </span>
         </div>
-        {account ? 
         <div className="menu-wrapper">
           {getButton()}
-          {props.item && props.item.forSale ? (
+          {props.item && props.item.forSale && account ? (
             <Dropdown overlay={menu} trigger={["click"]}>
               <FontAwesomeIcon icon={faEllipsisVertical as IconProp}></FontAwesomeIcon>
             </Dropdown>
           ) : null}
-        </div> : null }
+        </div>
       </div>
       <ListForSaleModal item={props.item} ref={fref}></ListForSaleModal>
       <CancelListingModal item={props.item} ref={cref}></CancelListingModal>
