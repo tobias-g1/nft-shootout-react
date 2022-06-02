@@ -1,6 +1,6 @@
 import { Affix, Layout } from "antd";
 import './Header.scss';
-import logo from '../../assets/img/logo.png'
+import logo from '../../assets/img/logo.jpeg'
 import { Link } from 'react-router-dom';
 import AuthComponent from "../../shared/components/auth/auth";
 import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
@@ -29,7 +29,7 @@ function HeaderComponent() {
 
 
   return (
-    <>
+    <Affix>
       <Header>
         <div className="left-content">
           <img className="logo" src={logo} alt="Logo"></img>
@@ -59,8 +59,9 @@ function HeaderComponent() {
         <div className="socials">
           <SocialLinksComponent />
         </div>
-      </div>}
-   </>
+      </div>
+      }
+   </Affix>
 
 
   );

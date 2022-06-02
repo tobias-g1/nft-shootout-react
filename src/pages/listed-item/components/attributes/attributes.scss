@@ -15,10 +15,11 @@
             padding: 14px;
             display: flex;
             flex-direction: column;
-            min-width: 130px;
+            max-width: 200px;
             margin-right: 25px;
             margin-bottom: 25px;
             text-transform: capitalize;
+            width: calc(50% - 25px);
             .title {
                 font-size: 14px;
             }

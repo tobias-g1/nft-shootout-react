@@ -2,6 +2,7 @@ import "./owner.scss";
 import { faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import FormattingService from "../../../../core/services/formatting.service";
 
 function OwnerComponent(props: any) {
   return (
@@ -9,7 +10,7 @@ function OwnerComponent(props: any) {
       <h2>Owner</h2>
       <div className="owner-wrap">
           <FontAwesomeIcon icon={faWallet as IconProp}></FontAwesomeIcon>
-          <span> {props.item.owner}</span>
+          <span> { FormattingService.truncateForAddress(props.item.owner)}</span>
       </div>
     </div>
   );
