@@ -1,13 +1,10 @@
 import "./unauthenticated.scss";
 import DocumentMeta from "react-document-meta";
-import { Content } from "antd/lib/layout/layout";
-import { Button, message } from "antd";
 import { useWeb3React } from "@web3-react/core";
-import { injected } from "../../shared/components/wallet/connectors";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import logo from '../../assets/img/logo-small.jpeg'
-import AuthService from "../../core/services/auth.service";
+import ConnectButtonComponent from "../../shared/components/connect-button/connect-button";
 
 function UnauthenticatedPageComponent(props: any) {
 
@@ -27,15 +24,6 @@ function UnauthenticatedPageComponent(props: any) {
     }
   }, [account, navigate]);
 
-  async function connect() {
-    await AuthService.checkNetwork();
-    if (!error) {
-      await activate(injected).then(res => {
-        localStorage.setItem('isWalletConnected', 'true')
-      })
-    }
-  }
-
   return (
     <div className="general-wrapper">
       <DocumentMeta {...meta} />
@@ -45,9 +33,7 @@ function UnauthenticatedPageComponent(props: any) {
             <h2 className="mb-5">Connect Wallet</h2>
             <p>Please connect your wallet to access this page.</p>
           </div>
-            <Button onClick={connect} type="primary" size="large">
-              Connect Wallet
-            </Button>
+          <ConnectButtonComponent />
         </div>
     </div>
   );

@@ -7,6 +7,7 @@ import { useWeb3React } from "@web3-react/core";
 import Web3 from "web3";
 import {marketplaceAbi} from "../../abi/marketplace.abi"
 import NotificationService from "../../../core/services/notification.service";
+import ConnectButtonComponent from "../connect-button/connect-button";
 
 
 const web3 = new Web3(process.env.REACT_APP_RPC_URL);
@@ -76,7 +77,7 @@ function CancelListingModal(props: any, ref: any) {
           entered above.</p>
        </div>
        </div>
-        <Button loading={isLoading} className="modal-button" type="primary" size="large" onClick={cancelListing}>Cancel Listing</Button>
+        {account ? <Button loading={isLoading} className="modal-button" type="primary" size="large" onClick={cancelListing}>Cancel Listing</Button> : <ConnectButtonComponent />}
          </Modal>
     </>
   );

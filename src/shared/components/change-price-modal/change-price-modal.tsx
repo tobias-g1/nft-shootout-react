@@ -10,6 +10,7 @@ import { marketplaceAbi } from "../../abi/marketplace.abi";
 import axios from "axios";
 import shoo from "../../../assets/img/shoo.png";
 import NotificationService from "../../../core/services/notification.service";
+import ConnectButtonComponent from "../connect-button/connect-button";
 
 const web3 = new Web3(process.env.REACT_APP_RPC_URL);
 
@@ -91,6 +92,7 @@ function ChangePriceModal(props: any, ref: any) {
             <Input size="large" placeholder="Enter List Price" value={price} onChange={(e)=> setPrice(parseInt(e.target.value || '0'))} prefix={<img className="shoo-icon" src={shoo} />}/>
           </Form.Item>
           <Form.Item >
+            { account  ? 
             <Button className="footer-submit"
               key="submit"
               htmlType="submit"
@@ -100,7 +102,8 @@ function ChangePriceModal(props: any, ref: any) {
               loading={isCancelling}
             >
               Change Price
-            </Button>
+            </Button> : 
+            <ConnectButtonComponent />}
           </Form.Item>
         </Form>
             <span className="estimate">{'Estimated Price (USD): $ ' + ((price) ? (shooPrice * price).toFixed(2) : '0.00')}</span>

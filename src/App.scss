@@ -3,6 +3,7 @@
   text-align: center;
   margin-bottom: 25px;
   margin: auto;
+
   span {
     font-weight: bold;
     color: #b6b8b9;
@@ -22,13 +23,16 @@ header {
   main {
     margin: 0 25px !important;
   }
+
   header {
     padding: 40px 25px !important;
   }
 }
 
-button, a {
+button,
+a {
   cursor: pointer !important;
+
   &:hover {
     cursor: pointer !important;
   }
@@ -60,10 +64,12 @@ button, a {
   align-items: center;
   justify-content: flex-end;
   margin-bottom: 25px;
+
   .selector {
     align-items: center;
     text-align: center;
     display: flex;
+
     .option {
       cursor: pointer;
       text-transform: uppercase;
@@ -71,15 +77,18 @@ button, a {
       font-weight: 600;
       font-size: 18px;
       padding: 15px;
+
       &:hover {
         opacity: 0.7;
       }
     }
   }
+
   a {
     color: #FFFFFF;
     margin-left: 15px;
   }
+
   .selected {
     background-color: #FCE681;
     color: #000000;
@@ -88,6 +97,7 @@ button, a {
 }
 
 .text-block {
+
   h1,
   h2,
   h3,
@@ -97,28 +107,38 @@ button, a {
   p {
     margin-bottom: 15px;
   }
-  p, ul {
+
+  p,
+  ul {
     font-size: 15px;
   }
 }
 
 .action-modal {
   text-align: center;
+
   img {
     border-radius: 25px;
     margin-bottom: 20px;
     height: 300px;
+  }
 }
+
+.ant-modal-body {
+  button {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 1100px) {
-  .tab-row { 
+  .tab-row {
     justify-content: center;
+
     .selector {
-    .option {
-      font-size: 17px;
+      .option {
+        font-size: 17px;
+      }
     }
-  }
   }
 }
 

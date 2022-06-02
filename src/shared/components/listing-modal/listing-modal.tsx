@@ -10,6 +10,7 @@ import { marketplaceAbi } from "../../abi/marketplace.abi";
 import axios from "axios";
 import shoo from "../../../assets/img/shoo.png";
 import NotificationService from "../../../core/services/notification.service";
+import ConnectButtonComponent from "../connect-button/connect-button";
 
 type Props = {
   item: Item;
@@ -118,6 +119,7 @@ function ListForSaleModal(props: any, ref: any) {
             <Input size="large" placeholder="Enter List Price" value={price} onChange={(e)=> setPrice(parseInt(e.target.value || '0'))} prefix={<img className="shoo-icon" src={shoo} />}/>
           </Form.Item>
           <Form.Item >
+            { account ? 
             <Button className="footer-submit"
               key="submit"
               htmlType="submit"
@@ -126,7 +128,7 @@ function ListForSaleModal(props: any, ref: any) {
               onClick={listForSale}
             >
               List for Sale
-            </Button>
+            </Button> : <ConnectButtonComponent />}
           </Form.Item>
         </Form>
                <span className="estimate">{'Estimated Price (USD): $ ' + ((price) ? (shooPrice * price).toFixed(2) : '0.00')}</span>
