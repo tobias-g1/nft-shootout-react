@@ -1,6 +1,6 @@
 import { Affix, Layout } from "antd";
 import './Header.scss';
-import logo from '../../assets/img/logo.jpeg'
+import logo from '../../assets/img/logo.png'
 import { Link } from 'react-router-dom';
 import AuthComponent from "../../shared/components/auth/auth";
 import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
