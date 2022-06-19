@@ -11,7 +11,7 @@ function MyPlayersPageComponent(props: any) {
     "View your players and expand your team to earn prizes in NFT Shootout.";
   const meta: any = {
     title,
-    description: "TBA",
+    description,
     meta: {},
   };
   const { account } = useWeb3React()
