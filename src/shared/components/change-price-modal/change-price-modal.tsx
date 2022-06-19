@@ -1,16 +1,14 @@
 import "./change-price-modal.scss";
-import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import { forwardRef, useContext, useImperativeHandle, useState } from "react";
 import { Form, Input, Modal, Button, Image } from "antd";
-import { Item } from "../../models/item";
 import fallback from "../../../assets/img/fallback.svg"
 import { useWeb3React } from "@web3-react/core";
 import Web3 from "web3";
-import { useLocation } from "react-router-dom";
 import { marketplaceAbi } from "../../abi/marketplace.abi";
-import axios from "axios";
 import shoo from "../../../assets/img/shoo.png";
 import NotificationService from "../../../core/services/notification.service";
 import ConnectButtonComponent from "../connect-button/connect-button";
+import { ShooPriceContext } from "../../../App";
 
 const web3 = new Web3(process.env.REACT_APP_RPC_URL);
 
@@ -19,9 +17,8 @@ function ChangePriceModal(props: any, ref: any) {
   const { account } = useWeb3React()
   const [isListingModalVisible, setListingModalVisible] = useState(false);
   const [isCancelling, setIsCancelling] = useState(false);
-  const [shooPrice, setShooPrice] = useState(0);
   const [form] = Form.useForm();
-  const location = useLocation();
+  const shooPrice = useContext(ShooPriceContext);
 
   useImperativeHandle(
     ref,
@@ -39,13 +36,6 @@ function ChangePriceModal(props: any, ref: any) {
 
   const [price, setPrice] = useState(0)
 
-  async function getShooPrice() {
-    await axios.get(process.env.REACT_APP_API_BASE_URL + `price/current`)
-      .then(res => {
-        setShooPrice(res.data.usd)
-      })
-  }
-
   web3.eth.setProvider(Web3.givenProvider);
 
   const marketPlaceContract = new web3.eth.Contract(marketplaceAbi, '0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7');
@@ -56,15 +46,15 @@ function ChangePriceModal(props: any, ref: any) {
 
     marketPlaceContract.methods.modifyAskOrder(props.item.collectionAddress, props.item.tokenId, web3.utils.toWei(price.toString(), 'ether')).send({from: account })
       .on('error', function(error){
-        props.requestRefresh()
+       props.refreshMethod();
         setIsCancelling(false)
       })
       .on('confirmation', function(confirmationNumber, receipt){
         if (confirmationNumber === 3) {
-          props.requestRefresh();
+         props.refreshMethod();;
           setIsCancelling(false)
           setListingModalVisible(false)
-          NotificationService.sendNotification('success', 'Your listing price has been updated successfully', 'Your NFT is now be available within your wallet to play')
+          NotificationService.sendNotification('success', 'Your listing price has been updated successfully', "Your NFT is now be available for sale at you're selected price.")
         }
       })
   

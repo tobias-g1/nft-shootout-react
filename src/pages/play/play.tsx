@@ -29,10 +29,7 @@ function PlayPageComponent(props: any) {
           <img className="game" src={gameplay} alt="" />
           <h1 className="mb-10">Get started with NFTShootout</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-            atque consectetur, ipsa voluptas ab, itaque perspiciatis placeat vel
-            eum maxime soluta nemo, aut sapiente praesentium animi illum. Sed,
-            sapiente inventore.
+          NFT Shootout is a turn-based Penalty Shootout strategy system, where you put your player NFTs up against other gamer's player NFTs in a live game. Choose from the options below to select installation relevant to your device.
           </p>
           <div className="download-options">
             <img src={windows} alt="" />

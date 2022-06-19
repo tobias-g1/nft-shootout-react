@@ -21,16 +21,13 @@ const web3 = new Web3(process.env.REACT_APP_RPC_URL);
 web3.eth.setProvider(Web3.givenProvider);
 
 function ItemCardComponent(props: any) {
+  
   const fref: any = useRef();
   const bref: any = useRef();
   const cref: any = useRef();
   const chref: any = useRef();
 
   const { account } = useWeb3React();
-
-  function requestRefresh() {
-    props.requestRefresh();
-  }
 
   const handleListingModal = (e: any) => {
     fref.current.toggleModal();
@@ -118,10 +115,10 @@ function ItemCardComponent(props: any) {
           </div>
         </div>
       </div>
-      <ListForSaleModal requestRefresh={v => requestRefresh()} item={props.item} ref={fref}></ListForSaleModal>
-      <CancelListingModal requestRefresh={v => requestRefresh()} item={props.item} ref={cref}></CancelListingModal>
-      <BuyModal  requestRefresh={v => requestRefresh()}item={props.item} ref={bref}></BuyModal>
-      <ChangePriceModal  requestRefresh={v => requestRefresh()} item={props.item} ref={chref}></ChangePriceModal>
+      <ListForSaleModal refreshMethod={props.refreshMethod} item={props.item} ref={fref}></ListForSaleModal>
+      <CancelListingModal refreshMethod={props.refreshMethod} item={props.item} ref={cref}></CancelListingModal>
+      <BuyModal refreshMethod={props.refreshMethod} item={props.item} ref={bref}></BuyModal>
+      <ChangePriceModal refreshMethod={props.refreshMethod} item={props.item} ref={chref}></ChangePriceModal>
     </>
   );
 }

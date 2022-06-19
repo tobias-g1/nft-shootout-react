@@ -1,5 +1,5 @@
 import "./cancel-listing-modal.scss";
-import { forwardRef, useImperativeHandle, useState } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import { Modal, Button, Image} from "antd";
 import { Item } from "../../models/item";
 import fallback from "../../../assets/img/fallback.svg"
@@ -8,7 +8,6 @@ import Web3 from "web3";
 import {marketplaceAbi} from "../../abi/marketplace.abi"
 import NotificationService from "../../../core/services/notification.service";
 import ConnectButtonComponent from "../connect-button/connect-button";
-
 
 const web3 = new Web3(process.env.REACT_APP_RPC_URL);
 
@@ -47,14 +46,14 @@ function CancelListingModal(props: any, ref: any) {
     marketPlaceContract.methods.cancelAskOrder(props.item.collectionAddress, props.item.tokenId).send({from: account })
     .on('error', function(error){
       setIsLoading(false)
-      props.requestRefresh();
+      props.refreshMethod();
       NotificationService.sendNotification('error', 'Error', "We we're unable to cancel your listing, please try again later.")
     })
     .on('confirmation', function(confirmationNumber, receipt){
       setIsLoading(false);
-      props.requestRefresh();
+      props.refreshMethod();
       setCancelListingModalVisible(false);
-      if (confirmationNumber === 3) {
+      if (confirmationNumber === 4) {
         NotificationService.sendNotification('success', 'Your listing has been cancelled successfully', 'Your NFT is now be available within your wallet to play')
       }
     })

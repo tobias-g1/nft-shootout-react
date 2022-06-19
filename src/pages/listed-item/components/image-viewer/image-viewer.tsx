@@ -39,10 +39,6 @@ function ImageViewerComponent(props: any) {
   account = (account?account:'').toLowerCase();
   let owner = (props.item.owner?props.item.owner:'').toLowerCase();
 
-  console.log(account)
-  console.log(owner)
-  console.log(props.item)
-
   const menu = (
     <Menu>
       {props.item.forSale && account === owner ? (
@@ -68,7 +64,6 @@ function ImageViewerComponent(props: any) {
         </Button>
       );
     }
-    console.log(props.item.forSale && (account !== owner))
     if (props.item.forSale && (account !== owner)) {
       return (
         <Button type="primary" size="large" onClick={handleBuyModal}>
@@ -101,10 +96,10 @@ function ImageViewerComponent(props: any) {
           ) : null}
         </div>
       </div>
-      <ListForSaleModal item={props.item} ref={fref}></ListForSaleModal>
-      <CancelListingModal item={props.item} ref={cref}></CancelListingModal>
-      <BuyModal item={props.item} ref={bref}></BuyModal>
-      <ChangePriceModal item={props.item} ref={chref}></ChangePriceModal>
+      <ListForSaleModal refreshMethod={props.func} item={props.item} ref={fref}></ListForSaleModal>
+      <CancelListingModal refreshMethod={props.func} item={props.item} ref={cref}></CancelListingModal>
+      <BuyModal refreshMethod={props.func} item={props.item} ref={bref}></BuyModal>
+      <ChangePriceModal refreshMethod={props.func} item={props.item} ref={chref}></ChangePriceModal>
     </div>
   );
 }

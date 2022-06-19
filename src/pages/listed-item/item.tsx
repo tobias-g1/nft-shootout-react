@@ -31,7 +31,7 @@ function ItemPageComponent(props: any) {
   const { collectionAddress, tokenId } = useParams();
   let navigate = useNavigate();
 
-  async function search() {
+  const search = async () => {
     toggleLoading(true);
     await axios
       .get(
@@ -64,7 +64,7 @@ function ItemPageComponent(props: any) {
         <Content>
           <Row gutter={50}>
             <Col xs={24} sm={24} md={12} lg={12} xl={9}>
-              <ImageViewerComponent item={item} />
+              <ImageViewerComponent func={search} item={item} />
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={15}>
               <OverviewComponent item={item} />

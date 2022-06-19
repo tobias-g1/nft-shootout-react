@@ -19,14 +19,14 @@ function ListingViewerComponent(props: any, ref: any) {
     toggleLoading(false)
   }
 
-  function requestRefresh() {
+  const requestRefresh = () => {
     foRef.requestRefresh();
   }
 
   const infoMessage: InfoMessage = {
     header: "No Items for Sale",
     description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis, et consequat risus posuere. Suspendisse iaculis risus non risus mattis.",
+        "There are no items available, please refine your filter options to view available players.",
     link: "/store",
     buttonText: "Visit our Store",
 };
@@ -37,7 +37,7 @@ function ListingViewerComponent(props: any, ref: any) {
       {
         isLoading ? <FullLoadingComponent /> : listedItems.length !== 0 ? <Row gutter={25}>
         {listedItems.map((listing: Item, index) => {
-          return <Col key={index} xs={24} sm={12} md={8} lg={8} xl={6}><ItemCardComponent requestRefresh={v => requestRefresh()} item={listing}></ItemCardComponent></Col>
+          return <Col key={index} xs={24} sm={12} md={8} lg={8} xl={6}><ItemCardComponent refreshMethod={requestRefresh} item={listing}></ItemCardComponent></Col>
         })}</Row> : <ContentStatusMessageComponent header={infoMessage.header} description={infoMessage.description} link={infoMessage.link} buttonText={infoMessage.buttonText}></ContentStatusMessageComponent>
       }
     </div>

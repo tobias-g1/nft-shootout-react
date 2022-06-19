@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC, useState } from "react";
 import "./App.scss";
 import HeaderComponent from "./core/header/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -30,13 +30,36 @@ import ItemPageComponent from "./pages/listed-item/item";
 import PrivateRoute from "./shared/components/private-route/private-route";
 import UnauthenticatedPageComponent from "./pages/unauthenticated/unathenticated";
 import OpenPacksPageComponent from "./pages/open/children/packs/packs";
+import { getAddressBalances } from "eth-balance-checker/lib/web3";
+import axios from "axios";
 
 function getLibrary(provider: any) {
   return new Web3(provider);
 }
+const ShooPriceContext = React.createContext(0);
 
-const App: FC = () => (
-  <HelmetProvider>
+const App: FC = () => {
+
+  const [shooPrice, setShooPrice] = useState(0);
+
+  async function getShooPrice() {
+    await axios.get(process.env.REACT_APP_API_BASE_URL + `price/current`)
+    .then(res => {
+      setShooPrice(res.data.usd);
+    })
+  }
+
+  if (shooPrice === 0) {
+    getShooPrice();
+  }
+
+  setInterval(function () {
+    getShooPrice();
+  }, 25000);
+  
+  return (
+    <ShooPriceContext.Provider value={shooPrice}>
+    <HelmetProvider>
     <Web3ReactProvider getLibrary={getLibrary}>
         <Layout>
           <Router>
@@ -83,6 +106,8 @@ const App: FC = () => (
         </Layout>
     </Web3ReactProvider>
   </HelmetProvider>
-);
+  </ShooPriceContext.Provider>
+  )
+}
 
-export default App;
+export { App, ShooPriceContext};

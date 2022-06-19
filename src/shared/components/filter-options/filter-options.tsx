@@ -62,7 +62,7 @@ function FilterOptionsComponent(props: any, ref: any) {
     []
   );
 
-  async function search() {
+  const search = async () => {
     props.toggleLoading(true);
     await axios
       .get(
@@ -104,7 +104,6 @@ function FilterOptionsComponent(props: any, ref: any) {
 
   function toggleItem(type, value) {
     let newState: any = searchOptions;
-    console.log(newState)
     let itemToAmend = newState.findIndex(x => x.type === type);
     let valueToAmend = newState[itemToAmend].values.findIndex(x => x.value === value);
     let currentState = newState[itemToAmend].values[valueToAmend].selected;
@@ -114,6 +113,7 @@ function FilterOptionsComponent(props: any, ref: any) {
   }
 
   return (
+    <div className="main-wrap">
     <div className="filter-options-wrapper">
       {searchOptions.map((option, index) => {
         return (
@@ -140,15 +140,17 @@ function FilterOptionsComponent(props: any, ref: any) {
           </Popover>
         );
       })}
-      <div className="selected-options">
-        {getSelectedOptions().map((o, index) => {
-          return ( o.values.map(v => {
-              return ( <div className="selected" onClick={() => toggleItem(o.type, v.value)} key={index}><span className="label">{FormattingService.formatAttributeNames(o.type)}: </span><span className="data">{v.value}</span><FontAwesomeIcon icon={faClose as IconProp} /></div>)
-              })
-          );
-        })}
-      </div>
+
     </div>
+          <div className="selected-options">
+          {getSelectedOptions().map((o, index) => {
+            return ( o.values.map(v => {
+                return ( <div className="selected" onClick={() => toggleItem(o.type, v.value)} key={index}><span className="label">{FormattingService.formatAttributeNames(o.type)}: </span><span className="data">{v.value}</span><FontAwesomeIcon icon={faClose as IconProp} /></div>)
+                })
+            );
+          })}
+        </div>
+        </div>
   );
 }
 

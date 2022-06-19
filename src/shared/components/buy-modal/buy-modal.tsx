@@ -1,21 +1,15 @@
 import "./buy-modal.scss";
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import { Form, Modal, Button, Image } from "antd";
-import { Item } from "../../models/item";
 import fallback from "../../../assets/img/player-cards/0034.png";
 import { useWeb3React } from "@web3-react/core";
 import Web3 from "web3";
 import { useLocation } from "react-router-dom";
 import { marketplaceAbi } from "../../abi/marketplace.abi";
-import axios from "axios";
 import { tokenAbi } from "../../abi/token.abi";
 import NotificationService from "../../../core/services/notification.service";
 import FormattingService from "../../../core/services/formatting.service";
 import ConnectButtonComponent from "../connect-button/connect-button";
-
-type Props = {
-  item: Item;
-};
 
 const web3 = new Web3(process.env.REACT_APP_RPC_URL);
 
@@ -24,8 +18,6 @@ function BuyModal(props: any, ref: any) {
   const [isApproved, setApproval] = useState(false);
   const [isBuying, setIsBuying] = useState(false);
   const [loadingApproved, setLoadingApproved] = useState(false);
-  const [shooPrice, setShooPrice] = useState(0);
-  const [form] = Form.useForm();
   const location = useLocation();
   const { account } = useWeb3React();
 
@@ -62,7 +54,6 @@ function BuyModal(props: any, ref: any) {
 
   const approveToken = async () => {
     setLoadingApproved(true);
-
     tokenContract.methods
       .approve(
         "0x65ead95f7161Efe9b11a444CCF31fDa358d01AB7",
@@ -70,12 +61,12 @@ function BuyModal(props: any, ref: any) {
       )
       .send({ from: account })
       .on("error", function (error) {
-        props.requestRefresh();
+       props.refreshMethod();
         setLoadingApproved(false);
       })
       .on("confirmation", function (confirmationNumber, receipt) {
         if (confirmationNumber === 3) {
-          props.requestRefresh();
+         props.refreshMethod();
           setLoadingApproved(true);
           setApproval(true);
         }

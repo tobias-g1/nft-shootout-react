@@ -22,8 +22,7 @@ function ForSalePlayersPageComponent(props: any) {
     buttonText: "Visit our Marketplace",
   };
 
-
-  async function search() {
+ const search = async () => {
     toggleLoading(true)
     await axios.get(process.env.REACT_APP_API_BASE_URL + 'marketplace/listed/' + '0x943F9A17AAa6Eb0586187c2093c114aD7b8f2e16' + '/' + account)
       .then((res) => {
@@ -42,7 +41,7 @@ function ForSalePlayersPageComponent(props: any) {
         isLoading ? <FullLoadingComponent /> : (listedItems.length !== 0) ?
           <Row gutter={25}>
             {listedItems.map((listing, index) => {
-              return <Col xs={24} sm={12} md={8} lg={6} xl={6}><ItemCardComponent item={listing}></ItemCardComponent></Col>
+              return <Col xs={24} sm={12} md={8} lg={6} xl={6}><ItemCardComponent refreshMethod={search} item={listing}></ItemCardComponent></Col>
             })
             }
           </Row> : <ContentStatusMessageComponent header={infoMessage.header} description={infoMessage.description} link={infoMessage.link} buttonText={infoMessage.buttonText}></ContentStatusMessageComponent>
